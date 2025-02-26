@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{1c31e019-1ac1-45fd-88e3-88e317061065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\sinks">
+      <UniqueIdentifier>{0e06de95-b77b-437d-b38b-7409d861f42c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\format">
+      <UniqueIdentifier>{c89b495e-4d7b-46d8-8d58-6090784c42cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\customFormatters">
+      <UniqueIdentifier>{53ad92db-af32-4140-85c4-24dbf9b10731}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LoggerTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\Logger.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\MessageBuilder.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\sinks\WindowsDebugStreamSink.cpp">
+      <Filter>Logger\sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\LoggerProvider.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\OsWindows.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\ThreadsNames.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\sinks\SinkBase.cpp">
+      <Filter>Logger\sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\format\Format.cpp">
+      <Filter>Logger\format</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\format\FormatTraits.cpp">
+      <Filter>Logger\format</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\format\FormatResolver.cpp">
+      <Filter>Logger\format</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\sinks\StdFileSink.cpp">
+      <Filter>Logger\sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\sinks\WinRtFileSink.cpp">
+      <Filter>Logger\sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Logger\sinks\WinApiFileSink.cpp">
+      <Filter>Logger\sinks</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\Logger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\MessageBuilder.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\sinks\ISink.h">
+      <Filter>Logger\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\sinks\WindowsDebugStreamSink.h">
+      <Filter>Logger\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\LoggerProvider.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\LoggerMacros.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\Os.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\ThreadsNames.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\ThreadNameSetter.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\sinks\SinkBase.h">
+      <Filter>Logger\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\format\Format.h">
+      <Filter>Logger\format</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\format\FormatTraits.h">
+      <Filter>Logger\format</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\format\FormatResolver.h">
+      <Filter>Logger\format</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\sinks\StdFileSink.h">
+      <Filter>Logger\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\sinks\WinRtFileSink.h">
+      <Filter>Logger\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\sinks\WinApiFileSink.h">
+      <Filter>Logger\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\customFormatters\WindowsSpecific.h">
+      <Filter>Logger\customFormatters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Logger\customFormatters\StdTypes.h">
+      <Filter>Logger\customFormatters</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
