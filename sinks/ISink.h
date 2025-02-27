@@ -39,7 +39,11 @@ public:
   virtual MessageType GetMinLogLevel() const                     = 0;
   virtual bool        ShouldLog(MessageType aType) const         = 0;
 
-  virtual void LogMessage(FormatResolver & aResolver) = 0;
+  // formats message with its format of sink, writes it to actual sink
+  // and returns the number of chars written
+  // resolver is used to cache values of variables common between formats
+  // of different sinks
+  virtual int LogMessage(FormatResolver & aResolver) = 0;
 };
 
 };  // namespace DorelLogger

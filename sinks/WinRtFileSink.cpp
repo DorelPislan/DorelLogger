@@ -50,10 +50,10 @@ bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTrun
   return true;
 }
 
-void WinRtFileSink::LogMessage(FormatResolver & aResolver)
+int WinRtFileSink::LogMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
-    return;
+    return 0;
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
 
@@ -64,6 +64,8 @@ void WinRtFileSink::LogMessage(FormatResolver & aResolver)
 
   auto asyncAction = winrt::Windows::Storage::FileIO::AppendLinesAsync(mLogFile, viewOfLines);
   asyncAction.get();
+
+  return static_cast<int>(fullMsg.size());
 }
 
 }  // namespace DorelLogger

@@ -18,10 +18,10 @@ WindowsDebugStreamSink::WindowsDebugStreamSink()
 {
 }
 
-void WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
+int WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
-    return;
+    return 0;
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
   fullMsg.append(Os::GetEol());
@@ -31,6 +31,8 @@ void WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
   {
   }
   ::OutputDebugString(fullMsg.data());
+
+  return static_cast<int>(fullMsg.size());
 }
 
 }  // namespace DorelLogger

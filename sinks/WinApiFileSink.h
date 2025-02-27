@@ -27,7 +27,7 @@ public:
 private:
   HANDLE mLogFile = INVALID_HANDLE_VALUE;
 
-  void LogMessage(FormatResolver & aResolver) override;
+  int LogMessage(FormatResolver & aResolver) override;
 
   void AddBOM();
 };

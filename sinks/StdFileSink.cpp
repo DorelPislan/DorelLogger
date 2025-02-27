@@ -30,10 +30,10 @@ bool StdFileSink::OpenFile(std::filesystem::path aFilePath, bool aTruncate)
   return mLogStream.is_open();
 }
 
-void StdFileSink::LogMessage(FormatResolver & aResolver)
+int StdFileSink::LogMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
-    return;
+    return 0;
 
   assert(mLogStream.is_open());
 
@@ -43,6 +43,8 @@ void StdFileSink::LogMessage(FormatResolver & aResolver)
 
   // write to file
   mLogStream << fullMsg;
+
+  return static_cast<int>(fullMsg.size());
 }
 
 }  // namespace DorelLogger

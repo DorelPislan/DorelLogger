@@ -38,10 +38,10 @@ bool WinApiFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTru
   return true;
 }
 
-void WinApiFileSink::LogMessage(FormatResolver & aResolver)
+int WinApiFileSink::LogMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
-    return;
+    return 0;
 
   assert(mLogFile != INVALID_HANDLE_VALUE);
 
@@ -53,6 +53,8 @@ void WinApiFileSink::LogMessage(FormatResolver & aResolver)
 
   auto res = ::WriteFile(mLogFile, fullMsg.c_str(), bytesToWrite, &bytesWritten, nullptr);
   res;
+
+  return static_cast<int>(fullMsg.size());
 }
 
 void WinApiFileSink::AddBOM()

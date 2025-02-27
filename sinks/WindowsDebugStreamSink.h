@@ -19,7 +19,7 @@ public:
   static const wchar_t * const kName;
 
 private:
-  void LogMessage(FormatResolver & aResolver) override;
+  int LogMessage(FormatResolver & aResolver) override;
 };
 };  // namespace DorelLogger
 

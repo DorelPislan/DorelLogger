@@ -29,7 +29,7 @@ public:
 private:
   std::wofstream mLogStream;
 
-  void LogMessage(FormatResolver & aResolver) override;
+  int LogMessage(FormatResolver & aResolver) override;
 };
 };  // namespace DorelLogger
 

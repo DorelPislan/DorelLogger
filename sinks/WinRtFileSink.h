@@ -36,7 +36,7 @@ public:
 private:
  winrt::Windows::Storage::StorageFile mLogFile;
 
-  void LogMessage(FormatResolver & aResolver) override;
+  int LogMessage(FormatResolver & aResolver) override;
 };
 };  // namespace DorelLogger
 
