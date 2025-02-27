@@ -76,7 +76,7 @@ int TestStdFileSink()
   auto stdFileSink = std::make_unique<StdFileSink>();
   stdFileSink->SetMessageFormat(kMessageFormat);
 
-  stdFileSink->OpenFile(L"StdFileSink.log", true);
+  stdFileSink->OpenFile(L"StdFileSink.log", false);
 
   log.AddSink(std::move(stdFileSink));
 
