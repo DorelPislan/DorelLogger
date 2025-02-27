@@ -99,7 +99,7 @@ int TestWinRtFileSink()
   std::filesystem::path filePath = crtDir;
   filePath.append(L"WinRtFileSink.log");
 
-  winRtFileSink->OpenFile(filePath, true);
+  winRtFileSink->OpenFile(filePath, false);
 
   log.AddSink(std::move(winRtFileSink));
 
