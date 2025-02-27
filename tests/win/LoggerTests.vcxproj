@@ -162,7 +162,6 @@
     <ClCompile Include="..\..\format\FormatResolver.cpp" />
     <ClCompile Include="..\..\Logger.cpp" />
     <ClCompile Include="..\..\LoggerProvider.cpp" />
-    <ClCompile Include="..\..\MessageBuilder.cpp" />
     <ClCompile Include="..\..\OsWindows.cpp" />
     <ClCompile Include="..\..\format\Format.cpp" />
     <ClCompile Include="..\..\format\FormatTraits.cpp" />
