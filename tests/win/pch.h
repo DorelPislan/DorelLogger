@@ -14,7 +14,7 @@
 #include <Knownfolders.h>
 
 #include "..\..\LoggerProvider.h"
-#include "..\..\Logger\LoggerMacros.h"
+#include "..\..\LoggerMacros.h"
 
 using namespace std;
 
