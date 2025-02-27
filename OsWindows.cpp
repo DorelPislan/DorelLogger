@@ -20,4 +20,9 @@ Os::GetLastError()
   return ::GetLastError();
 }
 
+/*static*/ std::wstring_view Os::GetEol()
+{
+  return L"\r\n";
+};
+
 };  // namespace DorelLogger

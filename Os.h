@@ -17,6 +17,8 @@ public:
   static DWORD GetCurrentThreadId();
 
   static DWORD GetLastError();
+
+  static std::wstring_view GetEol();
 };
 
 };  // namespace DorelLogger
