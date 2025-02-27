@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "WinApiFileSink.h"
+#include "../Os.h"
 #include "../format/FormatResolver.h"
 #include <cassert>
 
@@ -45,7 +46,7 @@ void WinApiFileSink::LogMessage(FormatResolver & aResolver)
   assert(mLogFile != INVALID_HANDLE_VALUE);
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
-  fullMsg.append(L"\r\n");
+  fullMsg.append(Os::GetEol());
 
   DWORD bytesToWrite = static_cast<DWORD>(fullMsg.size() * sizeof(fullMsg[0]));
   DWORD bytesWritten = 0;

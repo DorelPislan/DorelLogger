@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "WindowsDebugStreamSink.h"
+#include "../Os.h"
 #include "../format/FormatResolver.h"
 
 namespace DorelLogger
@@ -23,6 +24,7 @@ void WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
     return;
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
+  fullMsg.append(Os::GetEol());
 
   // TODO: split message in multiple chunks if necessary
   if (fullMsg.size() > kMaxMessageLength)

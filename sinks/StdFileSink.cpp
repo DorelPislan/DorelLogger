@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "StdFileSink.h"
+#include "../Os.h"
 #include "../format/FormatResolver.h"
 
 namespace DorelLogger
@@ -38,8 +39,11 @@ void StdFileSink::LogMessage(FormatResolver & aResolver)
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
 
+  // do this instead of <<std::endl in order to make a single call to output
+  fullMsg.append(Os::GetEol());
+
   // write to file
-  mLogStream << fullMsg << std::endl;
+  mLogStream << fullMsg;
 }
 
 }  // namespace DorelLogger
