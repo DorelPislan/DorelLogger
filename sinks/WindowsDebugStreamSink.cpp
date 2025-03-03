@@ -20,13 +20,11 @@ WindowsDebugStreamSink::WindowsDebugStreamSink()
 
 int WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
 {
-  if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
+  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
+  if (!shouldLog)
     return 0;
 
-  std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
   fullMsg.append(Os::GetEol());
-
-  SinkBase::CollectStatistics(aResolver.GetMessageType(), aResolver.GetMessageBody(), fullMsg);
 
   // TODO: split message in multiple chunks if necessary
   if (fullMsg.size() > kMaxMessageLength)

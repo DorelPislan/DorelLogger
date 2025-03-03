@@ -52,10 +52,9 @@ bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTrun
 
 int WinRtFileSink::LogMessage(FormatResolver & aResolver)
 {
-  if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
+  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
+  if (!shouldLog)
     return 0;
-
-  std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
 
   std::vector<winrt::hstring> lines;
   lines.push_back(winrt::hstring(std::wstring_view(fullMsg)));

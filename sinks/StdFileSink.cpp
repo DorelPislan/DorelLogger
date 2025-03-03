@@ -32,12 +32,11 @@ bool StdFileSink::OpenFile(std::filesystem::path aFilePath, bool aTruncate)
 
 int StdFileSink::LogMessage(FormatResolver & aResolver)
 {
-  if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
+  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
+  if (!shouldLog)
     return 0;
 
   assert(mLogStream.is_open());
-
-  std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
 
   fullMsg.append(L"\n");  // for fstream only \n is EOL
 

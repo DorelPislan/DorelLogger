@@ -40,12 +40,12 @@ bool WinApiFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTru
 
 int WinApiFileSink::LogMessage(FormatResolver & aResolver)
 {
-  if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
+  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
+  if (!shouldLog)
     return 0;
 
   assert(mLogFile != INVALID_HANDLE_VALUE);
 
-  std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
   fullMsg.append(Os::GetEol());
 
   DWORD bytesToWrite = static_cast<DWORD>(fullMsg.size() * sizeof(fullMsg[0]));
