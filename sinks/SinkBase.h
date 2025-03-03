@@ -3,6 +3,7 @@
 #ifndef _SINK_BASE_H_
 #define _SINK_BASE_H_
 
+#include "../StatisticData.h"
 #include "../format/Format.h"
 #include "ISink.h"
 
@@ -28,12 +29,21 @@ public:
   MessageType GetMinLogLevel() const override;
   bool        ShouldLog(MessageType aType) const override;
 
+  void CollectStatistics(bool aCollect) override;
+
+protected:
+  void CollectStatistics(MessageType aMsgType, const std::wstring_view & aMsgBody, const std::wstring & aFullMsg);
+
 private:
   std::wstring mName;
 
   MessageType mMinLogLevel;
 
+  bool mCollectStatistics = true;
+
   Format mFormat;
+
+  StatisticData mStats;
 };
 };  // namespace DorelLogger
 

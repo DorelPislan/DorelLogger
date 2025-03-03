@@ -40,4 +40,19 @@ bool SinkBase::ShouldLog(MessageType aType) const
   return aType >= mMinLogLevel;
 }
 
+void SinkBase::CollectStatistics(bool aCollect)
+{
+  mCollectStatistics = aCollect;
+}
+
+void SinkBase::CollectStatistics(MessageType               aMsgType,
+                                 const std::wstring_view & aMsgBody,
+                                 const std::wstring &      aFullMsg)
+{
+  if (!mCollectStatistics)
+    return;
+
+  mStats.AnalyzeMessage(aMsgType, aMsgBody, aFullMsg);
+}
+
 }  // namespace DorelLogger
