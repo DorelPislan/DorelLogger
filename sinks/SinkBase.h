@@ -32,7 +32,11 @@ public:
   void CollectStatistics(bool aCollect) override;
 
 protected:
-  void CollectStatistics(MessageType aMsgType, const std::wstring_view & aMsgBody, const std::wstring & aFullMsg);
+  std::pair<bool, std::wstring> AnalyzeMessage(FormatResolver & aResolver);
+
+  void CollectStatistics(MessageType               aMsgType,
+                         const std::wstring_view & aMsgBody,
+                         const std::wstring &      aFullMsg);
 
 private:
   std::wstring mName;

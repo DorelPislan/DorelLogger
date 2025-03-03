@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SinkBase.h"
+#include "../format/FormatResolver.h"
 
 namespace DorelLogger
 {
@@ -43,6 +44,18 @@ bool SinkBase::ShouldLog(MessageType aType) const
 void SinkBase::CollectStatistics(bool aCollect)
 {
   mCollectStatistics = aCollect;
+}
+
+std::pair<bool, std::wstring> SinkBase::AnalyzeMessage(FormatResolver & aResolver)
+{
+  if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
+    return { false, {} };
+
+  std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
+
+  SinkBase::CollectStatistics(aResolver.GetMessageType(), aResolver.GetMessageBody(), fullMsg);
+
+  return { true, fullMsg };
 }
 
 void SinkBase::CollectStatistics(MessageType               aMsgType,
