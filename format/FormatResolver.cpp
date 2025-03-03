@@ -33,6 +33,11 @@ ISink::MessageType FormatResolver::GetMessageType() const
   return mMessageType;
 }
 
+const std::wstring_view & FormatResolver::GetMessageBody() const
+{
+  return mMessage;
+}
+
 std::wstring FormatResolver::Resolve(const Format & aFormat)
 {
   std::wstring result;

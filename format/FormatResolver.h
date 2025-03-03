@@ -25,7 +25,8 @@ public:
                  size_t               aSourceLine,
                  std::wstring_view    aMessage);
 
-  ISink::MessageType GetMessageType() const;
+  ISink::MessageType        GetMessageType() const;
+  const std::wstring_view & GetMessageBody() const;
 
   std::wstring Resolve(const Format & aFormat);
 
