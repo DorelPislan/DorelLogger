@@ -26,6 +26,8 @@ int WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
   fullMsg.append(Os::GetEol());
 
+  SinkBase::CollectStatistics(aResolver.GetMessageType(), aResolver.GetMessageBody(), fullMsg);
+
   // TODO: split message in multiple chunks if necessary
   if (fullMsg.size() > kMaxMessageLength)
   {
