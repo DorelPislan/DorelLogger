@@ -59,6 +59,9 @@
       <Filter>Logger</Filter>
     </ClCompile>
     <ClCompile Include="..\LoggerTests.cpp" />
+    <ClCompile Include="..\..\StatisticData.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -117,6 +120,9 @@
     </ClInclude>
     <ClInclude Include="..\..\customFormatters\WindowsSpecific.h">
       <Filter>Logger\customFormatters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\StatisticData.h">
+      <Filter>Logger</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

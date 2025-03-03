@@ -170,6 +170,7 @@
     <ClCompile Include="..\..\sinks\WinApiFileSink.cpp" />
     <ClCompile Include="..\..\sinks\WindowsDebugStreamSink.cpp" />
     <ClCompile Include="..\..\sinks\WinRtFileSink.cpp" />
+    <ClCompile Include="..\..\StatisticData.cpp" />
     <ClCompile Include="..\..\ThreadsNames.cpp" />
     <ClCompile Include="..\LoggerTests.cpp" />
     <ClCompile Include="pch.cpp">
@@ -196,6 +197,7 @@
     <ClInclude Include="..\..\sinks\WinApiFileSink.h" />
     <ClInclude Include="..\..\sinks\WindowsDebugStreamSink.h" />
     <ClInclude Include="..\..\sinks\WinRtFileSink.h" />
+    <ClInclude Include="..\..\StatisticData.h" />
     <ClInclude Include="..\..\ThreadNameSetter.h" />
     <ClInclude Include="..\..\ThreadsNames.h" />
     <ClInclude Include="pch.h" />
