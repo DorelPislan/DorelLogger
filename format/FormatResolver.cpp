@@ -110,12 +110,13 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   }
   case FormatTraits::VariableId::Minute:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = std::chrono::system_clock::now();
     return std::format(L"{:%M}", crtTime);
   }
   case FormatTraits::VariableId::Second:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime =
+      std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now());
     return std::format(L"{:%S}", crtTime);
   }
   case FormatTraits::VariableId::MiliSecond:
