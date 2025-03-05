@@ -6,7 +6,7 @@
 #include "Logger.h"
 
 #ifndef GET_LOGGER
-#define GET_LOGGER() LoggerProvider::GetLogger()
+#define GET_LOGGER() DorelLogger::LoggerProvider::GetLogger()
 #endif
 
 namespace DorelLogger
