@@ -17,30 +17,21 @@ WinRtFileSink::WinRtFileSink()
 
 bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTruncate)
 {
-  winrt::init_apartment();
-
   std::filesystem::path fileName = aFilePath.filename();
   if (fileName.empty())
     return false;
 
   std::filesystem::path dirPath = aFilePath.parent_path();
-  if (dirPath.empty())
-    return false;
-
-  std::wstring folderPath(dirPath.c_str());
 
   winrt::Windows::Storage::StorageFolder folder =
-    winrt::Windows::Storage::StorageFolder::GetFolderFromPathAsync(folderPath).get();
+    dirPath.empty()
+      ? winrt::Windows::Storage::ApplicationData::Current().LocalFolder()
+      : winrt::Windows::Storage::StorageFolder::GetFolderFromPathAsync(dirPath.c_str()).get();
 
   if (!folder)
     return false;
 
-  winrt::Windows::Storage::StorageFile file =
-    folder
-      .CreateFileAsync(fileName.c_str(),
-                       aTruncate ? winrt::Windows::Storage::CreationCollisionOption::ReplaceExisting
-                                 : winrt::Windows::Storage::CreationCollisionOption::OpenIfExists)
-      .get();
+  auto file = OpenLogFile(folder, fileName, aTruncate);
 
   if (!file)
     return false;
@@ -62,9 +53,23 @@ int WinRtFileSink::LogMessage(FormatResolver & aResolver)
   auto viewOfLines = winrt::single_threaded_vector<winrt::hstring>(std::move(lines)).GetView();
 
   auto asyncAction = winrt::Windows::Storage::FileIO::AppendLinesAsync(mLogFile, viewOfLines);
-  asyncAction.get();
+  WaitForActionToFinish(asyncAction);
 
   return static_cast<int>(fullMsg.size());
+}
+
+winrt::Windows::Storage::StorageFile WinRtFileSink::OpenLogFile(
+  const winrt::Windows::Storage::StorageFolder & aFolder,
+  const std::filesystem::path &                  aFileName,
+  bool                                           aTruncate)
+{
+  auto createFileOp = aFolder.CreateFileAsync(
+    aFileName.c_str(), aTruncate ? winrt::Windows::Storage::CreationCollisionOption::ReplaceExisting
+                                 : winrt::Windows::Storage::CreationCollisionOption::OpenIfExists);
+
+  WaitForActionToFinish(createFileOp);
+
+  return createFileOp.GetResults();
 }
 
 }  // namespace DorelLogger
