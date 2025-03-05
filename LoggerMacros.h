@@ -11,7 +11,7 @@
 #ifdef DONTLOG_SRC_POS
 #define SRC_POS nullptr, nullptr, nullptr
 #else
-#define SRC_POS __FILE__, __func__, __LINE__
+#define SRC_POS __FILE__, __FUNCTION__, __LINE__
 #endif
 
 #define LOG_INFO_FMT(aFormat, ...)                                                                \
