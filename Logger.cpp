@@ -15,6 +15,7 @@ Logger::Logger()
 
 Logger::~Logger()
 {
+  DumpStatistics();
 }
 
 void Logger::AddSink(std::unique_ptr<ISink> aSink)
@@ -96,6 +97,17 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
   for (auto & sink : mSinks)
   {
     sink->LogMessage(resolver);
+  }
+}
+
+void Logger::DumpStatistics()
+{
+  FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, ISink::MessageType::Info,
+                          nullptr, nullptr, 0, {});
+
+  for (auto & sink : mSinks)
+  {
+    sink->DumpStatistics(resolver);
   }
 }
 

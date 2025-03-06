@@ -66,6 +66,8 @@ private:
   std::wstring mProcessName;
 
   ThreadsNames mThreadsNames;
+
+  void DumpStatistics();
 };
 
 }  // namespace DorelLogger
