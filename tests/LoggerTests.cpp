@@ -2,8 +2,8 @@
 // begins and ends there.
 //
 #include "pch.h"
+#include "..\CustomFormatters.h"
 #include "..\ThreadNameSetter.h"
-#include "..\customFormatters.h"
 #include "..\customFormatters/StdTypes.h"
 #include "..\customFormatters/WindowsSpecific.h"
 #include "..\format/Format.h"
@@ -11,6 +11,7 @@
 #include "..\sinks/WinApiFileSink.h"
 #include "..\sinks/WinRtFileSink.h"
 #include "..\sinks/WindowsDebugStreamSink.h"
+#include <source_location>
 
 using namespace DorelLogger;
 
@@ -239,6 +240,7 @@ int TestMessageBuilder()
 
   QuotableString a("be"), a2(R"( " be " )");
   QuotableString b("a question");
+  a2;
 
   auto qs = std::format("To {0} or not to {0}, that is {1}.\n", a, b);
 
@@ -277,6 +279,8 @@ int main()
 {
   std::cout << "Hello World!\n";
 
+  auto srcLoc = std::source_location::current();
+  srcLoc;
   {
     // init logger here
     auto & logger = GET_LOGGER();

@@ -220,6 +220,9 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
     return std::wstring(mMessage);
   }
+  case FormatTraits::VariableId::NoId:
+  case FormatTraits::VariableId::Verbatim:
+    break;  // just for shutting up CLANG
   }
 
   return std::wstring(mMessage);

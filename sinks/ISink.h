@@ -1,7 +1,7 @@
 #ifndef _ISINK_H_
 #define _ISINK_H_
 
-#include "Format/Format.h"
+#include "../format/Format.h"
 
 namespace DorelLogger
 {
