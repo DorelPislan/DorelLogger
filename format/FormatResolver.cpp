@@ -33,9 +33,29 @@ ISink::MessageType FormatResolver::GetMessageType() const
   return mMessageType;
 }
 
+const char * FormatResolver::GetSourceFile() const
+{
+  return mSourceFile;
+}
+
+const char * FormatResolver::GetSourceFunction() const
+{
+  return mSourceFunction;
+}
+
+size_t FormatResolver::GetSourceLine() const
+{
+  return mSourceLine;
+}
+
 const std::wstring_view & FormatResolver::GetMessageBody() const
 {
   return mMessage;
+}
+
+void FormatResolver::SetMessage(std::wstring_view aMessage)
+{
+  mMessage = aMessage;
 }
 
 std::wstring FormatResolver::Resolve(const Format & aFormat)

@@ -25,8 +25,16 @@ public:
                  size_t               aSourceLine,
                  std::wstring_view    aMessage);
 
-  ISink::MessageType        GetMessageType() const;
+  ISink::MessageType GetMessageType() const;
+
+  const char * GetSourceFile() const;
+  const char * GetSourceFunction() const;
+  size_t       GetSourceLine() const;
+
   const std::wstring_view & GetMessageBody() const;
+
+  // useful for logging statistic data
+  void SetMessage(std::wstring_view aMessage);
 
   std::wstring Resolve(const Format & aFormat);
 
@@ -53,4 +61,4 @@ private:
 };
 
 }  // namespace DorelLogger
-#endif  //_LOGGER_H_
+#endif  //_FORMAT_RESOLVER_H_
