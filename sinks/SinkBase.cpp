@@ -46,6 +46,18 @@ void SinkBase::CollectStatistics(bool aCollect)
   mCollectStatistics = aCollect;
 }
 
+void SinkBase::DumpStatistics(FormatResolver & aResolver)
+{
+  if (!mCollectStatistics)
+    return;
+
+  auto statsData = mStats.GetFlatResults(mName);
+
+  aResolver.SetMessage(statsData);
+
+  this->LogMessage(aResolver);
+}
+
 std::pair<bool, std::wstring> SinkBase::AnalyzeMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
@@ -53,19 +65,17 @@ std::pair<bool, std::wstring> SinkBase::AnalyzeMessage(FormatResolver & aResolve
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
 
-  SinkBase::CollectStatistics(aResolver.GetMessageType(), aResolver.GetMessageBody(), fullMsg);
+  SinkBase::CollectStatistics(aResolver, fullMsg);
 
   return { true, fullMsg };
 }
 
-void SinkBase::CollectStatistics(MessageType               aMsgType,
-                                 const std::wstring_view & aMsgBody,
-                                 const std::wstring &      aFullMsg)
+void SinkBase::CollectStatistics(const FormatResolver & aResolver, const std::wstring & aFullMsg)
 {
   if (!mCollectStatistics)
     return;
 
-  mStats.AnalyzeMessage(aMsgType, aMsgBody, aFullMsg);
+  mStats.AnalyzeMessage(aResolver, aFullMsg);
 }
 
 }  // namespace DorelLogger

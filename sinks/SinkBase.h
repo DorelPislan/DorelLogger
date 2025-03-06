@@ -31,14 +31,14 @@ public:
 
   void CollectStatistics(bool aCollect) override;
 
+  void DumpStatistics(FormatResolver & aResolver) override;
+
 protected:
   std::pair<bool, std::wstring> AnalyzeMessage(FormatResolver & aResolver);
 
-  void CollectStatistics(MessageType               aMsgType,
-                         const std::wstring_view & aMsgBody,
-                         const std::wstring &      aFullMsg);
+  void CollectStatistics(const FormatResolver & aResolver, const std::wstring & aFullMsg);
 
-private:
+protected:
   std::wstring mName;
 
   MessageType mMinLogLevel;
