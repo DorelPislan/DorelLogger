@@ -15,6 +15,15 @@ WinRtFileSink::WinRtFileSink()
 {
 }
 
+WinRtFileSink::~WinRtFileSink()
+{
+  if (mLastOpCompletedEvent)
+  {
+    ::WaitForSingleObject(mLastOpCompletedEvent, INFINITE);
+    ::CloseHandle(mLastOpCompletedEvent);
+  }
+}
+
 bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTruncate)
 {
   std::filesystem::path fileName = aFilePath.filename();
@@ -38,6 +47,10 @@ bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTrun
 
   mLogFile = file;
 
+  // since we have file then create an event used to synch writes in that file
+  mLastOpCompletedEvent =
+    ::CreateEventEx(nullptr, nullptr, CREATE_EVENT_INITIAL_SET, EVENT_ALL_ACCESS);
+
   return true;
 }
 
@@ -52,8 +65,19 @@ int WinRtFileSink::LogMessage(FormatResolver & aResolver)
 
   auto viewOfLines = winrt::single_threaded_vector<winrt::hstring>(std::move(lines)).GetView();
 
+  // wait for previous operation on file to finish
+  ::WaitForSingleObject(mLastOpCompletedEvent, INFINITE);
+
+  // ok to write again
   auto asyncAction = winrt::Windows::Storage::FileIO::AppendLinesAsync(mLogFile, viewOfLines);
-  WaitForActionToFinish(asyncAction);
+
+  // do not wait now for operation to finish
+  // chances are that until we need to write again it already finished
+  asyncAction.Completed(
+    [this](auto, auto)
+    {
+      ::SetEvent(mLastOpCompletedEvent);
+    });
 
   return static_cast<int>(fullMsg.size());
 }

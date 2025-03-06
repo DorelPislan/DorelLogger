@@ -31,12 +31,17 @@ public:
   // class -ctor
   WinRtFileSink();
 
+    // class -dtor
+  ~WinRtFileSink();
+
   bool OpenFile(const std::filesystem::path & aFilePath, bool aTruncate);
 
   static const wchar_t * const kName;
 
 private:
  winrt::Windows::Storage::StorageFile mLogFile;
+
+ HANDLE mLastOpCompletedEvent = NULL; 
 
   int LogMessage(FormatResolver & aResolver) override;
 
