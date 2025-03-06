@@ -40,8 +40,8 @@ bool WinApiFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTru
 
 int WinApiFileSink::LogMessage(FormatResolver & aResolver)
 {
-  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
-  if (!shouldLog)
+  auto fullMsg = SinkBase::ComputeFullMessage(aResolver);
+  if (fullMsg.empty())
     return 0;
 
   assert(mLogFile != INVALID_HANDLE_VALUE);

@@ -58,16 +58,16 @@ void SinkBase::DumpStatistics(FormatResolver & aResolver)
   this->LogMessage(aResolver);
 }
 
-std::pair<bool, std::wstring> SinkBase::AnalyzeMessage(FormatResolver & aResolver)
+std::wstring SinkBase::ComputeFullMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
-    return { false, {} };
+    return {};
 
   std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
 
   SinkBase::CollectStatistics(aResolver, fullMsg);
 
-  return { true, fullMsg };
+  return fullMsg;
 }
 
 void SinkBase::CollectStatistics(const FormatResolver & aResolver, const std::wstring & aFullMsg)

@@ -34,7 +34,7 @@ public:
   void DumpStatistics(FormatResolver & aResolver) override;
 
 protected:
-  std::pair<bool, std::wstring> AnalyzeMessage(FormatResolver & aResolver);
+  std::wstring ComputeFullMessage(FormatResolver & aResolver);
 
   void CollectStatistics(const FormatResolver & aResolver, const std::wstring & aFullMsg);
 

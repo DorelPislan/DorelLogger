@@ -32,8 +32,8 @@ bool StdFileSink::OpenFile(std::filesystem::path aFilePath, bool aTruncate)
 
 int StdFileSink::LogMessage(FormatResolver & aResolver)
 {
-  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
-  if (!shouldLog)
+  auto fullMsg = SinkBase::ComputeFullMessage(aResolver);
+  if (fullMsg.empty())
     return 0;
 
   assert(mLogStream.is_open());

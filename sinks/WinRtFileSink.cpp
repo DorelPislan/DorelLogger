@@ -43,8 +43,8 @@ bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTrun
 
 int WinRtFileSink::LogMessage(FormatResolver & aResolver)
 {
-  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
-  if (!shouldLog)
+  auto fullMsg = SinkBase::ComputeFullMessage(aResolver);
+  if (fullMsg.empty())
     return 0;
 
   std::vector<winrt::hstring> lines;

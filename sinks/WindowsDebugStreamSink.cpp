@@ -20,8 +20,8 @@ WindowsDebugStreamSink::WindowsDebugStreamSink()
 
 int WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
 {
-  auto [shouldLog, fullMsg] = SinkBase::AnalyzeMessage(aResolver);
-  if (!shouldLog)
+  auto fullMsg = SinkBase::ComputeFullMessage(aResolver);
+  if (fullMsg.empty())
     return 0;
 
   fullMsg.append(Os::GetEol());
