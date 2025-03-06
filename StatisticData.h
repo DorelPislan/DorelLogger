@@ -6,8 +6,9 @@
 
 namespace DorelLogger
 {
+class FormatResolver;
 
-/**
+  /**
  * Class collecting statistics data about logged messages
  * It must be used by Logger
  */
@@ -17,11 +18,9 @@ public:
   // class c-tor
   StatisticData() = default;
 
-  void AnalyzeMessage(ISink::MessageType        aMsgType,
-                      const std::wstring_view & aMsgHeader,
-                      const std::wstring_view & aMsgBody);
+  void AnalyzeMessage(const FormatResolver & aResolver, const std::wstring & aFullMsg);
 
-  std::wstring GetFlatResults();
+  std::wstring GetFlatResults(const std::wstring & aSinkName);
 
 private:
   int mTotalMsgsCount = 0;
@@ -36,8 +35,14 @@ private:
   int mMaxHeaderLength = 0;
   int mAvgHeaderLength = 0;
 
-  size_t mMinTimeBetween2Msgs = 0;
-  size_t mMaxTimeBetween2Msgs = 0;
+  int mMinSourceFileLength = 0;
+  int mMaxSourceFileLength = 0;
+
+  int mMinFcnNameLength = 0;
+  int mMaxFcnNameLength = 0;
+
+  //size_t mMinTimeBetween2Msgs = 0;
+  //size_t mMaxTimeBetween2Msgs = 0;
 
   using MsgTypeAndCount = std::pair<ISink::MessageType, int>;
 
