@@ -43,6 +43,12 @@ void StatisticData::AnalyzeMessage(const FormatResolver & aResolver, const std::
 
 std::wstring StatisticData::GetFlatResults(const std::wstring & aSinkName)
 {
+  if (mTotalMsgsCount == 0)
+  {
+    return std::format(L"\nSTATISTICS data from '{}' :\n"
+                       L"Messages count            = {}\n",
+                       aSinkName, mTotalMsgsCount);
+  }
   mAvgMsgLength = mTotalMsgsLength / mTotalMsgsCount;
 
   return std::format(L"\nSTATISTICS data from '{}' :\n"
