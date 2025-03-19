@@ -17,6 +17,10 @@ public:
   // class - ctor
   WinApiFileSink();
 
+  //class c-tor
+  WinApiFileSink(const std::filesystem::path & aFilePath ,std::wstring aFormat,
+                 bool aCollectStatistics);
+
   // class - dtor
   ~WinApiFileSink();
 

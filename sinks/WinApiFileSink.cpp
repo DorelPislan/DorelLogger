@@ -14,6 +14,16 @@ WinApiFileSink::WinApiFileSink()
 {
 }
 
+WinApiFileSink::WinApiFileSink(const std::filesystem::path & aFilePath,
+                               std::wstring                  aFormat,
+                               bool                          aCollectStatistics)
+  : SinkBase(kName)
+{
+  OpenFile(aFilePath, false);  // hope it does not fail otherwise we need to throw
+  SetMessageFormat(aFormat);
+  CollectStatistics(aCollectStatistics);
+}
+
 WinApiFileSink::~WinApiFileSink()
 {
   if (mLogFile != INVALID_HANDLE_VALUE)

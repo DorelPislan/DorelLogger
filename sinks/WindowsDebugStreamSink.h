@@ -16,6 +16,9 @@ public:
   // class -ctor
   WindowsDebugStreamSink();
 
+  // class -ctor
+  WindowsDebugStreamSink(const std::wstring & aFormat, bool aCollectStatistics);
+
   static const wchar_t * const kName;
 
 private:

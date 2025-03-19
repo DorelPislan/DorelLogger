@@ -18,6 +18,14 @@ WindowsDebugStreamSink::WindowsDebugStreamSink()
 {
 }
 
+WindowsDebugStreamSink::WindowsDebugStreamSink(const std::wstring & aFormat,
+                                               bool                 aCollectStatistics)
+  : SinkBase(kName)
+{
+  SetMessageFormat(aFormat);
+  CollectStatistics(aCollectStatistics);
+}
+
 int WindowsDebugStreamSink::LogMessage(FormatResolver & aResolver)
 {
   auto fullMsg = SinkBase::ComputeFullMessage(aResolver);
