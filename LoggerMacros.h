@@ -1,5 +1,6 @@
 #include "Logger.h"
 #include "MessageBuilder.h"
+#include "Os.h"
 
 // clang-format off
 // clang-format on
@@ -36,11 +37,11 @@
 #define LOG_ERROR(msg)                                                                   \
   {                                                                                      \
     auto & logger = GET_LOGGER();                                                        \
-    if (logger.ShouldLog(ISink::MessageType::Error))                                     \
+    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))                        \
     {                                                                                    \
-      int lastError = Logger::Os::GetLastError();                                        \
+      int lastError = DorelLogger::Os::GetLastError();                           \
       lastError;                                                                         \
-      logger.LogMessage(ISink::MessageType::Error, SRC_POS,                              \
+      logger.LogMessage(DorelLogger::ISink::MessageType::Error, SRC_POS,                 \
                         (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
     }                                                                                    \
   }
