@@ -37,26 +37,26 @@ public:
   // class c-tor
   Format() = default;
 
-  void Set(std::wstring aFormat);
+  void Set(std::wstring_view aFormat);
 
   TokensContainer::const_iterator begin() const;
   TokensContainer::const_iterator end() const;
 
 private:
-  std::wstring    mFormat;
   TokensContainer mTokens;
 
-  void Parse();
+  void Parse(std::wstring_view aFormat);
 
-  Token ExtractToken(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
+  Token ExtractToken(std::wstring_view::const_iterator & aIt, std::wstring_view::const_iterator & aEnd);
 
-  FormatTraits::AlignmentType ExtractAlignment(std::wstring::const_iterator & aIt,
-                                               std::wstring::const_iterator & aEnd);
+  FormatTraits::AlignmentType ExtractAlignment(std::wstring_view::const_iterator & aIt,
+                                               std::wstring_view::const_iterator & aEnd);
 
-  int ExtractWidth(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
+  int ExtractWidth(std::wstring_view::const_iterator & aIt,
+                   std::wstring_view::const_iterator & aEnd);
 
-  FormatTraits::VariableId ExtractVarId(std::wstring::const_iterator & aIt,
-                                        std::wstring::const_iterator & aEnd);
+  FormatTraits::VariableId ExtractVarId(std::wstring_view::const_iterator & aIt,
+                                        std::wstring_view::const_iterator & aEnd);
 
 };  // class Format
 
