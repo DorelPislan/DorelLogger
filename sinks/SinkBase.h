@@ -22,7 +22,7 @@ public:
 
   const std::wstring & GetName() override;
 
-  void           SetMessageFormat(const std::wstring & aFormat) override;
+  void           SetMessageFormat(std::wstring_view aFormat) override;
   const Format & GetMessageFormat() const override;
 
   void        SetMinLogLevel(ISink::MessageType aNewMin) override;

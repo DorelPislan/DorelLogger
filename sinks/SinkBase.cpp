@@ -16,7 +16,7 @@ const std::wstring & SinkBase::GetName()
   return mName;
 }
 
-void SinkBase::SetMessageFormat(const std::wstring & aFormat)
+void SinkBase::SetMessageFormat(std::wstring_view aFormat)
 {
   mFormat.Set(aFormat);
 }
