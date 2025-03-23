@@ -15,13 +15,13 @@
 #define SRC_POS __FILE__, __FUNCTION__, __LINE__
 #endif
 
-#define LOG_INFO_FMT(aFormat, ...)                                                                \
-  {                                                                                               \
-    auto & logger = GET_LOGGER();                                                                 \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Info))                                  \
-    {                                                                                             \
-      logger.LogMessageFmt(DorelLogger::ISink::MessageType::Info, SRC_POS, aFormat, __VA_ARGS__); \
-    }                                                                                             \
+#define LOG_INFO_FMT(aFormat, ...)                               \
+  {                                                              \
+    auto & logger = GET_LOGGER();                                \
+    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Info)) \
+    {                                                            \
+      logger.LogInfoFmt(SRC_POS, aFormat, __VA_ARGS__);          \
+    }                                                            \
   }
 
 #define LOG_INFO(msg)                                                                    \
@@ -34,14 +34,13 @@
     }                                                                                    \
   }
 
-#define LOG_ERROR(msg)                                                                   \
-  {                                                                                      \
-    auto & logger = GET_LOGGER();                                                        \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))                        \
-    {                                                                                    \
-      int lastError = DorelLogger::Os::GetLastError();                           \
-      lastError;                                                                         \
-      logger.LogMessage(DorelLogger::ISink::MessageType::Error, SRC_POS,                 \
-                        (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
-    }                                                                                    \
+#define LOG_ERROR(msg)                                                                          \
+  {                                                                                             \
+    auto & logger = GET_LOGGER();                                                               \
+    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))                               \
+    {                                                                                           \
+      int lastError = DorelLogger::Os::GetLastError();                                          \
+      lastError;                                                                                \
+      logger.LogError(SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
+    }                                                                                           \
   }
