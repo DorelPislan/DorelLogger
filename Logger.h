@@ -47,12 +47,43 @@ public:
     LogMessage(aMessageType, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
+  template <typename... Args>
+  void LogInfoFmt(const char *      aSourceFile,
+                  const char *      aSourceFunction,
+                  size_t            aSourceLine,
+                  std::wstring_view aMessageFormat,
+                  Args &&... aArgs)
+  {
+    LogMessage(ISink::MessageType::Info, aSourceFile, aSourceFunction, aSourceLine,
+               std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
+  }
+
+  template <typename... Args>
+  void LogErrorFmt(const char *      aSourceFile,
+                   const char *      aSourceFunction,
+                   size_t            aSourceLine,
+                   std::wstring_view aMessageFormat,
+                   Args &&... aArgs)
+  {
+    LogMessage(ISink::MessageType::Error, aSourceFile, aSourceFunction, aSourceLine,
+               std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
+  }
 
   void LogMessage(ISink::MessageType aMessageType,
                   const char *       aSourceFile,
                   const char *       aSourceFunction,
                   size_t             aSourceLine,
                   std::wstring_view  aMessage);
+
+  void LogInfo(const char *      aSourceFile,
+               const char *      aSourceFunction,
+               size_t            aSourceLine,
+               std::wstring_view aMessage);
+
+  void LogError(const char *      aSourceFile,
+                const char *      aSourceFunction,
+                size_t            aSourceLine,
+                std::wstring_view aMessage);
 
 private:
   // object that synchronizes access to code that changes members of this class
