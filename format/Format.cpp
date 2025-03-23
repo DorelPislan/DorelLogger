@@ -49,7 +49,8 @@ std::wstring Format::Token::ToString() const
 /////////////////////////////////////////////////////////////////
 void Format::Set(std::wstring_view aFormat)
 {
-  Parse(aFormat);
+  mFormat = aFormat;
+  Parse();
 }
 
 Format::TokensContainer::const_iterator Format::begin() const
@@ -62,13 +63,13 @@ Format::TokensContainer::const_iterator Format::end() const
   return mTokens.end();
 }
 
-void Format::Parse(std::wstring_view aFormat)
+void Format::Parse()
 {
   mTokens.clear();
-  const wchar_t * crtVerbatimStart  = aFormat.data();
+  const wchar_t * crtVerbatimStart  = mFormat.data();
   size_t          crtVerbatimLength = 0;
 
-  for (auto it = aFormat.begin(), end = aFormat.end(); it != end;)
+  for (auto it = mFormat.begin(), end = mFormat.end(); it != end;)
   {
     if (*it == FormatTraits::kFormatStart)
     {
@@ -117,8 +118,8 @@ void Format::Parse(std::wstring_view aFormat)
   }
 }
 
-Format::Token Format::ExtractToken(std::wstring_view::const_iterator & aIt,
-                                   std::wstring_view::const_iterator & aEnd)
+Format::Token Format::ExtractToken(std::wstring::const_iterator & aIt,
+                                   std::wstring::const_iterator & aEnd)
 {
   // aIt points to the next char after FormatStartMarker
 
@@ -138,8 +139,8 @@ Format::Token Format::ExtractToken(std::wstring_view::const_iterator & aIt,
   return Token(alignment, width, varId);
 }
 
-FormatTraits::AlignmentType Format::ExtractAlignment(std::wstring_view::const_iterator & aIt,
-                                                     std::wstring_view::const_iterator & /*aEnd*/)
+FormatTraits::AlignmentType Format::ExtractAlignment(std::wstring::const_iterator & aIt,
+                                                     std::wstring::const_iterator & /*aEnd*/)
 {
   auto ch   = *aIt;
   auto algn = FormatTraits::AlignmentType::Left;
@@ -162,8 +163,7 @@ FormatTraits::AlignmentType Format::ExtractAlignment(std::wstring_view::const_it
   return algn;
 }
 
-int Format::ExtractWidth(std::wstring_view::const_iterator & aIt,
-                         std::wstring_view::const_iterator & aEnd)
+int Format::ExtractWidth(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd)
 {
   int width = 0;
   for (; aIt != aEnd; aIt++)
@@ -182,8 +182,8 @@ int Format::ExtractWidth(std::wstring_view::const_iterator & aIt,
   return width;
 }
 
-FormatTraits::VariableId Format::ExtractVarId(std::wstring_view::const_iterator & aIt,
-                                              std::wstring_view::const_iterator & aEnd)
+FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt,
+                                              std::wstring::const_iterator & aEnd)
 {
   char ch = static_cast<char>(*aIt);
 
