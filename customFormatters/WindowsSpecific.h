@@ -27,6 +27,9 @@ struct ErrorCode
     , mIsHresult(true)
   {
   }
+
+  std::wstring GetText() const;
+
   DWORD mCode;
   bool  mIsHresult = false;
 };
@@ -176,6 +179,11 @@ struct std::formatter<ErrorCode, wchar_t>
     return res;
   }
 };
+
+inline std::wstring ErrorCode::GetText() const
+{
+  return std::format(L"{:A}", *this);
+}
 
 template <>
 struct std::formatter<IID, wchar_t>
