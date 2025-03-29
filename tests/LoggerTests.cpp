@@ -298,6 +298,9 @@ int main()
 
   ::SetLastError(ERROR_ACCESS_DENIED);
   ErrorCodeType er = 7;
+  er;
+  ErrorCode err2(7);
+  LOG_ERROR(L"Value of error is: " << err2.GetText());
 
   LOG_ERROR_FMT(L"The value of last Error is={:A}", lastError);
 
