@@ -43,7 +43,7 @@ public:
   TokensContainer::const_iterator end() const;
 
 private:
-  std::wstring    mFormat;// we need this copy because we store refs to its content
+  std::wstring    mFormat;  // we need this copy because we store refs to its content
   TokensContainer mTokens;
 
   void Parse();
@@ -53,8 +53,7 @@ private:
   FormatTraits::AlignmentType ExtractAlignment(std::wstring::const_iterator & aIt,
                                                std::wstring::const_iterator & aEnd);
 
-  int ExtractWidth(std::wstring::const_iterator & aIt,
-                   std::wstring::const_iterator & aEnd);
+  int ExtractWidth(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
 
   FormatTraits::VariableId ExtractVarId(std::wstring::const_iterator & aIt,
                                         std::wstring::const_iterator & aEnd);
