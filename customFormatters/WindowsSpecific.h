@@ -22,6 +22,11 @@ struct ErrorCode
   {
   }
 
+  ErrorCode(UINT aCode)
+    : mCode(aCode)
+  {
+  }
+
   ErrorCode(HRESULT aCode)
     : mCode(aCode)
     , mIsHresult(true)
