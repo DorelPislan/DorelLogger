@@ -3,6 +3,7 @@
 #ifndef _TYPES_H_
 #define _TYPES_H_
 
+#include <mutex>
 #include <type_traits>
 
 // these are taken from "The Old New Thing" blog
