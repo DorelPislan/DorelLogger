@@ -124,5 +124,8 @@
     <ClInclude Include="..\..\StatisticData.h">
       <Filter>Logger</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\DorelShellExt\common\logger\Types.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

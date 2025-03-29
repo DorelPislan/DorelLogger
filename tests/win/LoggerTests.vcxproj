@@ -181,6 +181,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\DorelShellExt\common\logger\Types.h" />
     <ClInclude Include="..\..\customFormatters\StdTypes.h" />
     <ClInclude Include="..\..\customFormatters\WindowsSpecific.h" />
     <ClInclude Include="..\..\format\FormatResolver.h" />

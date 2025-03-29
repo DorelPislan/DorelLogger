@@ -296,6 +296,11 @@ int main()
 
   LOG_INFO_FMT(L"Mesage with args={} --- {}", 345, L" my argument");
 
+  ::SetLastError(ERROR_ACCESS_DENIED);
+  ErrorCodeType er = 7;
+
+  LOG_ERROR_FMT(L"The value of last Error is={:A}", lastError);
+
   // TestFormat();
   TestWindowsDebugSink();
   TestStdFileSink();
