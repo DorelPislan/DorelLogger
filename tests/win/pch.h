@@ -13,6 +13,7 @@
 #include <Windows.h>
 #include <Knownfolders.h>
 
+#include "..\..\customFormatters\WindowsSpecific.h"
 #include "..\..\LoggerProvider.h"
 #include "..\..\LoggerMacros.h"
 

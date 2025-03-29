@@ -2,10 +2,10 @@
 #define _LOGGER_H_
 
 #include "ThreadsNames.h"
+#include "Types.h"
 #include "sinks/ISink.h"
 #include <format>
 #include <memory>
-#include <mutex>
 
 namespace DorelLogger
 {
@@ -87,7 +87,7 @@ public:
 
 private:
   // object that synchronizes access to code that changes members of this class
-  std::mutex mSyncer;
+  MutexType mSyncer;
 
   std::vector<std::unique_ptr<ISink>> mSinks;
 
