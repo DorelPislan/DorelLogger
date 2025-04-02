@@ -199,7 +199,7 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
     if (sepPos == std::wstring::npos)
       sepPos = 0;
 
-    sourceFilePath.remove_prefix(sepPos);
+    sourceFilePath.remove_prefix(sepPos + 1);
 
     return std::wstring(sourceFilePath.begin(), sourceFilePath.end());
   }
