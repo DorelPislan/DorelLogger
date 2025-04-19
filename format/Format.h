@@ -29,7 +29,11 @@ public:
     FormatTraits::AlignmentType mAlignment = FormatTraits::AlignmentType::Left;
     int                         mWidth     = 0;
     FormatTraits::VariableId    mId        = FormatTraits::VariableId::NoId;
-    std::wstring_view           mString;
+    std::wstring_view           mString;  // raw text to put in result
+
+    int mTrimLeftOrKeepRightLength =
+      0;  // if negative it means no of chars to trim from the beginning.
+    // if positive it means number of chars to keep from the right
   };
 
   using TokensContainer = std::vector<Token>;
@@ -57,6 +61,12 @@ private:
 
   FormatTraits::VariableId ExtractVarId(std::wstring::const_iterator & aIt,
                                         std::wstring::const_iterator & aEnd);
+
+  int ExtractTrimLeftOrKeepRightLength(std::wstring::const_iterator & aIt,
+                                       std::wstring::const_iterator & aEnd);
+
+  std::wstring_view ExtractVerbatimSuffix(std::wstring::const_iterator & aIt,
+                                          std::wstring::const_iterator & aEnd);
 
 };  // class Format
 

@@ -84,6 +84,10 @@ const char kLineNumberDescriptor = 'L';
 
 const char kMessageDescriptor = 'W';
 
+const char kTrimLeftMarker       = '-';
+const char kKeepRightMarker      = '+';
+const char kVerbatimSuffixMarker = ':';
+
 extern const std::array<std::pair<char, VariableId>, 21> kSupportedVars;
 
 wchar_t          GetAlignmentMarker(AlignmentType aAlgn);

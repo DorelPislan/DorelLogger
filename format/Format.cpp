@@ -136,7 +136,16 @@ Format::Token Format::ExtractToken(std::wstring::const_iterator & aIt,
 
   FormatTraits::VariableId varId = ExtractVarId(aIt, aEnd);
 
-  return Token(alignment, width, varId);
+  int trimLeftOrKeepRightLength = ExtractTrimLeftOrKeepRightLength(aIt, aEnd);
+
+  auto verbatimSuffix = ExtractVerbatimSuffix(aIt, aEnd);
+
+  Token tk(alignment, width, varId);
+
+  tk.mTrimLeftOrKeepRightLength = trimLeftOrKeepRightLength;
+  tk.mString                    = verbatimSuffix;
+
+  return tk;
 }
 
 FormatTraits::AlignmentType Format::ExtractAlignment(std::wstring::const_iterator & aIt,
@@ -206,6 +215,51 @@ FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt
       aIt++;
   }
   return varId;
+}
+
+int Format::ExtractTrimLeftOrKeepRightLength(std::wstring::const_iterator & aIt,
+                                             std::wstring::const_iterator & aEnd)
+{
+  if (aIt == aEnd)
+    return 0;  // means invalid format
+
+  if (*aIt == FormatTraits::kTrimLeftMarker)
+  {
+    aIt++;
+    int length = ExtractNumber(aIt, aEnd);
+    if (length)
+      return -length;
+  }
+  else if (*aIt == FormatTraits::kKeepRightMarker)
+  {
+    aIt++;
+    int length = ExtractNumber(aIt, aEnd);
+    return length;
+  }
+  return 0;
+}
+
+std::wstring_view Format::ExtractVerbatimSuffix(std::wstring::const_iterator & aIt,
+                                                std::wstring::const_iterator & aEnd)
+{
+  if (aIt == aEnd)
+    return {};  // means invalid format
+
+  if (*aIt != FormatTraits::kVerbatimSuffixMarker)
+    return {};
+
+  aIt++;
+
+  const wchar_t * start = &(*aIt);
+  int             count = 1;
+  aIt++;
+
+  while ((aIt != aEnd) && (*aIt != FormatTraits::kFormatEnd))
+  {
+    count++;
+    aIt++;
+  }
+  return std::wstring_view(start, count);
 }
 
 };  // namespace DorelLogger
