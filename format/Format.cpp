@@ -125,20 +125,27 @@ Format::Token Format::ExtractToken(std::wstring::const_iterator & aIt,
 
   if (aIt == aEnd)
     return Token();
-
   FormatTraits::AlignmentType alignment = ExtractAlignment(aIt, aEnd);
+
   if (aIt == aEnd)
     return Token();
-
   int width = ExtractNumber(aIt, aEnd);
+
   if (aIt == aEnd)
     return Token();
-
   FormatTraits::VariableId varId = ExtractVarId(aIt, aEnd);
 
+  if (aIt == aEnd)
+    return Token();
   int trimLeftOrKeepRightLength = ExtractTrimLeftOrKeepRightLength(aIt, aEnd);
 
+  if (aIt == aEnd)
+    return Token();
   auto verbatimSuffix = ExtractVerbatimSuffix(aIt, aEnd);
+
+  //force valid tokens
+  if (*aIt != FormatTraits::kFormatEnd)
+    return Token();
 
   Token tk(alignment, width, varId);
 
@@ -192,7 +199,7 @@ int Format::ExtractNumber(std::wstring::const_iterator & aIt, std::wstring::cons
 }
 
 FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt,
-                                              std::wstring::const_iterator & aEnd)
+                                              std::wstring::const_iterator & /*aEnd*/)
 {
   char ch = static_cast<char>(*aIt);
 
@@ -208,12 +215,7 @@ FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt
   auto varId = it->second;
 
   aIt++;
-  {
-    // enforce closing marker or not ?
-    // while our markers are only one letter it makes no sense otherwise we must require }
-    if ((aIt != aEnd) && (*aIt == FormatTraits::kFormatEnd))
-      aIt++;
-  }
+
   return varId;
 }
 
