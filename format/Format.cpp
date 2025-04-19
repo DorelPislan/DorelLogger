@@ -130,7 +130,7 @@ Format::Token Format::ExtractToken(std::wstring::const_iterator & aIt,
   if (aIt == aEnd)
     return Token();
 
-  int width = ExtractWidth(aIt, aEnd);
+  int width = ExtractNumber(aIt, aEnd);
   if (aIt == aEnd)
     return Token();
 
@@ -163,7 +163,7 @@ FormatTraits::AlignmentType Format::ExtractAlignment(std::wstring::const_iterato
   return algn;
 }
 
-int Format::ExtractWidth(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd)
+int Format::ExtractNumber(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd)
 {
   int width = 0;
   for (; aIt != aEnd; aIt++)

@@ -53,7 +53,7 @@ private:
   FormatTraits::AlignmentType ExtractAlignment(std::wstring::const_iterator & aIt,
                                                std::wstring::const_iterator & aEnd);
 
-  int ExtractWidth(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
+  int ExtractNumber(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
 
   FormatTraits::VariableId ExtractVarId(std::wstring::const_iterator & aIt,
                                         std::wstring::const_iterator & aEnd);
