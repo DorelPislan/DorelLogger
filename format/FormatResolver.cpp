@@ -72,6 +72,20 @@ std::wstring FormatResolver::Resolve(const Format & aFormat)
     else
     {
       auto varValue = ResolveVar(tk.mId);
+      if (tk.mTrimLeftOrKeepRightLength < 0)
+      {
+        size_t countToTrimLeft =
+          std::min(static_cast<size_t>(-tk.mTrimLeftOrKeepRightLength), varValue.size());
+        varValue.erase(varValue.begin(), varValue.begin() + countToTrimLeft);
+      }
+      else if (tk.mTrimLeftOrKeepRightLength > 0)
+      {
+        size_t countToKeepRight =
+          std::min(static_cast<size_t>(tk.mTrimLeftOrKeepRightLength), varValue.size());
+        varValue.erase(varValue.begin(),
+                       varValue.begin() + (varValue.size() - countToKeepRight));
+      }
+      varValue.append(tk.mString);
 
       auto [spacesInFront, spacesInBack] =
         ComputePadding(static_cast<int>(varValue.length()), tk.mWidth, tk.mAlignment);
