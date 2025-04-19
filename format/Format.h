@@ -19,7 +19,11 @@ public:
     Token();
 
     // struct c-tor for VariableDescriptor section
-    Token(FormatTraits::AlignmentType aAlignment, int aWidth, FormatTraits::VariableId aId);
+    Token(FormatTraits::AlignmentType aAlignment,
+          int                         aWidth,
+          FormatTraits::VariableId    aId,
+          int                         aTrimLeftOrKeepRightLength,
+          std::wstring_view           aVerbatimSuffix);
 
     // struct c-tor for verbatim section
     Token(std::wstring_view aVerbatim);

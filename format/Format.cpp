@@ -11,10 +11,14 @@ Format::Token::Token()
 
 Format::Token::Token(FormatTraits::AlignmentType aAlignment,
                      int                         aWidth,
-                     FormatTraits::VariableId    aId)
+                     FormatTraits::VariableId    aId,
+                     int                         aTrimLeftOrKeepRightLength,
+                     std::wstring_view           aVerbatimSuffix)
   : mAlignment(aAlignment)
   , mWidth(aWidth)
   , mId(aId)
+  , mTrimLeftOrKeepRightLength(aTrimLeftOrKeepRightLength)
+  , mString(aVerbatimSuffix)
 {
 }
 
@@ -143,14 +147,11 @@ Format::Token Format::ExtractToken(std::wstring::const_iterator & aIt,
     return Token();
   auto verbatimSuffix = ExtractVerbatimSuffix(aIt, aEnd);
 
-  //force valid tokens
+  // force valid tokens
   if (*aIt != FormatTraits::kFormatEnd)
     return Token();
 
-  Token tk(alignment, width, varId);
-
-  tk.mTrimLeftOrKeepRightLength = trimLeftOrKeepRightLength;
-  tk.mString                    = verbatimSuffix;
+  Token tk(alignment, width, varId, trimLeftOrKeepRightLength, verbatimSuffix);
 
   return tk;
 }
