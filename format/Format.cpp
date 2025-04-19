@@ -223,9 +223,6 @@ FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt
 int Format::ExtractTrimLeftOrKeepRightLength(std::wstring::const_iterator & aIt,
                                              std::wstring::const_iterator & aEnd)
 {
-  if (aIt == aEnd)
-    return 0;  // means invalid format
-
   if (*aIt == FormatTraits::kTrimLeftMarker)
   {
     aIt++;
@@ -245,9 +242,6 @@ int Format::ExtractTrimLeftOrKeepRightLength(std::wstring::const_iterator & aIt,
 std::wstring_view Format::ExtractVerbatimSuffix(std::wstring::const_iterator & aIt,
                                                 std::wstring::const_iterator & aEnd)
 {
-  if (aIt == aEnd)
-    return {};  // means invalid format
-
   if (*aIt != FormatTraits::kVerbatimSuffixMarker)
     return {};
 
