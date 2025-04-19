@@ -287,8 +287,8 @@ int main()
     logger;
 
     auto wdsSink = std::make_unique<WindowsDebugStreamSink>();
-    wdsSink->SetMessageFormat(L"Year is:{Y}, [PID={P}] [TID={T}] FullFilePath=\"{20F}\"  "
-                              L"ShortFilePath=\"{20f}\" -> Fcn={O}():{4L} -> Msg is={W}");
+    wdsSink->SetMessageFormat(L"Year is:{Y}, [PID={P}] [TID={T}] FullFilePath=\"{20F-10}\"  "
+                              L"ShortFilePath=\"{20f}\" -> Fcn={O+10:()}():{4L} -> Msg is={W}");
 
     logger.AddSink(std::move(wdsSink));
   }
