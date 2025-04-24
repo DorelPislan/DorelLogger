@@ -33,6 +33,8 @@ struct ErrorCode
   {
   }
 
+  operator DWORD() const { return mCode; }
+
   std::wstring GetText() const;
 
   DWORD mCode;
