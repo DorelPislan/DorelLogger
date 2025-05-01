@@ -1,6 +1,8 @@
 #ifndef _FORMAT_RESOLVER_H_
 #define _FORMAT_RESOLVER_H_
 
+#include "../ThreadsNames.h"
+#include "../sinks/ISink.h"
 #include "FormatTraits.h"
 
 namespace DorelLogger

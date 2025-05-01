@@ -82,8 +82,7 @@ std::wstring FormatResolver::Resolve(const Format & aFormat)
       {
         size_t countToKeepRight =
           std::min(static_cast<size_t>(tk.mTrimLeftOrKeepRightLength), varValue.size());
-        varValue.erase(varValue.begin(),
-                       varValue.begin() + (varValue.size() - countToKeepRight));
+        varValue.erase(varValue.begin(), varValue.begin() + (varValue.size() - countToKeepRight));
       }
       varValue.append(tk.mString);
 

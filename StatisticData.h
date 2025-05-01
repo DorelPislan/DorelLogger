@@ -1,6 +1,7 @@
 #ifndef _STATISTIC_DATA_H_
 #define _STATISTIC_DATA_H_
 
+#include "sinks/ISink.h"
 #include <array>
 #include <string>
 
@@ -44,12 +45,14 @@ private:
   // size_t mMinTimeBetween2Msgs = 0;
   // size_t mMaxTimeBetween2Msgs = 0;
 
-  using MsgTypeAndCount = std::pair<ISink::MessageType, int>;
+  using MsgTypeAndCount = std::pair<DorelLogger::ISink::MessageType, int>;
 
-  std::array<MsgTypeAndCount, 4> mMsgsCountByType = { { { ISink::MessageType::Trace, 0 },
-                                                        { ISink::MessageType::Info, 0 },
-                                                        { ISink::MessageType::Warning, 0 },
-                                                        { ISink::MessageType::Error, 0 } } };
+  std::array<MsgTypeAndCount, 4> mMsgsCountByType = {
+    { { DorelLogger::ISink::MessageType::Trace, 0 },
+      { DorelLogger::ISink::MessageType::Info, 0 },
+      { DorelLogger::ISink::MessageType::Warning, 0 },
+      { DorelLogger::ISink::MessageType::Error, 0 } }
+  };
 };
 };  // namespace DorelLogger
 
