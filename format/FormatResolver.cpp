@@ -9,6 +9,18 @@
 namespace DorelLogger
 {
 
+namespace
+{
+const size_t kEstimatedMsgLength =
+#ifdef ESTIMATED_MESSAGE_LENGTH
+  ESTIMATED_MESSAGE_LENGTH
+#else
+  400
+#endif
+  ;
+
+};  // namespace
+
 FormatResolver::FormatResolver(DWORD                aCrtProcessId,
                                const std::wstring & aCrtProcessName,
                                const ThreadsNames & aThreadsNames,
@@ -61,7 +73,7 @@ void FormatResolver::SetMessage(std::wstring_view aMessage)
 std::wstring FormatResolver::Resolve(const Format & aFormat)
 {
   std::wstring result;
-  result.reserve(2 * ESTIMATED_MESSAGE_LENGTH);
+  result.reserve(kEstimatedMsgLength);
 
   for (const auto & tk : aFormat)
   {
