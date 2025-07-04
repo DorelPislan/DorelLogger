@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "WinApiFileSink.h"
 #include "../Os.h"
+#include "../customFormatters/WindowsSpecific.h"
 #include "../format/FormatResolver.h"
 #include <cassert>
 
@@ -37,9 +38,16 @@ bool WinApiFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTru
   mLogFile =
     ::CreateFile(aFilePath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, nullptr,
                  (aTruncate ? CREATE_ALWAYS : OPEN_ALWAYS), FILE_ATTRIBUTE_NORMAL, nullptr);
-
   if (mLogFile == INVALID_HANDLE_VALUE)
+  {
+    ErrorCode lastError = ::GetLastError();
+
+    std::wstring msg =
+      std::format(L"Opening log file [{}] returned: {}", aFilePath.c_str(), lastError.GetText());
+    ::OutputDebugString(msg.c_str());
+
     return false;
+  }
 
   AddBOM();
 
