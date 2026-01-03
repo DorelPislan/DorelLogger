@@ -1,8 +1,8 @@
 
 #include "pch.h"
 #include "FormatResolver.h"
-#include "../Os.h"
-#include "../ThreadsNames.h"
+#include "../logger/ThreadsNames.h"
+#include "../utils/Os.h"
 #include <cassert>
 #include <chrono>
 

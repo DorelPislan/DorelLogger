@@ -1,7 +1,7 @@
 
 #include "pch.h"
 #include "StatisticData.h"
-#include "format/FormatResolver.h"
+#include "../format/FormatResolver.h"
 
 namespace DorelLogger
 {

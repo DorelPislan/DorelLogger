@@ -1,7 +1,7 @@
-#include "Logger.h"
-#include "MessageBuilder.h"
-#include "Os.h"
-#include "Types.h"
+#include "..\logger\Logger.h"
+#include "..\logger\MessageBuilder.h"
+#include "..\utils\Os.h"
+#include "..\utils\Types.h"
 
 #ifndef ESTIMATED_MESSAGE_LENGTH
 #define ESTIMATED_MESSAGE_LENGTH 200

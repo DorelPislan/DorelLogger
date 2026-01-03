@@ -2,8 +2,6 @@
 // begins and ends there.
 //
 #include "pch.h"
-#include "..\CustomFormatters.h"
-#include "..\ThreadNameSetter.h"
 #include "..\customFormatters/StdTypes.h"
 #include "..\customFormatters/WindowsSpecific.h"
 #include "..\format/Format.h"
@@ -11,6 +9,8 @@
 #include "..\sinks/WinApiFileSink.h"
 #include "..\sinks/WinRtFileSink.h"
 #include "..\sinks/WindowsDebugStreamSink.h"
+#include "..\tests/CustomFormatters.h"
+#include "..\utils/ThreadNameSetter.h"
 #include <source_location>
 
 using namespace DorelLogger;

@@ -3,7 +3,7 @@
 #ifndef _LOGGER_PROVIDER_H_
 #define _LOGGER_PROVIDER_H_
 
-#include "Logger.h"
+#include "..\logger\Logger.h"
 
 #ifndef GET_LOGGER
 #define GET_LOGGER() DorelLogger::LoggerProvider::GetLogger()

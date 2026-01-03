@@ -1,7 +1,7 @@
 
 #include "pch.h"
 #include "ThreadsNames.h"
-#include "Os.h"
+#include "../utils/Os.h"
 
 namespace DorelLogger
 {

@@ -3,8 +3,8 @@
 #ifndef _SINK_BASE_H_
 #define _SINK_BASE_H_
 
-#include "../StatisticData.h"
 #include "../format/Format.h"
+#include "../utils/StatisticData.h"
 #include "ISink.h"
 
 namespace DorelLogger

@@ -1,7 +1,7 @@
 #ifndef _STATISTIC_DATA_H_
 #define _STATISTIC_DATA_H_
 
-#include "sinks/ISink.h"
+#include "../sinks/ISink.h"
 #include <array>
 #include <string>
 

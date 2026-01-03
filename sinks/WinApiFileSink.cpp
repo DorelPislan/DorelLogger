@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "WinApiFileSink.h"
-#include "../Os.h"
 #include "../customFormatters/WindowsSpecific.h"
 #include "../format/FormatResolver.h"
+#include "../utils/Os.h"
 #include <cassert>
 
 namespace DorelLogger

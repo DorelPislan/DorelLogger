@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Logger.h"
-#include "Os.h"
-#include "format/FormatResolver.h"
+#include "../format/FormatResolver.h"
+#include "../utils/Os.h"
 #include <cassert>
 
 namespace DorelLogger

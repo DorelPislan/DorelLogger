@@ -2,7 +2,7 @@
 #ifndef _THREAD_NAME_SETTER_H_
 #define _THREAD_NAME_SETTER_H_
 
-#include "Logger.h"
+#include "../logger/Logger.h"
 
 namespace DorelLogger
 {
