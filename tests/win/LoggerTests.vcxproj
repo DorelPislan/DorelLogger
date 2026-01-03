@@ -187,10 +187,10 @@
     <ClInclude Include="..\..\customFormatters\StdTypes.h" />
     <ClInclude Include="..\..\customFormatters\WindowsSpecific.h" />
     <ClInclude Include="..\..\format\FormatResolver.h" />
-    <ClInclude Include="..\..\Logger.h" />
+    <ClInclude Include="..\..\logger\Logger.h" />
     <ClInclude Include="..\..\utils\LoggerMacros.h" />
     <ClInclude Include="..\..\utils\LoggerProvider.h" />
-    <ClInclude Include="..\..\MessageBuilder.h" />
+    <ClInclude Include="..\..\logger\MessageBuilder.h" />
     <ClInclude Include="..\..\utils\Os.h" />
     <ClInclude Include="..\..\format\Format.h" />
     <ClInclude Include="..\..\format\FormatTraits.h" />
@@ -202,7 +202,7 @@
     <ClInclude Include="..\..\sinks\WinRtFileSink.h" />
     <ClInclude Include="..\..\utils\StatisticData.h" />
     <ClInclude Include="..\..\utils\ThreadNameSetter.h" />
-    <ClInclude Include="..\..\ThreadsNames.h" />
+    <ClInclude Include="..\..\logger\ThreadsNames.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
