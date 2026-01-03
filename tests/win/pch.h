@@ -13,9 +13,9 @@
 #include <Windows.h>
 #include <Knownfolders.h>
 
-#include "..\..\customFormatters\WindowsSpecific.h"
-#include "..\..\utils\LoggerProvider.h"
-#include "..\..\utils\LoggerMacros.h"
+#include "../../customFormatters/WindowsSpecific.h"
+#include "../../utils/LoggerProvider.h"
+#include "../../utils/LoggerMacros.h"
 
 using namespace std;
 
