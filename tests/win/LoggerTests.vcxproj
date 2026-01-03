@@ -162,9 +162,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\format\FormatResolver.cpp" />
-    <ClCompile Include="..\..\Logger.cpp" />
-    <ClCompile Include="..\..\LoggerProvider.cpp" />
-    <ClCompile Include="..\..\OsWindows.cpp" />
+    <ClCompile Include="..\..\logger\Logger.cpp" />
+    <ClCompile Include="..\..\utils\LoggerProvider.cpp" />
+    <ClCompile Include="..\..\utils\OsWindows.cpp" />
     <ClCompile Include="..\..\format\Format.cpp" />
     <ClCompile Include="..\..\format\FormatTraits.cpp" />
     <ClCompile Include="..\..\sinks\SinkBase.cpp" />
@@ -172,8 +172,8 @@
     <ClCompile Include="..\..\sinks\WinApiFileSink.cpp" />
     <ClCompile Include="..\..\sinks\WindowsDebugStreamSink.cpp" />
     <ClCompile Include="..\..\sinks\WinRtFileSink.cpp" />
-    <ClCompile Include="..\..\StatisticData.cpp" />
-    <ClCompile Include="..\..\ThreadsNames.cpp" />
+    <ClCompile Include="..\..\utils\StatisticData.cpp" />
+    <ClCompile Include="..\..\logger\ThreadsNames.cpp" />
     <ClCompile Include="..\LoggerTests.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -183,15 +183,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\DorelShellExt\common\logger\Types.h" />
+    <ClInclude Include="..\..\utils\Types.h" />
     <ClInclude Include="..\..\customFormatters\StdTypes.h" />
     <ClInclude Include="..\..\customFormatters\WindowsSpecific.h" />
     <ClInclude Include="..\..\format\FormatResolver.h" />
     <ClInclude Include="..\..\Logger.h" />
-    <ClInclude Include="..\..\LoggerMacros.h" />
-    <ClInclude Include="..\..\LoggerProvider.h" />
+    <ClInclude Include="..\..\utils\LoggerMacros.h" />
+    <ClInclude Include="..\..\utils\LoggerProvider.h" />
     <ClInclude Include="..\..\MessageBuilder.h" />
-    <ClInclude Include="..\..\Os.h" />
+    <ClInclude Include="..\..\utils\Os.h" />
     <ClInclude Include="..\..\format\Format.h" />
     <ClInclude Include="..\..\format\FormatTraits.h" />
     <ClInclude Include="..\..\sinks\ISink.h" />
@@ -200,8 +200,8 @@
     <ClInclude Include="..\..\sinks\WinApiFileSink.h" />
     <ClInclude Include="..\..\sinks\WindowsDebugStreamSink.h" />
     <ClInclude Include="..\..\sinks\WinRtFileSink.h" />
-    <ClInclude Include="..\..\StatisticData.h" />
-    <ClInclude Include="..\..\ThreadNameSetter.h" />
+    <ClInclude Include="..\..\utils\StatisticData.h" />
+    <ClInclude Include="..\..\utils\ThreadNameSetter.h" />
     <ClInclude Include="..\..\ThreadsNames.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

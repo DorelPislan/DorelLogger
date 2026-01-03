@@ -17,6 +17,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Logger\utils">
+      <UniqueIdentifier>{ef4b0eea-0a4c-4151-ae83-a79eae53f4be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\logger">
+      <UniqueIdentifier>{701fb1b6-6f39-4dc7-a142-c9df8d6c2bdd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -31,12 +37,6 @@
     <ClCompile Include="..\..\format\FormatTraits.cpp">
       <Filter>Logger\format</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Logger.cpp">
-      <Filter>Logger</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\LoggerProvider.cpp">
-      <Filter>Logger</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\sinks\SinkBase.cpp">
       <Filter>Logger\sinks</Filter>
     </ClCompile>
@@ -49,18 +49,24 @@
     <ClCompile Include="..\..\sinks\WinRtFileSink.cpp">
       <Filter>Logger\sinks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\OsWindows.cpp">
-      <Filter>Logger</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\sinks\StdFileSink.cpp">
       <Filter>Logger\sinks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\ThreadsNames.cpp">
-      <Filter>Logger</Filter>
-    </ClCompile>
     <ClCompile Include="..\LoggerTests.cpp" />
-    <ClCompile Include="..\..\StatisticData.cpp">
-      <Filter>Logger</Filter>
+    <ClCompile Include="..\..\utils\StatisticData.cpp">
+      <Filter>Logger\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\logger\Logger.cpp">
+      <Filter>Logger\logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utils\LoggerProvider.cpp">
+      <Filter>Logger\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\utils\OsWindows.cpp">
+      <Filter>Logger\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\logger\ThreadsNames.cpp">
+      <Filter>Logger\logger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,38 +100,38 @@
     <ClInclude Include="..\..\sinks\WindowsDebugStreamSink.h">
       <Filter>Logger\sinks</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Logger.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\LoggerMacros.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\LoggerProvider.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MessageBuilder.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\ThreadNameSetter.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\ThreadsNames.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Os.h">
-      <Filter>Logger</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\customFormatters\StdTypes.h">
       <Filter>Logger\customFormatters</Filter>
     </ClInclude>
     <ClInclude Include="..\..\customFormatters\WindowsSpecific.h">
       <Filter>Logger\customFormatters</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\StatisticData.h">
-      <Filter>Logger</Filter>
+    <ClInclude Include="..\..\utils\LoggerMacros.h">
+      <Filter>Logger\utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\DorelShellExt\common\logger\Types.h">
-      <Filter>Logger</Filter>
+    <ClInclude Include="..\..\utils\StatisticData.h">
+      <Filter>Logger\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utils\ThreadNameSetter.h">
+      <Filter>Logger\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Logger.h">
+      <Filter>Logger\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MessageBuilder.h">
+      <Filter>Logger\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utils\LoggerProvider.h">
+      <Filter>Logger\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utils\Os.h">
+      <Filter>Logger\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ThreadsNames.h">
+      <Filter>Logger\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\utils\Types.h">
+      <Filter>Logger\utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
