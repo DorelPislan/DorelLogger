@@ -1,8 +1,8 @@
 #ifndef _LOGGER_H_
 #define _LOGGER_H_
 
-#include "..\sinks\ISink.h"
-#include "..\utils\Types.h"
+#include "../sinks/ISink.h"
+#include "../utils/Types.h"
 #include "ThreadsNames.h"
 #include <format>
 #include <memory>
