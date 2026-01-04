@@ -20,14 +20,14 @@ Logger::~Logger()
 
 void Logger::AddSink(std::unique_ptr<ISink> aSink)
 {
-  const std::lock_guard<std::mutex> lock(mSyncer);
+  const std::lock_guard<MutexType> lock(mSyncer);
 
   mSinks.push_back(std::move(aSink));
 }
 
 bool Logger::RemoveSink(const std::wstring & aName)
 {
-  const std::lock_guard<std::mutex> lock(mSyncer);
+  const std::lock_guard<MutexType> lock(mSyncer);
 
   auto end = mSinks.end();
 
@@ -44,7 +44,7 @@ bool Logger::RemoveSink(const std::wstring & aName)
 
 ISink * Logger::GetSink(const std::wstring & aName)
 {
-  const std::lock_guard<std::mutex> lock(mSyncer);
+  const std::lock_guard<MutexType> lock(mSyncer);
 
   for (const auto & s : mSinks)
   {
@@ -62,7 +62,7 @@ void Logger::SetProcessName(const std::wstring & aName)
 
 void Logger::SetCurrentThreadName(const std::wstring & aName)
 {
-  const std::lock_guard<std::mutex> lock(mSyncer);
+  const std::lock_guard<MutexType> lock(mSyncer);
 
   mThreadsNames.SetCurrentThreadName(aName);
 }
