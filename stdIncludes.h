@@ -11,6 +11,7 @@
 #include <fstream>
 #include <memory>
 #include <mutex>
+#include <span>
 #include <string>
 #include <type_traits>
 #include <utility>

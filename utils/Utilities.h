@@ -12,12 +12,12 @@ namespace DorelLogger
 {
 namespace Utilities
 {
-using ValueTextPair = std::pair<UINT, const wchar_t *>;
+using ValueTextPair = std::pair<uint32_t, const wchar_t *>;
 
-std::vector<const wchar_t *> GetFlagsNames(UINT                             aValue,
+std::vector<const wchar_t *> GetFlagsNames(uint32_t                         aValue,
                                            const std::span<ValueTextPair> & aFlagsInfos);
 
-const wchar_t * GetFlagNameOr(UINT                             aFlag,
+const wchar_t * GetFlagNameOr(uint32_t                         aFlag,
                               const std::span<ValueTextPair> & aFlagsInfos,
                               const wchar_t *                  aNotFoundText);
 
