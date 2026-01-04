@@ -1,7 +1,6 @@
 // LoggerTests.cpp : This file contains the 'main' function. Program execution
 // begins and ends there.
 //
-#include "pch.h"
 #include "../customFormatters/StdTypes.h"
 #include "../customFormatters/WindowsSpecific.h"
 #include "../format/Format.h"
@@ -11,6 +10,7 @@
 #include "../sinks/WindowsDebugStreamSink.h"
 #include "../tests/CustomFormatters.h"
 #include "../utils/ThreadNameSetter.h"
+#include "win/pch.h"
 #include <source_location>
 
 using namespace DorelLogger;
