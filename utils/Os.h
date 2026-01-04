@@ -12,11 +12,11 @@ namespace DorelLogger
 class Os
 {
 public:
-  static DWORD GetCurrentProcessId();
+  static uint32_t GetCurrentProcessId();
 
-  static DWORD GetCurrentThreadId();
+  static uint32_t GetCurrentThreadId();
 
-  static DWORD GetLastError();
+  static uint32_t GetLastError();
 
   static std::wstring_view GetEol();
 };

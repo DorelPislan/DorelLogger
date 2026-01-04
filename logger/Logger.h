@@ -91,7 +91,7 @@ private:
 
   ISink::MessageType mMinLogLevel;
 
-  DWORD        mProcessId = 0;
+  uint32_t     mProcessId = 0;
   std::wstring mProcessName;
 
   ThreadsNames mThreadsNames;

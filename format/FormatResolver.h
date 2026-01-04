@@ -18,7 +18,7 @@ class FormatResolver
 {
 public:
   // class c-tor
-  FormatResolver(DWORD                aCrtProcessId,
+  FormatResolver(uint32_t             aCrtProcessId,
                  const std::wstring & aCrtProcessName,
                  const ThreadsNames & aThreadsNames,
                  ISink::MessageType   aMessageType,
@@ -41,7 +41,7 @@ public:
   std::wstring Resolve(const Format & aFormat);
 
 private:
-  DWORD                mCrtProcessId;
+  uint32_t             mCrtProcessId;
   const std::wstring & mCrtProcessName;
   const ThreadsNames & mThreadsNames;
 

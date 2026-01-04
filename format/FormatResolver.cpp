@@ -19,7 +19,7 @@ const size_t kEstimatedMsgLength =
 
 };  // namespace
 
-FormatResolver::FormatResolver(DWORD                aCrtProcessId,
+FormatResolver::FormatResolver(uint32_t             aCrtProcessId,
                                const std::wstring & aCrtProcessName,
                                const ThreadsNames & aThreadsNames,
                                ISink::MessageType   aMessageType,

@@ -23,7 +23,7 @@ public:
   const std::wstring & GetCurrentThreadName() const;
 
 private:
-  std::array<std::pair<DWORD, std::wstring>, MAX_NO_OF_THREADS> mIdsAndNames;
+  std::array<std::pair<uint32_t, std::wstring>, MAX_NO_OF_THREADS> mIdsAndNames;
 };
 
 };  // namespace DorelLogger

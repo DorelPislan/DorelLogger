@@ -17,12 +17,13 @@ struct ErrorCode
     : mCode(aCode)
   {
   }
+
   ErrorCode(DWORD aCode)
     : mCode(aCode)
   {
   }
 
-  ErrorCode(UINT aCode)
+  ErrorCode(uint32_t aCode)
     : mCode(aCode)
   {
   }
