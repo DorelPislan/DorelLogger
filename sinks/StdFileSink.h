@@ -4,9 +4,6 @@
 #define _STD_FILE_SINK_H_
 
 #include "SinkBase.h"
-#include <filesystem>
-#include <fstream>
-#include <cassert>
 
 namespace DorelLogger
 {

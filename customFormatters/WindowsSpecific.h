@@ -2,8 +2,8 @@
 #ifndef _WINDOWS_SPECIFIC_FORMATTERS_H_
 #define _WINDOWS_SPECIFIC_FORMATTERS_H_
 
-#include <format>
-#include <guiddef.h>
+#include "../stdIncludes.h"
+#include <Windows.h>
 
 /**
  * Wrapper class over an error code like HRESULT or

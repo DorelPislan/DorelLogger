@@ -2,7 +2,6 @@
 #include "Logger.h"
 #include "../format/FormatResolver.h"
 #include "../utils/Os.h"
-#include <cassert>
 
 namespace DorelLogger
 {

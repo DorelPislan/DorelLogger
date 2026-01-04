@@ -2,8 +2,6 @@
 #define _STATISTIC_DATA_H_
 
 #include "../sinks/ISink.h"
-#include <array>
-#include <string>
 
 namespace DorelLogger
 {

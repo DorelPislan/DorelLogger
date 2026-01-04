@@ -1,7 +1,6 @@
 
 #include "pch.h"
 #include "Format.h"
-#include <cassert>
 
 namespace DorelLogger
 {
@@ -151,7 +150,7 @@ Format::Token Format::ExtractToken(std::wstring::const_iterator & aIt,
   if (*aIt != FormatTraits::kFormatEnd)
     return Token();
 
-  aIt++;// ending } is there and it must be consumed
+  aIt++;  // ending } is there and it must be consumed
 
   Token tk(alignment, width, varId, trimLeftOrKeepRightLength, verbatimSuffix);
 

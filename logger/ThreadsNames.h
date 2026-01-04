@@ -5,9 +5,6 @@
 #define MAX_NO_OF_THREADS 20
 #endif
 
-#include <array>
-#include <string>
-
 namespace DorelLogger
 {
 

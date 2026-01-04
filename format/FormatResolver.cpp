@@ -3,8 +3,6 @@
 #include "FormatResolver.h"
 #include "../logger/ThreadsNames.h"
 #include "../utils/Os.h"
-#include <cassert>
-#include <chrono>
 
 namespace DorelLogger
 {

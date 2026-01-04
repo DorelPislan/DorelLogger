@@ -2,7 +2,6 @@
 #define _FORMAT_H_
 
 #include "FormatTraits.h"
-#include <vector>
 
 namespace DorelLogger
 {

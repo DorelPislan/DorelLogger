@@ -12,13 +12,13 @@
 #endif
 #define NOMINMAX
 
+#include <Windows.h>
+//
 #include <winrt/base.h>
 #include <winrt/Windows.Foundation.Collections.h>
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Storage.Streams.h>
 #include <winrt/Windows.Storage.h>
-
-#include <filesystem>
 
 namespace DorelLogger
 {

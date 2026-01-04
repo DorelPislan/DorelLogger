@@ -2,6 +2,7 @@
 #include "WindowsDebugStreamSink.h"
 #include "../format/FormatResolver.h"
 #include "../utils/Os.h"
+#include <Windows.h>
 
 namespace DorelLogger
 {

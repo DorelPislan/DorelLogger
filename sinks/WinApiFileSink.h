@@ -4,7 +4,7 @@
 #define _WIN_API_FILE_SINK_H_
 
 #include "SinkBase.h"
-#include <filesystem>
+#include <Windows.h>
 
 namespace DorelLogger
 {

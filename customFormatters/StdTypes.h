@@ -2,10 +2,7 @@
 #ifndef _STD_TYPES_FORMATTERS_H_
 #define _STD_TYPES_FORMATTERS_H_
 
-#include <filesystem>
-#include <format>
-#include <utility>
-#include <vector>
+#include "../stdIncludes.h"
 
 /////////////////////////////////////////////////////////////////////
 // std::filesystem::path ////////////////////////////////////////////
