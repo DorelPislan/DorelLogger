@@ -32,6 +32,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\win\DorelLogger.vcxitems*{3f6897b9-f38b-467d-94f4-6a5216fc3a63}*SharedItemsImports = 9
-		..\..\win\DorelLogger\DorelLogger.vcxitems*{dbcd0e41-70b7-405c-bed9-db599cc6ed11}*SharedItemsImports = 4
+		..\..\win\DorelLogger.vcxitems*{dbcd0e41-70b7-405c-bed9-db599cc6ed11}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
