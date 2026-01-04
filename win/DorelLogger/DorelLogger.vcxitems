@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{3f6897b9-f38b-467d-94f4-6a5216fc3a63}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\customFormatters\pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\customFormatters\StdTypes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\customFormatters\WindowsSpecific.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\Format.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\FormatResolver.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\FormatTraits.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\Logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\MessageBuilder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\ThreadsNames.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\ISink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\SinkBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\StdFileSink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\WinApiFileSink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\WindowsDebugStreamSink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\WinRtFileSink.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\stdIncludes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\LoggerMacros.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\LoggerProvider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\Os.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\StatisticData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\ThreadNameSetter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\Types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\format\Format.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\format\FormatResolver.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\format\FormatTraits.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\logger\Logger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\logger\ThreadsNames.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\SinkBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\StdFileSink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\WinApiFileSink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\WindowsDebugStreamSink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\WinRtFileSink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\utils\LoggerProvider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\utils\OsWindows.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\utils\StatisticData.cpp" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="customFormatters">
+      <UniqueIdentifier>{20b76294-1678-466c-85d1-86b376cfa4fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="format">
+      <UniqueIdentifier>{9eb31f82-17f8-4f63-84b9-c5abbd774162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logger">
+      <UniqueIdentifier>{3beec194-7676-4da5-acd0-ea35d0c387f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sinks">
+      <UniqueIdentifier>{c94ccc2f-f6e2-4adb-9c35-2f7555efec91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{1f68ba8a-f8c5-421c-afc9-041edfa19c3a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\customFormatters\StdTypes.h">
+      <Filter>customFormatters</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\customFormatters\WindowsSpecific.h">
+      <Filter>customFormatters</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\FormatResolver.h">
+      <Filter>format</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\Format.h">
+      <Filter>format</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\FormatTraits.h">
+      <Filter>format</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\Logger.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\MessageBuilder.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\ThreadsNames.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\ISink.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\SinkBase.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\StdFileSink.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\WinApiFileSink.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\WindowsDebugStreamSink.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\WinRtFileSink.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\Types.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\LoggerMacros.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\LoggerProvider.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\Os.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\StatisticData.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\ThreadNameSetter.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\stdIncludes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\customFormatters\pch.h">
+      <Filter>customFormatters</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\format\pch.h">
+      <Filter>format</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sinks\pch.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\logger\pch.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\utils\pch.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\format\FormatResolver.cpp">
+      <Filter>format</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\format\Format.cpp">
+      <Filter>format</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\format\FormatTraits.cpp">
+      <Filter>format</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\logger\Logger.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\logger\ThreadsNames.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\SinkBase.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\StdFileSink.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\WinApiFileSink.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\WindowsDebugStreamSink.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sinks\WinRtFileSink.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\utils\LoggerProvider.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\utils\OsWindows.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\utils\StatisticData.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
