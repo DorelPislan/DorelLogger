@@ -40,6 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ThreadNameSetter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Types.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\Format.cpp" />
@@ -55,5 +56,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\OsWindows.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\Utilities.cpp" />
   </ItemGroup>
 </Project>

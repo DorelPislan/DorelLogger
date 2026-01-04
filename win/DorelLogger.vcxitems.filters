@@ -94,6 +94,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\pch.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Utilities.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
@@ -133,6 +136,9 @@
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\Utilities.cpp">
       <Filter>utils</Filter>
     </ClCompile>
   </ItemGroup>
