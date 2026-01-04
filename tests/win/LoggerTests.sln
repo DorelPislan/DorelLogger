@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LoggerTests", "LoggerTests.vcxproj", "{DBCD0E41-70B7-405C-BED9-DB599CC6ED11}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DorelLogger", "..\..\win\DorelLogger\DorelLogger.vcxitems", "{3F6897B9-F38B-467D-94F4-6A5216FC3A63}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DorelLogger", "..\..\win\DorelLogger.vcxitems", "{3F6897B9-F38B-467D-94F4-6A5216FC3A63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,7 +31,7 @@ Global
 		SolutionGuid = {558EF787-DF9A-41B2-B92F-80B7DA7105A2}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\win\DorelLogger\DorelLogger.vcxitems*{3f6897b9-f38b-467d-94f4-6a5216fc3a63}*SharedItemsImports = 9
+		..\..\win\DorelLogger.vcxitems*{3f6897b9-f38b-467d-94f4-6a5216fc3a63}*SharedItemsImports = 9
 		..\..\win\DorelLogger\DorelLogger.vcxitems*{dbcd0e41-70b7-405c-bed9-db599cc6ed11}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
