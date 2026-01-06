@@ -3,7 +3,6 @@
 #define _WINDOWS_SPECIFIC_FORMATTERS_H_
 
 #include "../stdIncludes.h"
-#include "../utils/TypeExistenceDetector.h"
 #include <Windows.h>
 
 /**
@@ -242,100 +241,5 @@ struct std::formatter<IID, wchar_t>
     return std::ranges::copy(flatGuid.begin(), flatGuid.end() - 1, aFormatContext.out()).out;
   }
 };
-
-#if defined(_ATL)
-
-//////////////////////////////////////////////////////////////////////////////////////////
-namespace ATL
-{
-class CAtlStringW;
-}
-
-struct Dummy_ATL_CStringW
-{
-  const wchar_t * GetString() const { return L""; }
-  int             GetLength() const { return 0; }
-};
-
-using CStringW_Type = typename std::
-  conditional<is_type_complete_v<ATL::CAtlStringW>, ATL::CAtlStringW, Dummy_ATL_CStringW>::type;
-
-template <>
-struct std::formatter<CStringW_Type, wchar_t>
-{
-  template <class ParseContext>
-  constexpr ParseContext::iterator parse(ParseContext & aContext)
-  {
-    return aContext.begin();
-  }
-  template <typename FormatContext>
-  auto format(const CStringW_Type & aStr, FormatContext & aFormatContext) const
-  {
-    return std::ranges::copy_n(aStr.GetString(), aStr.GetLength(), aFormatContext.out()).out;
-  }
-};
-
-template <>
-struct std::formatter<ATL::CComBSTR, wchar_t>
-{
-  template <class ParseContext>
-  constexpr ParseContext::iterator parse(ParseContext & aContext)
-  {
-    return aContext.begin();
-  }
-  template <typename FormatContext>
-  auto format(const ATL::CComBSTR & aStr, FormatContext & aFormatContext) const
-  {
-    auto out = aFormatContext.out();
-
-    const wchar_t * rawPtr = aStr;
-
-    out = std::format_to(out, L"{}", rawPtr);
-
-    return out;
-  }
-};
-
-//////////////////////////////////////////////////////////////////////////////////////////
-namespace ATL
-{
-class COleDateTime;
-}  // namespace ATL
-
-struct Dummy_ATL_COleDateTime
-{
-  int GetYear() const { return 0; }
-  int GetMonth() const { return 0; }
-  int GetDay() const { return 0; }
-  int GetHour() const { return 0; }
-  int GetMinute() const { return 0; }
-  int GetSecond() const { return 0; }
-};
-
-using COleDateTime_Type = typename std::conditional<is_type_complete_v<ATL::COleDateTime>,
-                                                    ATL::COleDateTime,
-                                                    Dummy_ATL_COleDateTime>::type;
-
-template <>
-struct std::formatter<COleDateTime_Type, wchar_t>
-{
-  template <class ParseContext>
-  constexpr ParseContext::iterator parse(ParseContext & aContext)
-  {
-    return aContext.begin();
-  }
-  template <typename FormatContext>
-  auto format(const COleDateTime_Type & aDateTime, FormatContext & aFormatContext) const
-  {
-    auto out = aFormatContext.out();
-
-    out = std::format_to(out, L"{}-{}-{}_{}:{}:{}", aDateTime.GetYear(), aDateTime.GetMonth(),
-                         aDateTime.GetDay(), aDateTime.GetHour(), aDateTime.GetMinute(),
-                         aDateTime.GetSecond());
-
-    return out;
-  }
-};
-#endif  // _ATL
 
 #endif  // _WINDOWS_SPECIFIC_FORMATTERS_H_

@@ -7,6 +7,7 @@
 
 #ifdef _WIN32
 #include "stdFormatSpecializations/WindowsSpecific.h"
+#include "stdFormatSpecializations/AtlSpecific.h"
 #endif
 
 #include "utils/LoggerProvider.h"
