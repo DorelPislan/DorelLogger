@@ -43,19 +43,47 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Utilities.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\Format.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatTraits.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\StdFileSink.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WinApiFileSink.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WindowsDebugStreamSink.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WinRtFileSink.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\OsWindows.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\Utilities.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\Format.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatTraits.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\StdFileSink.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WinApiFileSink.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WindowsDebugStreamSink.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WinRtFileSink.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\OsWindows.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\Utilities.cpp">
+      <PrecompiledHeader >NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
 </Project>
