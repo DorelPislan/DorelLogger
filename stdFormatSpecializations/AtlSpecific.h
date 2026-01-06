@@ -21,6 +21,8 @@ struct std::formatter<ATL::CAtlStringW, wchar_t>
 #endif  // ENABLE_ATL_CSTRINGW_FORMATTER
 
 #ifdef ENABLE_ATL_CCOMBSTR_FORMATTER
+
+#include <atlbase.h>
 template <>
 struct std::formatter<ATL::CComBSTR, wchar_t>
 {
@@ -44,6 +46,7 @@ struct std::formatter<ATL::CComBSTR, wchar_t>
 #endif  // ENABLE_ATL_CCOMBSTR_FORMATTER
 
 #ifdef ENABLE_ATL_COLEDATETIME_FORMATTER
+
 #include <atlcomtime.h>
 template <>
 struct std::formatter<ATL::COleDateTime, wchar_t>
