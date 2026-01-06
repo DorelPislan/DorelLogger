@@ -62,10 +62,10 @@ int TestWindowsDebugSink()
 
   ThreadNameSetter setter(log, L"Main Thread");
 
-  log.LogMessageFmt(ISink::MessageType::Info, SRC_POS,
+  log.LogMessageFmt(ISink::MessageType::Info, DL_SRC_POS,
                     L" Mesage passed with format = {} -> {} and HRESULT={:A}", 234, L"text",
                     ErrorCode(E_APPLICATION_VIEW_EXITING));
-  log.LogMessage(ISink::MessageType::Info, SRC_POS, L"Raw message!");
+  log.LogMessage(ISink::MessageType::Info, DL_SRC_POS, L"Raw message!");
 
   return 0;
 }
@@ -81,8 +81,8 @@ int TestStdFileSink()
 
   log.AddSink(std::move(stdFileSink));
 
-  log.LogMessage(ISink::MessageType::Info, SRC_POS, L"Some info");
-  log.LogMessage(ISink::MessageType::Error, SRC_POS, L"Some error");
+  log.LogMessage(ISink::MessageType::Info, DL_SRC_POS, L"Some info");
+  log.LogMessage(ISink::MessageType::Error, DL_SRC_POS, L"Some error");
 
   return 0;
 }
@@ -104,8 +104,8 @@ int TestWinRtFileSink()
 
   log.AddSink(std::move(winRtFileSink));
 
-  log.LogMessage(ISink::MessageType::Info, SRC_POS, L"Some info");
-  log.LogMessage(ISink::MessageType::Error, SRC_POS, L"Some error");
+  log.LogMessage(ISink::MessageType::Info, DL_SRC_POS, L"Some info");
+  log.LogMessage(ISink::MessageType::Error, DL_SRC_POS, L"Some error");
 
   return 0;
 }
@@ -127,8 +127,8 @@ int TestWinApiFileSink()
 
   log.AddSink(std::move(winApiFileSink));
 
-  log.LogMessage(ISink::MessageType::Info, SRC_POS, L"Some info");
-  log.LogMessage(ISink::MessageType::Error, SRC_POS, L"Some error");
+  log.LogMessage(ISink::MessageType::Info, DL_SRC_POS, L"Some info");
+  log.LogMessage(ISink::MessageType::Error, DL_SRC_POS, L"Some error");
 
   return 0;
 }
