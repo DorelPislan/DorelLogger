@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="customFormatters">
-      <UniqueIdentifier>{20b76294-1678-466c-85d1-86b376cfa4fb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="format">
       <UniqueIdentifier>{9eb31f82-17f8-4f63-84b9-c5abbd774162}</UniqueIdentifier>
     </Filter>
@@ -16,14 +13,11 @@
     <Filter Include="utils">
       <UniqueIdentifier>{1f68ba8a-f8c5-421c-afc9-041edfa19c3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="stdFormatSpecializations">
+      <UniqueIdentifier>{20b76294-1678-466c-85d1-86b376cfa4fb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\customFormatters\StdTypes.h">
-      <Filter>customFormatters</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\customFormatters\WindowsSpecific.h">
-      <Filter>customFormatters</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.h">
       <Filter>format</Filter>
     </ClInclude>
@@ -79,9 +73,6 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdIncludes.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\customFormatters\pch.h">
-      <Filter>customFormatters</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\format\pch.h">
       <Filter>format</Filter>
     </ClInclude>
@@ -96,6 +87,16 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Utilities.h">
       <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\defaultUsage.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\pch.h">
+      <Filter>stdFormatSpecializations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\StdTypes.h">
+      <Filter>stdFormatSpecializations</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\WindowsSpecific.h">
+      <Filter>stdFormatSpecializations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
