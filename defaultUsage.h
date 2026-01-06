@@ -14,7 +14,7 @@
 #include "utils/LoggerProvider.h"
 #include "utils/LoggerMacros.h"
 
-#include "common/logger/utils/Utilities.h"
+#include "utils/Utilities.h"
 
 // clang-format on
 
