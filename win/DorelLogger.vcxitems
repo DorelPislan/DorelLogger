@@ -14,9 +14,9 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\customFormatters\pch.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\customFormatters\StdTypes.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\customFormatters\WindowsSpecific.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\StdTypes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\WindowsSpecific.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\defaultUsage.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\format\Format.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.h" />
