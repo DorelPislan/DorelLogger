@@ -4,6 +4,8 @@
 #define QUOTE(x)        L#x
 #define VAL_STR_PAIR(x) { x, QUOTE(x) }
 
+#include "../stdIncludes.h"
+
 namespace DorelLogger
 {
 namespace FormatTraits
