@@ -1,14 +1,16 @@
 // LoggerTests.cpp : This file contains the 'main' function. Program execution
 // begins and ends there.
 //
-#include "../customFormatters/StdTypes.h"
-#include "../customFormatters/WindowsSpecific.h"
 #include "../format/Format.h"
 #include "../sinks/StdFileSink.h"
 #include "../sinks/WinApiFileSink.h"
 #include "../sinks/WinRtFileSink.h"
 #include "../sinks/WindowsDebugStreamSink.h"
+#include "../stdFormatSpecializations/StdTypes.h"
+#include "../stdFormatSpecializations/WindowsSpecific.h"
 #include "../tests/CustomFormatters.h"
+#include "../utils/LoggerMacros.h"
+#include "../utils/LoggerProvider.h"
 #include "../utils/ThreadNameSetter.h"
 #include "win/pch.h"
 #include <source_location>
