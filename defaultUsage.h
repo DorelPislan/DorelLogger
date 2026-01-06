@@ -7,7 +7,7 @@
 
 #include "utils/LoggerProvider.h"
 #include "utils/LoggerMacros.h"
-#include "customFormatters/StdTypes.h"
+#include "stdFormatSpecializations/StdTypes.h"
 
 #ifdef _WIN32
 #include "customFormatters/WindowsSpecific.h"
