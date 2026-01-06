@@ -5,13 +5,15 @@
 
 // clang-format off
 
-#include "utils/LoggerProvider.h"
-#include "utils/LoggerMacros.h"
+
 #include "stdFormatSpecializations/StdTypes.h"
 
 #ifdef _WIN32
-#include "customFormatters/WindowsSpecific.h"
+#include "stdFormatSpecializations/WindowsSpecific.h"
 #endif
+
+#include "utils/LoggerProvider.h"
+#include "utils/LoggerMacros.h"
 
 #include "common/logger/utils/Utilities.h"
 
