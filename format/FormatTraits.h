@@ -1,9 +1,6 @@
 #ifndef _FORMAT_TRAITS_H_
 #define _FORMAT_TRAITS_H_
 
-#define QUOTE(x)        L#x
-#define VAL_STR_PAIR(x) { x, QUOTE(x) }
-
 #include "../stdIncludes.h"
 
 namespace DorelLogger
