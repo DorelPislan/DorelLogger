@@ -40,6 +40,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ThreadNameSetter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\TypeExistenceDetector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Types.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Utilities.h" />
   </ItemGroup>

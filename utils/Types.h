@@ -4,13 +4,7 @@
 #define _TYPES_H_
 
 #include "../stdIncludes.h"
-
-// these are taken from "The Old New Thing" blog
-template <typename, typename = void>
-constexpr bool is_type_complete_v = false;
-
-template <typename T>
-constexpr bool is_type_complete_v<T, std::void_t<decltype(sizeof(T))>> = true;
+#include "TypeExistenceDetector.h"
 
 struct ErrorCode;
 using ErrorCodeType =

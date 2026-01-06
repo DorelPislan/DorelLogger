@@ -98,6 +98,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\WindowsSpecific.h">
       <Filter>stdFormatSpecializations</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\TypeExistenceDetector.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
