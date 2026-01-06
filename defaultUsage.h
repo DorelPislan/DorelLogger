@@ -5,7 +5,6 @@
 
 // clang-format off
 
-
 #include "stdFormatSpecializations/StdTypes.h"
 
 #ifdef _WIN32
