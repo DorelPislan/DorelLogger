@@ -1,5 +1,3 @@
-#pragma once
-
 #ifndef _DEFAULT_USAGE_H_
 #define _DEFAULT_USAGE_H_
 
