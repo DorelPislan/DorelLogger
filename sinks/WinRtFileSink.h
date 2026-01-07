@@ -5,6 +5,14 @@
 
 #include "SinkBase.h"
 
+// Guard compilation of this class by a MACRO-definition because it requires
+// Windows Runtime support that may not be available in all build environments
+// This support means:
+// - headers included below and
+// - 'windowapp.lib' added as project' additional dependency
+// This macro must be defined in project settings
+#ifdef ENABLE_WINRTFILE_SINK
+
 // clang-format off
 // Windows Stuff
 #ifndef WIN32_LEAN_AND_MEAN 
@@ -65,5 +73,7 @@ void WaitForActionToFinish(ActionType & aAction)
 
 }; // class WinRtFileSink
 }; // namespace DorelLogger
+
+#endif // ENABLE_WINRTFILE_SINK
 
 #endif  //_WINRT_FILE_SINK_H_

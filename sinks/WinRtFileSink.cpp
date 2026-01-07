@@ -5,6 +5,8 @@
 
 // clang-format on
 
+#ifdef ENABLE_WINRTFILE_SINK
+
 namespace DorelLogger
 {
 const wchar_t * const WinRtFileSink::kName = L"WinRtFileSink";
@@ -96,4 +98,6 @@ winrt::Windows::Storage::StorageFile WinRtFileSink::OpenLogFile(
   return createFileOp.GetResults();
 }
 
-}  // namespace DorelLogger
+};  // namespace DorelLogger
+
+#endif  // ENABLE_WINRTFILE_SINK
