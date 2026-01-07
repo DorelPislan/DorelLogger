@@ -2,6 +2,7 @@
 #include "WinApiFileSink.h"
 #include "../format/FormatResolver.h"
 #include "../stdFormatSpecializations/WindowsSpecific.h"
+#include "../utils/ErrorCode.h"
 #include "../utils/Os.h"
 
 namespace DorelLogger
