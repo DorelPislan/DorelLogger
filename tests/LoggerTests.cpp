@@ -264,7 +264,7 @@ int TestMessageBuilder()
 
   auto flatCustomHrAll = std::format(L"{0:x}={0:X}={0:D}={0:A}", ErrorCode(hr));
 
-  int errCode = ERROR_BAD_ARGUMENTS;
+  uint32_t errCode = ERROR_BAD_ARGUMENTS;
 
   auto flatErrorCode =
     std::format(L"{0:}=={0:x}={0:X}== {0:0x}={0:0X}=={0:D}={0:A}", ErrorCode(errCode));
@@ -300,9 +300,9 @@ int main()
   LOG_INFO_FMT(L"Mesage with args={} --- {}", 345, L" my argument");
 
   ::SetLastError(ERROR_ACCESS_DENIED);
-  ErrorCode er = 7;
+  ErrorCode er = 7u;
   er;
-  ErrorCode err2(7);
+  ErrorCode err2(7u);
   LOG_ERROR(L"Value of error is: " << err2.GetText());
 
   LOG_ERROR_FMT(L"The value of last Error is={:A}", lastError);

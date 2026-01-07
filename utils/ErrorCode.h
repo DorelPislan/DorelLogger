@@ -18,11 +18,6 @@ namespace DorelLogger
  */
 struct ErrorCode
 {
-  ErrorCode(int aCode)
-    : mCode(aCode)
-  {
-  }
-
   ErrorCode(uint32_t aCode)
     : mCode(aCode)
   {
