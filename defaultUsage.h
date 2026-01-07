@@ -13,6 +13,7 @@
 #include "utils/LoggerProvider.h"
 #include "utils/LoggerMacros.h"
 
+#include "utils/LoggerIniter.h"
 #include "utils/Utilities.h"
 
 // clang-format on
