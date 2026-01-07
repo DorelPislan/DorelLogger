@@ -38,6 +38,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ErrorCode.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerMacros.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerIniter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Os.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h" />
@@ -81,6 +82,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerIniter.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\OsWindows.cpp">
