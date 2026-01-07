@@ -18,10 +18,10 @@ constexpr bool is_type_complete_v<T, std::void_t<decltype(sizeof(T))>> = true;
 // Sample usage:
 //
 //  struct TypeToTest; // forward declaration
-//  static_assert(is_type_complete_v<TypeToTest>, "TypeToTest is not complete");
+//  static_assert( ! is_type_complete_v<TypeToTest>, "TypeToTest is not complete" );
 //
 //  // after including the header that defines TypeToTest
-//  static_assert(is_type_complete_v<TypeToTest>, "TypeToTest is complete now");
+//  static_assert( is_type_complete_v<TypeToTest>, "TypeToTest is complete now" );
 
 // More useful is to select a type based on whether another type is complete or not
 // Like this:
