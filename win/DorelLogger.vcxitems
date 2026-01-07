@@ -77,7 +77,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WinRtFileSink.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\ErrorCodeWindows.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\ErrorCodeWindows.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
