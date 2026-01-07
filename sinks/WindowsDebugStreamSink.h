@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _WINDOWS_DEBUG_STREAM_SINK_H_
-#define _WINDOWS_DEBUG_STREAM_SINK_H_
+#ifndef _DOREL_LOGGER_WINDOWS_DEBUG_STREAM_SINK_H_
+#define _DOREL_LOGGER_WINDOWS_DEBUG_STREAM_SINK_H_
 
 #include "SinkBase.h"
 
@@ -26,4 +26,4 @@ private:
 };
 };  // namespace DorelLogger
 
-#endif  //_WINDOWS_DEBUG_STREAM_SINK_H_
+#endif  //_DOREL_LOGGER_WINDOWS_DEBUG_STREAM_SINK_H_

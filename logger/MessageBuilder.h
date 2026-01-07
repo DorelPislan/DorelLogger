@@ -1,5 +1,5 @@
-#ifndef _MESSAGE_BUILDER_H_
-#define _MESSAGE_BUILDER_H_
+#ifndef _DOREL_LOGGER_MESSAGE_BUILDER_H_
+#define _DOREL_LOGGER_MESSAGE_BUILDER_H_
 
 namespace DorelLogger
 {
@@ -95,4 +95,4 @@ public:
 
 };  // namespace DorelLogger
 
-#endif  //_MESSAGE_BUILDER_H_
+#endif  //_DOREL_LOGGER_MESSAGE_BUILDER_H_

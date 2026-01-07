@@ -1,5 +1,5 @@
-#ifndef _ERROR_CODE_H_
-#define _ERROR_CODE_H_
+#ifndef _DOREL_LOGGER_ERROR_CODE_H_
+#define _DOREL_LOGGER_ERROR_CODE_H_
 
 #include "../stdIncludes.h"
 
@@ -171,4 +171,4 @@ inline std::wstring ErrorCode::GetText() const
 }
 };  // namespace DorelLogger
 
-#endif  // _ERROR_CODE_H_
+#endif  // _DOREL_LOGGER_ERROR_CODE_H_

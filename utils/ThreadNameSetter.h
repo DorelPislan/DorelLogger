@@ -1,6 +1,6 @@
 
-#ifndef _THREAD_NAME_SETTER_H_
-#define _THREAD_NAME_SETTER_H_
+#ifndef _DOREL_LOGGER_THREAD_NAME_SETTER_H_
+#define _DOREL_LOGGER_THREAD_NAME_SETTER_H_
 
 #include "../logger/Logger.h"
 
@@ -30,4 +30,4 @@ private:
 };
 }  // namespace DorelLogger
 
-#endif  //_THREAD_NAME_SETTER_H_
+#endif  //_DOREL_LOGGER_THREAD_NAME_SETTER_H_

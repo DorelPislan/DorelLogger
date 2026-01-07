@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _OS_H_
-#define _OS_H_
+#ifndef _DOREL_LOGGER_OS_H_
+#define _DOREL_LOGGER_OS_H_
 
 namespace DorelLogger
 {
@@ -23,4 +23,4 @@ public:
 
 };  // namespace DorelLogger
 
-#endif  //_OS_H_
+#endif  //_DOREL_LOGGER_OS_H_

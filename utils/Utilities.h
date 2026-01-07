@@ -1,5 +1,5 @@
-#ifndef _LOG_UTILITIES_H_
-#define _LOG_UTILITIES_H_
+#ifndef _DOREL_LOGGER_LOG_UTILITIES_H_
+#define _DOREL_LOGGER_LOG_UTILITIES_H_
 
 #ifndef VAL_TEXT_PAIR
 // creates a structure with 2 members : first is the parameter and the second
@@ -24,4 +24,4 @@ const wchar_t * GetFlagNameOr(uint32_t                         aFlag,
 }  // namespace Utilities
 };  // namespace DorelLogger
 
-#endif  //_LOG_UTILITIES_H_
+#endif  //_DOREL_LOGGER_LOG_UTILITIES_H_

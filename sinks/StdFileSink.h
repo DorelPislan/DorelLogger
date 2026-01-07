@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _STD_FILE_SINK_H_
-#define _STD_FILE_SINK_H_
+#ifndef _DOREL_LOGGER_STD_FILE_SINK_H_
+#define _DOREL_LOGGER_STD_FILE_SINK_H_
 
 #include "SinkBase.h"
 
@@ -30,4 +30,4 @@ private:
 };
 };  // namespace DorelLogger
 
-#endif  //_STD_FILE_SINK_H_
+#endif  //_DOREL_LOGGER_STD_FILE_SINK_H_

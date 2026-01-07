@@ -1,6 +1,6 @@
 
-#ifndef _STD_TYPES_FORMATTERS_H_
-#define _STD_TYPES_FORMATTERS_H_
+#ifndef _DOREL_LOGGER_STD_TYPES_FORMATTERS_H_
+#define _DOREL_LOGGER_STD_TYPES_FORMATTERS_H_
 
 #include "../stdIncludes.h"
 
@@ -116,4 +116,4 @@ struct std::formatter<std::vector<ElemType>, wchar_t>
   }
 };
 
-#endif  // _STD_TYPES_FORMATTERS_H_
+#endif  // _DOREL_LOGGER_STD_TYPES_FORMATTERS_H_

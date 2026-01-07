@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _WIN_API_FILE_SINK_H_
-#define _WIN_API_FILE_SINK_H_
+#ifndef _DOREL_LOGGER_WIN_API_FILE_SINK_H_
+#define _DOREL_LOGGER_WIN_API_FILE_SINK_H_
 
 #include "SinkBase.h"
 #include <Windows.h>
@@ -38,4 +38,4 @@ private:
 };
 };  // namespace DorelLogger
 
-#endif  //_WIN_API_FILE_SINK_H_
+#endif  //_DOREL_LOGGER_WIN_API_FILE_SINK_H_

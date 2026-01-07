@@ -1,5 +1,5 @@
-#ifndef _FORMAT_TRAITS_H_
-#define _FORMAT_TRAITS_H_
+#ifndef _DOREL_LOGGER_FORMAT_TRAITS_H_
+#define _DOREL_LOGGER_FORMAT_TRAITS_H_
 
 #include "../stdIncludes.h"
 
@@ -97,4 +97,4 @@ std::string_view GetVarIdString(VariableId aId);
 
 };  // namespace DorelLogger
 
-#endif  //_FORMAT_TRAITS_H_
+#endif  //_DOREL_LOGGER_FORMAT_TRAITS_H_

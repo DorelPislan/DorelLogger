@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _WINRT_FILE_SINK_H_
-#define _WINRT_FILE_SINK_H_
+#ifndef _DOREL_LOGGER_WINRT_FILE_SINK_H_
+#define _DOREL_LOGGER_WINRT_FILE_SINK_H_
 
 #include "SinkBase.h"
 
@@ -76,4 +76,4 @@ void WaitForActionToFinish(ActionType & aAction)
 
 #endif // ENABLE_WINRTFILE_SINK
 
-#endif  //_WINRT_FILE_SINK_H_
+#endif  //_DOREL_LOGGER_WINRT_FILE_SINK_H_

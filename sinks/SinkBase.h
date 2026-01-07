@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _SINK_BASE_H_
-#define _SINK_BASE_H_
+#ifndef _DOREL_LOGGER_SINK_BASE_H_
+#define _DOREL_LOGGER_SINK_BASE_H_
 
 #include "../format/Format.h"
 #include "../utils/StatisticData.h"
@@ -51,4 +51,4 @@ protected:
 };
 };  // namespace DorelLogger
 
-#endif  //_SINK_BASE_H_
+#endif  //_DOREL_LOGGER_SINK_BASE_H_

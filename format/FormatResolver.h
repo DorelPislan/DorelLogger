@@ -1,5 +1,5 @@
-#ifndef _FORMAT_RESOLVER_H_
-#define _FORMAT_RESOLVER_H_
+#ifndef _DOREL_LOGGER_FORMAT_RESOLVER_H_
+#define _DOREL_LOGGER_FORMAT_RESOLVER_H_
 
 #include "../logger/ThreadsNames.h"
 #include "../sinks/ISink.h"
@@ -63,4 +63,4 @@ private:
 };
 
 }  // namespace DorelLogger
-#endif  //_FORMAT_RESOLVER_H_
+#endif  //_DOREL_LOGGER_FORMAT_RESOLVER_H_

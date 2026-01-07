@@ -1,5 +1,5 @@
-#ifndef _STD_INCLUDES_H_
-#define _STD_INCLUDES_H_
+#ifndef _DOREL_LOGGER_STD_INCLUDES_H_
+#define _DOREL_LOGGER_STD_INCLUDES_H_
 
 #define NOMINMAX
 
@@ -17,4 +17,4 @@
 #include <utility>
 #include <vector>
 
-#endif  //_STD_INCLUDES_H_
+#endif  //_DOREL_LOGGER_STD_INCLUDES_H_

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _LOGGER_PROVIDER_H_
-#define _LOGGER_PROVIDER_H_
+#ifndef _DOREL_LOGGER_LOGGER_PROVIDER_H_
+#define _DOREL_LOGGER_LOGGER_PROVIDER_H_
 
 #include "../logger/Logger.h"
 
@@ -25,4 +25,4 @@ private:
 };
 };  // namespace DorelLogger
 
-#endif  //_LOGGER_PROVIDER_H_
+#endif  //_DOREL_LOGGER_LOGGER_PROVIDER_H_

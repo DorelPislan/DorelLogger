@@ -1,5 +1,5 @@
-#ifndef _STATISTIC_DATA_H_
-#define _STATISTIC_DATA_H_
+#ifndef _DOREL_LOGGER_STATISTIC_DATA_H_
+#define _DOREL_LOGGER_STATISTIC_DATA_H_
 
 #include "../sinks/ISink.h"
 
@@ -52,4 +52,4 @@ private:
 };
 };  // namespace DorelLogger
 
-#endif  //_STATISTIC_DATA_H_
+#endif  //_DOREL_LOGGER_STATISTIC_DATA_H_

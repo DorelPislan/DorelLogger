@@ -1,5 +1,5 @@
-#ifndef _ISINK_H_
-#define _ISINK_H_
+#ifndef _DOREL_LOGGER_ISINK_H_
+#define _DOREL_LOGGER_ISINK_H_
 
 #include "../format/Format.h"
 
@@ -51,4 +51,4 @@ public:
 
 };  // namespace DorelLogger
 
-#endif  //_ISINK_H_
+#endif  //_DOREL_LOGGER_ISINK_H_

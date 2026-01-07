@@ -1,5 +1,5 @@
-#ifndef _FORMAT_H_
-#define _FORMAT_H_
+#ifndef _DOREL_LOGGER_FORMAT_H_
+#define _DOREL_LOGGER_FORMAT_H_
 
 #include "FormatTraits.h"
 
@@ -75,4 +75,4 @@ private:
 
 };  // namespace DorelLogger
 
-#endif  //_FORMAT_H_
+#endif  //_DOREL_LOGGER_FORMAT_H_

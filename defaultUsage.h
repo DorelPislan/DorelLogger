@@ -1,5 +1,5 @@
-#ifndef _DEFAULT_USAGE_H_
-#define _DEFAULT_USAGE_H_
+#ifndef _DOREL_LOGGER_DEFAULT_USAGE_H_
+#define _DOREL_LOGGER_DEFAULT_USAGE_H_
 
 // clang-format off
 
@@ -18,4 +18,4 @@
 
 // clang-format on
 
-#endif  // _DEFAULT_USAGE_H_
+#endif  // _DOREL_LOGGER_DEFAULT_USAGE_H_

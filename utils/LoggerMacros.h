@@ -1,3 +1,6 @@
+#ifndef _DOREL_LOGGER_LOGGER_MACROS_H_
+#define _DOREL_LOGGER_LOGGER_MACROS_H_
+
 #include "../logger/Logger.h"
 #include "../logger/MessageBuilder.h"
 #include "../utils/ErrorCode.h"
@@ -54,3 +57,5 @@
       logger.LogError(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
     }                                                                                              \
   }
+
+#endif  //_DOREL_LOGGER_LOGGER_MACROS_H_

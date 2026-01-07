@@ -1,6 +1,6 @@
 
-#ifndef _WINDOWS_SPECIFIC_FORMATTERS_H_
-#define _WINDOWS_SPECIFIC_FORMATTERS_H_
+#ifndef _DOREL_LOGGER_WINDOWS_SPECIFIC_FORMATTERS_H_
+#define _DOREL_LOGGER_WINDOWS_SPECIFIC_FORMATTERS_H_
 
 #include "../stdIncludes.h"
 #include <Windows.h>
@@ -54,4 +54,4 @@ struct std::formatter<IID, wchar_t>
   }
 };  // struct std::formatter<IID, wchar_t>
 
-#endif  // _WINDOWS_SPECIFIC_FORMATTERS_H_
+#endif  // _DOREL_LOGGER_WINDOWS_SPECIFIC_FORMATTERS_H_

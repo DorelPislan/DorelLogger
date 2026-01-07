@@ -1,5 +1,5 @@
-#ifndef _LOGGER_H_
-#define _LOGGER_H_
+#ifndef _DOREL_LOGGER_LOGGER_H_
+#define _DOREL_LOGGER_LOGGER_H_
 
 #include "../sinks/ISink.h"
 #include "../utils/Types.h"
@@ -100,4 +100,4 @@ private:
 };
 
 }  // namespace DorelLogger
-#endif  //_LOGGER_H_
+#endif  //_DOREL_LOGGER_LOGGER_H_
