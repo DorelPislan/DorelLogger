@@ -18,6 +18,20 @@ struct std::formatter<ATL::CAtlStringW, wchar_t>
     return std::ranges::copy_n(aStr.GetString(), aStr.GetLength(), aFormatContext.out()).out;
   }
 };
+template <>
+struct std::formatter<ATL::CAtlStringA, wchar_t>
+{
+  template <class ParseContext>
+  constexpr ParseContext::iterator parse(ParseContext & aContext)
+  {
+    return aContext.begin();
+  }
+  template <typename FormatContext>
+  auto format(const ATL::CAtlStringA & aStr, FormatContext & aFormatContext) const
+  {
+    return std::ranges::copy_n(aStr.GetString(), aStr.GetLength(), aFormatContext.out()).out;
+  }
+};
 #endif  // ENABLE_ATL_CSTRINGW_FORMATTER
 
 #ifdef ENABLE_ATL_CCOMBSTR_FORMATTER
