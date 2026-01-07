@@ -8,6 +8,8 @@
 #include "../sinks/WindowsDebugStreamSink.h"
 #include "../stdFormatSpecializations/StdTypes.h"
 #include "../stdFormatSpecializations/WindowsSpecific.h"
+#define ENABLE_ATL_CSTRING_FORMATTER
+#include "../stdFormatSpecializations/AtlSpecific.h"
 #include "../tests/CustomFormatters.h"
 #include "../utils/ErrorCode.h"
 #include "../utils/LoggerMacros.h"
@@ -306,6 +308,12 @@ int main()
   LOG_ERROR(L"Value of error is: " << err2.GetText());
 
   LOG_ERROR_FMT(L"The value of last Error is={:A}", lastError);
+
+  CStringW wideStr(L"Wide Str");
+  CStringA narrowStr(L"Narrow String");
+
+  auto strCombination = std::format(L"Wide='{}' and Narrow='{}'", wideStr, narrowStr);
+  assert(strCombination == L"Wide='Wide Str' and Narrow='Narrow String'");
 
   // TestFormat();
   TestWindowsDebugSink();
