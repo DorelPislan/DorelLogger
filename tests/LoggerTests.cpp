@@ -9,6 +9,7 @@
 #include "../stdFormatSpecializations/StdTypes.h"
 #include "../stdFormatSpecializations/WindowsSpecific.h"
 #include "../tests/CustomFormatters.h"
+#include "../utils/ErrorCode.h"
 #include "../utils/LoggerMacros.h"
 #include "../utils/LoggerProvider.h"
 #include "../utils/ThreadNameSetter.h"
@@ -299,7 +300,7 @@ int main()
   LOG_INFO_FMT(L"Mesage with args={} --- {}", 345, L" my argument");
 
   ::SetLastError(ERROR_ACCESS_DENIED);
-  ErrorCodeType er = 7;
+  ErrorCode er = 7;
   er;
   ErrorCode err2(7);
   LOG_ERROR(L"Value of error is: " << err2.GetText());

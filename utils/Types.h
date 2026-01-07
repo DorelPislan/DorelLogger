@@ -6,10 +6,6 @@
 #include "../stdIncludes.h"
 #include "TypeExistenceDetector.h"
 
-struct ErrorCode;
-using ErrorCodeType =
-  typename std::conditional<is_type_complete_v<ErrorCode>, ErrorCode, int>::type;
-
 class CriticalSection;
 using MutexType =
   typename std::conditional<is_type_complete_v<CriticalSection>, CriticalSection, std::mutex>::type;
