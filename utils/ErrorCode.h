@@ -23,34 +23,24 @@ struct ErrorCode
   {
   }
 
-#ifdef _WIN32
-  ErrorCode(DWORD aCode)
-    : mCode(aCode)
-  {
-  }
-#endif
-
   ErrorCode(uint32_t aCode)
     : mCode(aCode)
   {
   }
 
 #ifdef _WIN32
-  ErrorCode(HRESULT aCode)
-    : mCode(aCode)
-    , mIsHresult(true)
-  {
-  }
+  ErrorCode(DWORD aCode);
+  ErrorCode(HRESULT aCode);
 #endif
 
-  operator DWORD() const { return mCode; }
+  operator uint32_t() const { return mCode; }
 
   std::wstring GetText() const;
 
-  DWORD mCode;
-  bool  mIsHresult = false;
+  uint32_t mCode;
+  bool     mIsHresult = false;
 
-  static std::wstring GetErrorText(uint32_t aCode);
+  static std::wstring GetTextForErrorCode(uint32_t aCode);
 };
 
 };  // namespace DorelLogger
@@ -130,12 +120,12 @@ struct std::formatter<DorelLogger::ErrorCode, wchar_t>
       if (aCode.mIsHresult)
       {
         out = std::format_to(out, L"0x{:X}({})", aCode.mCode,
-                             DorelLogger::ErrorCode::GetErrorText(aCode.mCode));
+                             DorelLogger::ErrorCode::GetTextForErrorCode(aCode.mCode));
       }
       else
       {
         out = std::format_to(out, L"{}({})", aCode.mCode,
-                             DorelLogger::ErrorCode::GetErrorText(aCode.mCode));
+                             DorelLogger::ErrorCode::GetTextForErrorCode(aCode.mCode));
       }
       return out;
     }
@@ -161,7 +151,7 @@ struct std::formatter<DorelLogger::ErrorCode, wchar_t>
     }
     if (mText)
     {
-      std::wstring hrText = DorelLogger::ErrorCode::GetErrorText(aCode.mCode);
+      std::wstring hrText = DorelLogger::ErrorCode::GetTextForErrorCode(aCode.mCode);
 
       bool onlyText = !mDecimal && !mZeroPrefix && !mLowerCase && !mUpperCase;
 
@@ -176,5 +166,14 @@ struct std::formatter<DorelLogger::ErrorCode, wchar_t>
     return out;
   }
 };  // struct std::formatter<DorelLogger::ErrorCode, wchar_t>
+
+namespace DorelLogger
+{
+// this must be defined after std::formatter specialization
+inline std::wstring ErrorCode::GetText() const
+{
+  return std::format(L"{:A}", *this);
+}
+};  // namespace DorelLogger
 
 #endif  // _ERROR_CODE_H_

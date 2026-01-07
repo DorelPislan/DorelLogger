@@ -4,12 +4,18 @@
 namespace DorelLogger
 {
 
-std::wstring ErrorCode::GetText() const
+ErrorCode::ErrorCode(DWORD aCode)
+  : mCode(aCode)
 {
-  return std::format(L"{:A}", *this);
 }
 
-/*static*/ std::wstring ErrorCode::GetErrorText(uint32_t aHr)
+ErrorCode::ErrorCode(HRESULT aCode)
+  : mCode(aCode)
+  , mIsHresult(true)
+{
+}
+
+/*static*/ std::wstring ErrorCode::GetTextForErrorCode(uint32_t aHr)
 {
   DWORD flags = FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
                 FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_MAX_WIDTH_MASK;
