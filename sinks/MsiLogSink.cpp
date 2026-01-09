@@ -21,7 +21,7 @@ MSIHANDLE MsiLogSink::sMsiHandle = 0;
   sMsiHandle = aMsiHandle;
 }
 
-const wchar_t * const MsiLogSink::kName = L"OutputDebugStream";
+const wchar_t * const MsiLogSink::kName = L"MsiLog";
 
 MsiLogSink::MsiLogSink()
   : SinkBase(kName)
