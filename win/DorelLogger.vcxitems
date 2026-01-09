@@ -64,7 +64,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
