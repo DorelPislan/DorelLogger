@@ -6,6 +6,8 @@
 #include "../sinks/WinApiFileSink.h"
 #include "../sinks/WinRtFileSink.h"
 #include "../sinks/WindowsDebugStreamSink.h"
+#define ENABLE_MSILOG_SINK
+#include "../sinks/MsiLogSink.h"
 #include "../stdFormatSpecializations/StdTypes.h"
 #include "../stdFormatSpecializations/WindowsSpecific.h"
 #define ENABLE_ATL_CSTRING_FORMATTER
