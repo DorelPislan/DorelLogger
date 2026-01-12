@@ -90,6 +90,10 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
 {
   assert(!mSinks.empty());
 
+  // this test is useful if the MACROS are not used and the user calls directly this method
+  if (!ShouldLog(aMessageType))
+    return;
+
   FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, aMessageType, aSourceFile,
                           aSourceFunction, aSourceLine, aMessage);
 
