@@ -45,6 +45,18 @@ public:
     LogMessage(aMessageType, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
+
+  template <typename... Args>
+  void LogTraceFmt(const char *      aSourceFile,
+                   const char *      aSourceFunction,
+                   size_t            aSourceLine,
+                   std::wstring_view aMessageFormat,
+                   Args &&... aArgs)
+  {
+    LogMessage(ISink::MessageType::Trace, aSourceFile, aSourceFunction, aSourceLine,
+               std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
+  }
+
   template <typename... Args>
   void LogInfoFmt(const char *      aSourceFile,
                   const char *      aSourceFunction,
@@ -56,6 +68,16 @@ public:
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
 
+  template <typename... Args>
+  void LogWarningFmt(const char *      aSourceFile,
+                  const char *      aSourceFunction,
+                  size_t            aSourceLine,
+                  std::wstring_view aMessageFormat,
+                  Args &&... aArgs)
+  {
+    LogMessage(ISink::MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine,
+               std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
+  }
   template <typename... Args>
   void LogErrorFmt(const char *      aSourceFile,
                    const char *      aSourceFunction,
@@ -73,10 +95,20 @@ public:
                   size_t             aSourceLine,
                   std::wstring_view  aMessage);
 
+  void LogTrace(const char *      aSourceFile,
+                const char *      aSourceFunction,
+                size_t            aSourceLine,
+                std::wstring_view aMessage);
+
   void LogInfo(const char *      aSourceFile,
                const char *      aSourceFunction,
                size_t            aSourceLine,
                std::wstring_view aMessage);
+
+  void LogWarning(const char *      aSourceFile,
+                  const char *      aSourceFunction,
+                  size_t            aSourceLine,
+                  std::wstring_view aMessage);
 
   void LogError(const char *      aSourceFile,
                 const char *      aSourceFunction,

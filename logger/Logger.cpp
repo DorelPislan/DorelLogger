@@ -99,12 +99,28 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
   }
 }
 
+void Logger::LogTrace(const char *      aSourceFile,
+                      const char *      aSourceFunction,
+                      size_t            aSourceLine,
+                      std::wstring_view aMessage)
+{
+  LogMessage(ISink::MessageType::Trace, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+}
+
 void Logger::LogInfo(const char *      aSourceFile,
                      const char *      aSourceFunction,
                      size_t            aSourceLine,
                      std::wstring_view aMessage)
 {
   LogMessage(ISink::MessageType::Info, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+}
+
+void Logger::LogWarning(const char *      aSourceFile,
+                        const char *      aSourceFunction,
+                        size_t            aSourceLine,
+                        std::wstring_view aMessage)
+{
+  LogMessage(ISink::MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine, aMessage);
 }
 
 void Logger::LogError(const char *      aSourceFile,

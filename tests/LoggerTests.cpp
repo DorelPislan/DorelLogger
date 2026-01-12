@@ -299,6 +299,12 @@ int main()
 
     logger.AddSink(std::move(wdsSink));
   }
+  LOG_TRACE(L"This is the first TRACE " << L" from Test project");
+  LOG_TRACE_FMT(L"This is the second TRACE with param={}", L" param ");
+
+  LOG_WARNING(L"This is the first WARNING " << L" from Test project");
+  LOG_WARNING_FMT(L"This is the second WARNING with param={}", L" param ");
+
   LOG_INFO(L"Some message with INT param = " << 1234);
 
   LOG_INFO_FMT(L"Mesage with args={} --- {}", 345, L" my argument");
