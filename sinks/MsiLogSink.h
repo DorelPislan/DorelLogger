@@ -8,10 +8,10 @@
 #ifdef ENABLE_MSILOG_SINK
 
 #include "SinkBase.h"
-//clang-format off
-#include <MsiQuery.h>
+// clang-format off
 #include <Windows.h>
-//clang-format on
+#include <MsiQuery.h>
+// clang-format on
 
 namespace DorelLogger
 {
