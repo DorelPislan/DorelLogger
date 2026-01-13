@@ -21,6 +21,10 @@ public:
   static void AddWinDbgStreamSink(Logger &        aLogger,
                                   const wchar_t * aFormat,
                                   bool            aCollectStatistics);
+
+  #ifdef ENABLE_MSILOG_SINK
+  static void AddMsiLogSink(Logger & aLogger, const wchar_t * aFormat, bool aCollectStatistics);
+  #endif
 };
 
 };  // namespace DorelLogger

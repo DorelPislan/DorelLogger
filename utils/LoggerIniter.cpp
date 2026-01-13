@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "LoggerIniter.h"
 #include "../logger/Logger.h"
+#include "../sinks/MsiLogSink.h"
 #include "../sinks/WinApiFileSink.h"
 #include "../sinks/WindowsDebugStreamSink.h"
 
@@ -22,5 +23,14 @@ namespace DorelLogger
   aLogger.AddSink(
     std::move(std::make_unique<DorelLogger::WindowsDebugStreamSink>(aFormat, aCollectStatistics)));
 }
+
+#ifdef ENABLE_MSILOG_SINK
+/*static*/ void LoggerIniter::AddMsiLogSink(Logger &        aLogger,
+                                            const wchar_t * aFormat,
+                                            bool            aCollectStatistics)
+{
+  aLogger.AddSink(std::make_unique<DorelLogger::MsiLogSink>(aFormat, aCollectStatistics));
+}
+#endif
 
 };  // namespace DorelLogger
