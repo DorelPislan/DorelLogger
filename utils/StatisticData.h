@@ -32,7 +32,6 @@ private:
 
   int mMinHeaderLength = INT_MAX;
   int mMaxHeaderLength = 0;
-  int mAvgHeaderLength = 0;
 
   int mMinSourceFileLength = INT_MAX;
   int mMaxSourceFileLength = 0;

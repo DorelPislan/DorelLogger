@@ -21,7 +21,7 @@ namespace DorelLogger
                                                   bool            aCollectStatistics)
 {
   aLogger.AddSink(
-    std::move(std::make_unique<DorelLogger::WindowsDebugStreamSink>(aFormat, aCollectStatistics)));
+    std::make_unique<DorelLogger::WindowsDebugStreamSink>(aFormat, aCollectStatistics));
 }
 
 #ifdef ENABLE_MSILOG_SINK

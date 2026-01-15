@@ -16,8 +16,8 @@ Format::Token::Token(FormatTraits::AlignmentType aAlignment,
   : mAlignment(aAlignment)
   , mWidth(aWidth)
   , mId(aId)
-  , mTrimLeftOrKeepRightLength(aTrimLeftOrKeepRightLength)
   , mString(aVerbatimSuffix)
+  , mTrimLeftOrKeepRightLength(aTrimLeftOrKeepRightLength)
 {
 }
 
