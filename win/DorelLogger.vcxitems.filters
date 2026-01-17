@@ -85,7 +85,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\pch.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Utilities.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggingUtilities.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\defaultUsage.h" />
@@ -154,7 +154,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\Utilities.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggingUtilities.cpp">
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\ErrorCodeWindows.cpp">
