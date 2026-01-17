@@ -16,7 +16,12 @@ const std::array<const wchar_t *, 5> kMsgTypesStrings{ { L"", L"TRACE", L"INFO",
 
 MSIHANDLE MsiLogSink::sMsiHandle = 0;
 
-/*static*/ void MsiLogSink::SetMsiHandle(MSIHANDLE aMsiHandle)
+/*static*/ MSIHANDLE MsiLogSink::GetMsiHandle()
+{
+  return sMsiHandle;
+}
+
+  /*static*/ void MsiLogSink::SetMsiHandle(MSIHANDLE aMsiHandle)
 {
   sMsiHandle = aMsiHandle;
 }

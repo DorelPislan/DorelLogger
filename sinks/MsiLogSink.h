@@ -29,7 +29,8 @@ public:
 
   static const wchar_t * const kName;
 
-  static void SetMsiHandle(MSIHANDLE aMsiHandle);
+  static MSIHANDLE GetMsiHandle();
+  static void      SetMsiHandle(MSIHANDLE aMsiHandle);
 
 private:
   static MSIHANDLE sMsiHandle;
