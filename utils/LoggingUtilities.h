@@ -10,7 +10,7 @@
 
 namespace DorelLogger
 {
-namespace Utilities
+namespace LoggingUtilities
 {
 using ValueTextPair = std::pair<uint32_t, const wchar_t *>;
 
@@ -21,7 +21,7 @@ const wchar_t * GetFlagNameOr(uint32_t                         aFlag,
                               const std::span<ValueTextPair> & aFlagsInfos,
                               const wchar_t *                  aNotFoundText);
 
-}  // namespace Utilities
+}  // namespace LoggingUtilities
 };  // namespace DorelLogger
 
 #endif  //_DOREL_LOGGER_LOG_UTILITIES_H_

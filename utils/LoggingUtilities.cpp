@@ -1,10 +1,10 @@
 
 #include "pch.h"
-#include "Utilities.h"
+#include "LoggingUtilities.h"
 
 namespace DorelLogger
 {
-namespace Utilities
+namespace LoggingUtilities
 {
 
 std::vector<const wchar_t *> GetFlagsNames(uint32_t                         aValue,
