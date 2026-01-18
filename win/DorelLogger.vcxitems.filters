@@ -107,9 +107,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ErrorCode.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerIniter.h">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.h">
       <Filter>sinks</Filter>
     </ClInclude>
@@ -158,9 +155,6 @@
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\ErrorCodeWindows.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerIniter.cpp">
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.cpp">
