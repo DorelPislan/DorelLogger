@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+
+    <Filter Include="sinks">
+      <UniqueIdentifier>{c94ccc2f-f6e2-4adb-9c35-2f7555efec91}</UniqueIdentifier>
+    </Filter>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.cpp">
+      <Filter>sinks</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
