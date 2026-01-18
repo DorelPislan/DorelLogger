@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{3f6897b9-f38b-467d-94f4-6a5216fc3a63}</ItemsProjectGuid>
+    <ItemsProjectGuid>{3F6897B9-F38B-467D-94F4-6A5216FC3A63}</ItemsProjectGuid>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,7 +14,6 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\AtlSpecific.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\StdTypes.h" />
@@ -61,9 +60,6 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.cpp">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\MsiLogSink.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">
