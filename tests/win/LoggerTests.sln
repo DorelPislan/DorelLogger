@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LoggerTests", "LoggerTests.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DorelLogger", "..\..\win\DorelLogger.vcxitems", "{3F6897B9-F38B-467D-94F4-6A5216FC3A63}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DorelLogger-MsiLogSink", "..\..\win\DorelLogger-MsiLogSink.vcxitems", "{803CC38C-A0E5-4FD6-85AC-9F0BD17ED294}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -32,6 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\..\win\DorelLogger.vcxitems*{3f6897b9-f38b-467d-94f4-6a5216fc3a63}*SharedItemsImports = 9
+		..\..\win\DorelLogger-MsiLogSink.vcxitems*{803cc38c-a0e5-4fd6-85ac-9f0bd17ed294}*SharedItemsImports = 9
+		..\..\win\DorelLogger-MsiLogSink.vcxitems*{dbcd0e41-70b7-405c-bed9-db599cc6ed11}*SharedItemsImports = 4
 		..\..\win\DorelLogger.vcxitems*{dbcd0e41-70b7-405c-bed9-db599cc6ed11}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
