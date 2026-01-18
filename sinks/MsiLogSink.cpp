@@ -2,8 +2,6 @@
 #include "MsiLogSink.h"
 #include "../format/FormatResolver.h"
 
-#ifdef ENABLE_MSILOG_SINK
-
 namespace DorelLogger
 {
 
@@ -70,5 +68,3 @@ int MsiLogSink::LogMessage(FormatResolver & aResolver)
 }
 
 }  // namespace DorelLogger
-
-#endif  // ENABLE_MSILOG_SINK
