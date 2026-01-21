@@ -10,6 +10,9 @@ Logger::Logger()
   : mMinLogLevel(ISink::MessageType::Info)
 {
   mProcessId = Os::GetCurrentProcessId();
+
+  std::filesystem::path procPath = Os::GetCurrentProcessPath();
+  mProcessName                   = procPath.filename().wstring();
 }
 
 Logger::~Logger()
