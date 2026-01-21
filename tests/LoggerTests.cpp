@@ -322,6 +322,11 @@ int main()
   auto strCombination = std::format(L"Wide='{}' and Narrow='{}'", wideStr, narrowStr);
   assert(strCombination == L"Wide='Wide Str' and Narrow='Narrow String'");
 
+  auto                  processPath = Os::GetCurrentProcessPath();
+  std::filesystem::path procPath    = processPath;
+  auto                  procName    = procPath.filename().wstring();
+  assert(procName == L"LoggerTests.exe");
+
   // TestFormat();
   TestWindowsDebugSink();
   TestStdFileSink();
