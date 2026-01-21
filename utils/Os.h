@@ -12,6 +12,8 @@ namespace DorelLogger
 class Os
 {
 public:
+  static std::wstring GetCurrentProcessPath();
+
   static uint32_t GetCurrentProcessId();
 
   static uint32_t GetCurrentThreadId();
