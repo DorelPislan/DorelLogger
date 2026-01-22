@@ -16,11 +16,13 @@ WinApiFileSink::WinApiFileSink()
 }
 
 WinApiFileSink::WinApiFileSink(const std::filesystem::path & aFilePath,
+                               bool                          aAllowWriteSharing,
                                std::wstring                  aFormat,
                                bool                          aCollectStatistics)
   : SinkBase(kName)
 {
-  OpenFile(aFilePath, false);  // hope it does not fail otherwise we need to throw
+  OpenFile(aFilePath, aAllowWriteSharing,
+           false);  // hope it does not fail otherwise we need to throw
   SetMessageFormat(aFormat);
   CollectStatistics(aCollectStatistics);
 }
@@ -33,10 +35,13 @@ WinApiFileSink::~WinApiFileSink()
   }
 }
 
-bool WinApiFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTruncate)
+bool WinApiFileSink::OpenFile(const std::filesystem::path & aFilePath,
+                              bool                          aAllowWriteSharing,
+                              bool                          aTruncate)
 {
+  DWORD shareMode = FILE_SHARE_READ | (aAllowWriteSharing ? FILE_SHARE_WRITE : 0);
   mLogFile =
-    ::CreateFile(aFilePath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, nullptr,
+    ::CreateFile(aFilePath.c_str(), GENERIC_WRITE, shareMode, nullptr,
                  (aTruncate ? CREATE_ALWAYS : OPEN_ALWAYS), FILE_ATTRIBUTE_NORMAL, nullptr);
   if (mLogFile == INVALID_HANDLE_VALUE)
   {

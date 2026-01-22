@@ -19,6 +19,7 @@ public:
 
   // class c-tor
   WinApiFileSink(const std::filesystem::path & aFilePath,
+                 bool                          aAllowWriteSharing,
                  std::wstring                  aFormat,
                  bool                          aCollectStatistics);
 
@@ -27,7 +28,7 @@ public:
 
   static const wchar_t * const kName;
 
-  bool OpenFile(const std::filesystem::path & aFilePath, bool aTruncate);
+  bool OpenFile(const std::filesystem::path & aFilePath, bool aAllowWriteSharing, bool aTruncate);
 
 private:
   HANDLE mLogFile = INVALID_HANDLE_VALUE;
