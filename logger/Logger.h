@@ -34,6 +34,9 @@ public:
   void SetMinLogLevel(ISink::MessageType aMinLogLevel);
   bool ShouldLog(ISink::MessageType aMsgType) const;
 
+  void SetStartingMessageFormat(std::wstring aFormat);
+  void SetEndingMessageFormat(std::wstring aFormat);
+
   template <typename... Args>
   void LogMessageFmt(ISink::MessageType aMessageType,
                      const char *       aSourceFile,
@@ -70,10 +73,10 @@ public:
 
   template <typename... Args>
   void LogWarningFmt(const char *      aSourceFile,
-                  const char *      aSourceFunction,
-                  size_t            aSourceLine,
-                  std::wstring_view aMessageFormat,
-                  Args &&... aArgs)
+                     const char *      aSourceFunction,
+                     size_t            aSourceLine,
+                     std::wstring_view aMessageFormat,
+                     Args &&... aArgs)
   {
     LogMessage(ISink::MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
@@ -127,6 +130,14 @@ private:
   std::wstring mProcessName;
 
   ThreadsNames mThreadsNames;
+
+  std::optional<std::wstring> mStartingMsgFormat;
+  std::optional<std::wstring> mEndingMsgFormat;
+
+  // total number of messages logged so far
+  std::atomic<uint32_t> mMsgsCount = 0;
+
+  void LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat);
 
   void DumpStatistics();
 };

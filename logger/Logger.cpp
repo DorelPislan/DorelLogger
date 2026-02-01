@@ -17,6 +17,8 @@ Logger::Logger()
 
 Logger::~Logger()
 {
+  LogMsgWithCustomFormat(mEndingMsgFormat);
+
   DumpStatistics();
 }
 
@@ -85,6 +87,20 @@ bool Logger::ShouldLog(ISink::MessageType aMsgType) const
   return aMsgType >= mMinLogLevel;
 }
 
+void Logger::SetStartingMessageFormat(std::wstring aFormat)
+{
+  const std::lock_guard<MutexType> lock(mSyncer);
+
+  mStartingMsgFormat = std::move(aFormat);
+}
+
+void Logger::SetEndingMessageFormat(std::wstring aFormat)
+{
+  const std::lock_guard<MutexType> lock(mSyncer);
+
+  mEndingMsgFormat = std::move(aFormat);
+}
+
 void Logger::LogMessage(ISink::MessageType aMessageType,
                         const char *       aSourceFile,
                         const char *       aSourceFunction,
@@ -96,6 +112,17 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
   // this test is useful if the MACROS are not used and the user calls directly this method
   if (!ShouldLog(aMessageType))
     return;
+
+  auto crtMsgNo = ++mMsgsCount;  // atomic increment!
+
+  // this is required because logging starting message changes format of sinks
+  // but something must be found in order to not require it
+  const std::lock_guard<MutexType> lock(mSyncer);
+
+  if (crtMsgNo == 1)
+  {
+    LogMsgWithCustomFormat(mStartingMsgFormat);
+  }
 
   FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, aMessageType, aSourceFile,
                           aSourceFunction, aSourceLine, aMessage);
@@ -136,6 +163,26 @@ void Logger::LogError(const char *      aSourceFile,
                       std::wstring_view aMessage)
 {
   LogMessage(ISink::MessageType::Error, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+}
+
+void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
+{
+  if (!aMsgFormat)
+    return;
+
+  FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, ISink::MessageType::All, nullptr,
+                          nullptr, 0, {});
+
+  for (auto & sink : mSinks)
+  {
+    // switch existing format for our custom message
+    auto oldFormat = sink->GetMessageFormatAsString();
+
+    sink->SetMessageFormat(*aMsgFormat);
+    sink->LogMessage(resolver);
+    sink->SetMessageFormat(oldFormat);
+  }
+  aMsgFormat.reset();
 }
 
 void Logger::DumpStatistics()
