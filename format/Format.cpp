@@ -56,6 +56,11 @@ void Format::Set(std::wstring_view aFormat)
   Parse();
 }
 
+const std::wstring & Format::GetString() const
+{
+  return mFormat;
+}
+
 Format::TokensContainer::const_iterator Format::begin() const
 {
   return mTokens.begin();

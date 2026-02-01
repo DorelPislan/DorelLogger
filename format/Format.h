@@ -44,7 +44,8 @@ public:
   // class c-tor
   Format() = default;
 
-  void Set(std::wstring_view aFormat);
+  void         Set(std::wstring_view aFormat);
+  const std::wstring & GetString() const;
 
   TokensContainer::const_iterator begin() const;
   TokensContainer::const_iterator end() const;
