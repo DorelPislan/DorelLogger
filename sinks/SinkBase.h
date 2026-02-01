@@ -24,6 +24,7 @@ public:
 
   void           SetMessageFormat(std::wstring_view aFormat) override;
   const Format & GetMessageFormat() const override;
+  std::wstring   GetMessageFormatAsString() const override;
 
   void        SetMinLogLevel(ISink::MessageType aNewMin) override;
   MessageType GetMinLogLevel() const override;

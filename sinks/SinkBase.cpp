@@ -26,6 +26,11 @@ const Format & SinkBase::GetMessageFormat() const
   return mFormat;
 }
 
+std::wstring SinkBase::GetMessageFormatAsString() const
+{
+  return mFormat.GetString();
+}
+
 void SinkBase::SetMinLogLevel(ISink::MessageType aNewMin)
 {
   mMinLogLevel = aNewMin;

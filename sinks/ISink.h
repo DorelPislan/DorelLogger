@@ -34,6 +34,7 @@ public:
 
   virtual void           SetMessageFormat(std::wstring_view aFormat) = 0;
   virtual const Format & GetMessageFormat() const                    = 0;
+  virtual std::wstring   GetMessageFormatAsString() const            = 0;
 
   virtual void        SetMinLogLevel(ISink::MessageType aNewMin) = 0;
   virtual MessageType GetMinLogLevel() const                     = 0;
