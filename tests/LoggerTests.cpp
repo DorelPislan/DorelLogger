@@ -13,8 +13,10 @@
 #include "../stdFormatSpecializations/AtlSpecific.h"
 #include "../tests/CustomFormatters.h"
 #include "../utils/ErrorCode.h"
+#include "../utils/GenericUint32Formatter.h"
 #include "../utils/LoggerMacros.h"
 #include "../utils/LoggerProvider.h"
+#include "../utils/LoggingUtilities.h"
 #include "../utils/ThreadNameSetter.h"
 #include "win/pch.h"
 #include <source_location>
@@ -281,9 +283,51 @@ int TestMessageBuilder()
   return 0;
 }
 
+enum class TestEnum
+{
+  Value1 = 0,
+  Value2 = 1,
+  Value3 = 2
+};
+
+
+std::array<DorelLogger::LoggingUtilities::ValueTextPair, 3> kTestEnum_ValsStrings = { {
+  VAL_TEXT_PAIR(TestEnum::Value1),
+  VAL_TEXT_PAIR(TestEnum::Value2),
+  VAL_TEXT_PAIR(TestEnum::Value3),
+} };
+
+
+#define DEFINE_ENUM_FORMATTER_SPECIALIZATION(EnumType, aValueTextPairArrayName)      \
+  template <>                                                                        \
+  struct std::formatter<EnumType, wchar_t> : public GenericUint32Formatter<TestEnum> \
+  {                                                                                  \
+    constexpr formatter()                                                            \
+      : GenericUint32Formatter(aValueTextPairArrayName)                              \
+    {                                                                                \
+    }                                                                                \
+  };
+
+DEFINE_ENUM_FORMATTER_SPECIALIZATION(TestEnum, kTestEnum_ValsStrings)
+
 int main()
 {
   std::cout << "Hello World!\n";
+
+  TestEnum val1 = TestEnum::Value1;
+  TestEnum val2 = TestEnum::Value2;
+  TestEnum val3 = TestEnum::Value3;
+
+  std::wstring enumStringsFromVars = std::format(L" Value1_FromVar    ={} "
+                                                 L" Value2_FromVar    ={} "
+                                                 L" Value3_FromVar    ={} ",
+                                                 val1, val2, val3);
+
+  std::wstring enumStringsFromLiterals =
+    std::format(L" Value1_FromLiteral={} "
+                L" Value2_FromLiteral={} "
+                L" Value3_FromLiteral={} ",
+                TestEnum::Value1, TestEnum::Value2, TestEnum::Value3);
 
   auto srcLoc = std::source_location::current();
   srcLoc;
