@@ -35,8 +35,8 @@ public:
   void SetMinLogLevel(ISink::MessageType aMinLogLevel);
   bool ShouldLog(ISink::MessageType aMsgType) const;
 
-  void SetStartingMessageFormat(std::wstring aFormat);
-  void SetEndingMessageFormat(std::wstring aFormat);
+  void SetStartingMessage(std::wstring aFormat);
+  void SetEndingMessage(std::wstring aFormat);
 
   template <typename... Args>
   void LogMessageFmt(ISink::MessageType aMessageType,
@@ -129,8 +129,8 @@ private:
 
   GlobalVariables mGlobalVars;
 
-  std::optional<std::wstring> mStartingMsgFormat;
-  std::optional<std::wstring> mEndingMsgFormat;
+  std::optional<std::wstring> mStartingMessage;
+  std::optional<std::wstring> mEndingMessage;
 
   // total number of messages logged so far
   std::atomic<uint32_t> mMsgsCount = 0;

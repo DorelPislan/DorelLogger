@@ -13,7 +13,7 @@ Logger::Logger()
 
 Logger::~Logger()
 {
-  LogMsgWithCustomFormat(mEndingMsgFormat);
+  LogMsgWithCustomFormat(mEndingMessage);
 
   DumpStatistics();
 }
@@ -88,18 +88,18 @@ bool Logger::ShouldLog(ISink::MessageType aMsgType) const
   return aMsgType >= mMinLogLevel;
 }
 
-void Logger::SetStartingMessageFormat(std::wstring aFormat)
+void Logger::SetStartingMessage(std::wstring aFormat)
 {
   const std::lock_guard<MutexType> lock(mSyncer);
 
-  mStartingMsgFormat = std::move(aFormat);
+  mStartingMessage = std::move(aFormat);
 }
 
-void Logger::SetEndingMessageFormat(std::wstring aFormat)
+void Logger::SetEndingMessage(std::wstring aFormat)
 {
   const std::lock_guard<MutexType> lock(mSyncer);
 
-  mEndingMsgFormat = std::move(aFormat);
+  mEndingMessage = std::move(aFormat);
 }
 
 void Logger::LogMessage(ISink::MessageType aMessageType,
@@ -122,7 +122,7 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
 
   if (crtMsgNo == 1)
   {
-    LogMsgWithCustomFormat(mStartingMsgFormat);
+    LogMsgWithCustomFormat(mStartingMessage);
   }
 
   FormatResolver resolver(mGlobalVars, aMessageType, aSourceFile, aSourceFunction, aSourceLine,
