@@ -13,15 +13,9 @@ namespace DorelLogger
 template <typename Type>
 struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
 {
-  enum FormatOption
-  {
-    FullTypeName = 'F',
-    OnlyValue    = 'V',
-  };
-
   // class c-tor
   constexpr GenericUint32Formatter(DorelLogger::LoggingUtilities::ValueTextPairSpan aValsAndStrings)
-    : mEnumValsStrings(aValsAndStrings)
+    : mValuesStrings(aValsAndStrings)
   {
   }
 
@@ -33,14 +27,14 @@ struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
 
     if (it != aParseContext.end())
     {
-      if (*it == FormatOption::FullTypeName)
+      if (*it == FormattingOption::FullTypeName)
       {
-        mFormattingOption = FormatOption::FullTypeName;
+        mFormattingOption = FormattingOption::FullTypeName;
         ++it;
       }
-      else if (*it == FormatOption::OnlyValue)
+      else if (*it == FormattingOption::OnlyValueName)
       {
-        mFormattingOption = FormatOption::OnlyValue;
+        mFormattingOption = FormattingOption::OnlyValueName;
         ++it;
       }
 
@@ -53,25 +47,16 @@ struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
     return it;
   }
 
-  // pour the received value in output stream
+  // pour the received value in output stream = aFormatContext
   template <class FmtContext>
   FmtContext::iterator format(Type aValue, FmtContext & aFormatContext) const
   {
-    auto end = mEnumValsStrings.end();
-    auto it  = std::find_if(mEnumValsStrings.begin(), end,
-                            [aValue](const auto & aPair)
-                            {
-                             return aPair.first == static_cast<uint32_t>(aValue);
-                           });
-
     std::wstring_view valStr = DorelLogger::LoggingUtilities::GetFlagNameOr(
-      static_cast<uint32_t>(aValue), mEnumValsStrings, L"???");
+      static_cast<uint32_t>(aValue), mValuesStrings, kValueNotFoundMarker);
 
-    //  (it == end) ? L"????" : it->second;
-
-    if (mFormattingOption == OnlyValue)
+    if (mFormattingOption == FormattingOption::OnlyValueName)
     {
-      auto lastSep = valStr.find_last_of(L':');
+      auto lastSep = valStr.find_last_of(kValueSeparator);
       if (lastSep != std::wstring_view::npos)
       {
         valStr.remove_prefix(lastSep + 1);
@@ -84,9 +69,17 @@ struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
   }
 
 private:
-  FormatOption mFormattingOption = FormatOption::OnlyValue;
+  enum FormattingOption
+  {
+    FullTypeName  = 'F',
+    OnlyValueName = 'V',
+  };
+  inline static const wchar_t * const kValueNotFoundMarker = L"???";
+  inline static const wchar_t         kValueSeparator      = L':';
 
-  DorelLogger::LoggingUtilities::ValueTextPairSpan mEnumValsStrings;
+  FormattingOption mFormattingOption = FormattingOption::OnlyValueName;
+
+  DorelLogger::LoggingUtilities::ValueTextPairSpan mValuesStrings;
 };
 
 };  // namespace DorelLogger
