@@ -237,6 +237,10 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
     return std::to_wstring(mSourceLine);
   }
+  case FormatTraits::VariableId::CustomVar:
+  {
+    return mGlobalVars.GetCustomVarValue();
+  }
   case FormatTraits::VariableId::MessageBody:
   {
     return std::wstring(mMessage);

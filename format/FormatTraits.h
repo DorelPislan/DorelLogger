@@ -39,6 +39,7 @@ enum class VariableId
   FilePathShort,
   FunctionName,
   LineNumber,
+  CustomVar,
   MessageBody
 };
 
@@ -81,13 +82,15 @@ const char kFunctionNameDescriptor = 'O';
 
 const char kLineNumberDescriptor = 'L';
 
+const char kCustomVarDescriptor = 'C';
+
 const char kMessageDescriptor = 'W';
 
 const char kTrimLeftMarker       = '-';
 const char kKeepRightMarker      = '+';
 const char kVerbatimSuffixMarker = ':';
 
-extern const std::array<std::pair<char, VariableId>, 21> kSupportedVars;
+extern const std::array<std::pair<char, VariableId>, 22> kSupportedVars;
 
 wchar_t          GetAlignmentMarker(AlignmentType aAlgn);
 std::wstring     GetWidthString(int aWidth);

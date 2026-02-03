@@ -7,7 +7,7 @@ namespace DorelLogger
 namespace FormatTraits
 {
 // clang-format off
-const std::array<std::pair<char, VariableId>, 21> kSupportedVars = {
+const std::array<std::pair<char, VariableId>, 22> kSupportedVars = {
 {
   { kYearDescriptor,           VariableId::Year          },
   { kMonthNumberDescriptor,    VariableId::MonthNumber   },
@@ -30,6 +30,7 @@ const std::array<std::pair<char, VariableId>, 21> kSupportedVars = {
   { kFunctionNameDescriptor,   VariableId::FunctionName  },
   { kLineNumberDescriptor,     VariableId::LineNumber    },
   { kMessageDescriptor,        VariableId::MessageBody   },
+  { kCustomVarDescriptor,      VariableId::CustomVar   },
   
 } };
 // clang-format on
