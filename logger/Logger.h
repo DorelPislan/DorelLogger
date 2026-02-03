@@ -4,6 +4,7 @@
 #include "../sinks/ISink.h"
 #include "../utils/Types.h"
 #include "ThreadsNames.h"
+#include "../format/GlobalVariables.h"
 
 namespace DorelLogger
 {
@@ -26,10 +27,10 @@ public:
 
   ISink * GetSink(const std::wstring & aName);
 
-  void SetProcessName(const std::wstring & aName);
-
-  void SetCurrentThreadName(const std::wstring & aName);
+  void SetProcessName(std::wstring aName);
+  void SetCurrentThreadName(std::wstring aName);
   void ResetCurrentThreadName();
+  void SetCustomVarValue(std::wstring aValue);
 
   void SetMinLogLevel(ISink::MessageType aMinLogLevel);
   bool ShouldLog(ISink::MessageType aMsgType) const;
@@ -126,10 +127,7 @@ private:
 
   ISink::MessageType mMinLogLevel;
 
-  uint32_t     mProcessId = 0;
-  std::wstring mProcessName;
-
-  ThreadsNames mThreadsNames;
+  GlobalVariables mGlobalVars;
 
   std::optional<std::wstring> mStartingMsgFormat;
   std::optional<std::wstring> mEndingMsgFormat;

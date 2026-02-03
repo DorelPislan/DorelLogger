@@ -8,7 +8,7 @@
 namespace DorelLogger
 {
 
-class ThreadNames;
+class GlobalVariables;
 
 /**
  * Class responsible for combining format of a sink withe the message to log
@@ -18,9 +18,7 @@ class FormatResolver
 {
 public:
   // class c-tor
-  FormatResolver(uint32_t             aCrtProcessId,
-                 const std::wstring & aCrtProcessName,
-                 const ThreadsNames & aThreadsNames,
+  FormatResolver(const GlobalVariables & aGlobalVars,
                  ISink::MessageType   aMessageType,
                  const char *         aSourceFile,
                  const char *         aSourceFunction,
@@ -41,9 +39,7 @@ public:
   std::wstring Resolve(const Format & aFormat);
 
 private:
-  uint32_t             mCrtProcessId;
-  const std::wstring & mCrtProcessName;
-  const ThreadsNames & mThreadsNames;
+  const GlobalVariables & mGlobalVars;
 
   ISink::MessageType mMessageType;
   const char *       mSourceFile;

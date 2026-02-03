@@ -9,10 +9,6 @@ namespace DorelLogger
 Logger::Logger()
   : mMinLogLevel(ISink::MessageType::Info)
 {
-  mProcessId = Os::GetCurrentProcessId();
-
-  std::filesystem::path procPath = Os::GetCurrentProcessPath();
-  mProcessName                   = procPath.filename().wstring();
 }
 
 Logger::~Logger()
@@ -59,22 +55,27 @@ ISink * Logger::GetSink(const std::wstring & aName)
   return nullptr;
 }
 
-void Logger::SetProcessName(const std::wstring & aName)
+void Logger::SetProcessName(std::wstring aName)
 {
-  mProcessName = aName;
+  mGlobalVars.SetProcessName(std::move(aName));
 }
 
-void Logger::SetCurrentThreadName(const std::wstring & aName)
+void Logger::SetCurrentThreadName(std::wstring aName)
 {
   const std::lock_guard<MutexType> lock(mSyncer);
 
-  mThreadsNames.SetCurrentThreadName(aName);
+  mGlobalVars.SetCurrentThreadName(std::move(aName));
 }
 
 void Logger::ResetCurrentThreadName()
 {
   // no need of synchronization
-  mThreadsNames.ResetCurrentThreadName();
+  mGlobalVars.ResetCurrentThreadName();
+}
+
+void Logger::SetCustomVarValue(std::wstring aValue)
+{
+  mGlobalVars.SetCustomVarValue(std::move(aValue));
 }
 
 void Logger::SetMinLogLevel(ISink::MessageType aMinLoggedSeverity)
@@ -124,8 +125,8 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
     LogMsgWithCustomFormat(mStartingMsgFormat);
   }
 
-  FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, aMessageType, aSourceFile,
-                          aSourceFunction, aSourceLine, aMessage);
+  FormatResolver resolver(mGlobalVars, aMessageType, aSourceFile, aSourceFunction, aSourceLine,
+                          aMessage);
 
   for (auto & sink : mSinks)
   {
@@ -170,8 +171,7 @@ void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
   if (!aMsgFormat)
     return;
 
-  FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, ISink::MessageType::All, nullptr,
-                          nullptr, 0, {});
+  FormatResolver resolver(mGlobalVars, ISink::MessageType::All, nullptr, nullptr, 0, {});
 
   for (auto & sink : mSinks)
   {
@@ -187,8 +187,7 @@ void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
 
 void Logger::DumpStatistics()
 {
-  FormatResolver resolver(mProcessId, mProcessName, mThreadsNames, ISink::MessageType::Info,
-                          nullptr, nullptr, 0, {});
+  FormatResolver resolver(mGlobalVars, ISink::MessageType::Info, nullptr, nullptr, 0, {});
 
   for (auto & sink : mSinks)
   {

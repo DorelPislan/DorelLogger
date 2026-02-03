@@ -107,6 +107,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ErrorCode.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\format\GlobalVariables.h">
+      <Filter>format</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
@@ -153,6 +156,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\ErrorCodeWindows.cpp">
       <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\GlobalVariables.cpp">
+      <Filter>format</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

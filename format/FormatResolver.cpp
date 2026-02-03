@@ -3,6 +3,7 @@
 #include "FormatResolver.h"
 #include "../logger/ThreadsNames.h"
 #include "../utils/Os.h"
+#include "Globalvariables.h"
 
 namespace DorelLogger
 {
@@ -19,17 +20,13 @@ const size_t kEstimatedMsgLength =
 
 };  // namespace
 
-FormatResolver::FormatResolver(uint32_t             aCrtProcessId,
-                               const std::wstring & aCrtProcessName,
-                               const ThreadsNames & aThreadsNames,
-                               ISink::MessageType   aMessageType,
-                               const char *         aSourceFile,
-                               const char *         aSourceFunction,
-                               size_t               aSourceLine,
-                               std::wstring_view    aMessage)
-  : mCrtProcessId(aCrtProcessId)
-  , mCrtProcessName(aCrtProcessName)
-  , mThreadsNames(aThreadsNames)
+FormatResolver::FormatResolver(const GlobalVariables & aGlobalVars,
+                               ISink::MessageType      aMessageType,
+                               const char *            aSourceFile,
+                               const char *            aSourceFunction,
+                               size_t                  aSourceLine,
+                               std::wstring_view       aMessage)
+  : mGlobalVars(aGlobalVars)
   , mMessageType(aMessageType)
   , mSourceFile(aSourceFile)
   , mSourceFunction(aSourceFunction)
@@ -176,17 +173,18 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   }
   case FormatTraits::VariableId::ProcessName:
   {
-    if (!mCrtProcessName.empty())
-      return mCrtProcessName;
+    const auto procName = mGlobalVars.GetCurrentProcessName();
+    if (!procName.empty())
+      return procName;
   }
     // fall-through
   case FormatTraits::VariableId::ProcessId:
   {
-    return std::to_wstring(mCrtProcessId);
+    return std::to_wstring(mGlobalVars.GetCurrentProcessId());
   }
   case FormatTraits::VariableId::ThreadName:
   {
-    auto threadName = mThreadsNames.GetCurrentThreadName();
+    auto threadName = mGlobalVars.GetCurrentThreadName();
     if (!threadName.empty())
       return threadName;
   }
