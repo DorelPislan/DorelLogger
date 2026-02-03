@@ -1,6 +1,6 @@
 
 #include "pch.h"
-#include "../logger/ThreadsNames.h"
+#include "GlobalVariables.h"
 #include "../utils/Os.h"
 
 namespace DorelLogger
