@@ -37,6 +37,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\WinRtFileSink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdIncludes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ErrorCode.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\GenericUint32Formatter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerMacros.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Os.h" />
