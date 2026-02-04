@@ -16,8 +16,8 @@
 #include "../utils/GenericUint32Formatter.h"
 #include "../utils/LoggerMacros.h"
 #include "../utils/LoggerProvider.h"
-#include "../utils/LoggingUtilities.h"
 #include "../utils/ThreadNameSetter.h"
+#include "../utils/ValuesStringsHelpers.h"
 #include "win/pch.h"
 #include <source_location>
 
@@ -289,31 +289,26 @@ enum class TestEnum
   Value2 = 1,
   Value3 = 2
 };
+DEFINE_VALUES_STRINGS_ARRAY_3(kTestEnum_ValsStrings,
+                              TestEnum::Value1,
+                              TestEnum::Value2,
+                              TestEnum::Value3);
+DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TestEnum, kTestEnum_ValsStrings);
 
-
-std::array<DorelLogger::LoggingUtilities::ValueTextPair, 3> kTestEnum_ValsStrings = { {
-  VAL_TEXT_PAIR(TestEnum::Value1),
-  VAL_TEXT_PAIR(TestEnum::Value2),
-  VAL_TEXT_PAIR(TestEnum::Value3),
-} };
-
-
-#define DEFINE_ENUM_FORMATTER_SPECIALIZATION(EnumType, aValueTextPairArrayName)      \
-  template <>                                                                        \
-  struct std::formatter<EnumType, wchar_t> : public GenericUint32Formatter<TestEnum> \
-  {                                                                                  \
-    constexpr formatter()                                                            \
-      : GenericUint32Formatter(aValueTextPairArrayName)                              \
-    {                                                                                \
-    }                                                                                \
-  };
-
-DEFINE_ENUM_FORMATTER_SPECIALIZATION(TestEnum, kTestEnum_ValsStrings)
-
-int main()
+enum AnotherTestEnum
 {
-  std::cout << "Hello World!\n";
+  AnotherValue1,
+  AnotherValue2,
+  AnotherValue3
+};
+DEFINE_VALUES_STRINGS_ARRAY_3(kAnotherTestEnumValsByMacro,
+                              AnotherValue1,
+                              AnotherTestEnum::AnotherValue2,
+                              AnotherTestEnum::AnotherValue3);
+DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(AnotherTestEnum, kAnotherTestEnumValsByMacro);
 
+void TestEnumFormatter()
+{
   TestEnum val1 = TestEnum::Value1;
   TestEnum val2 = TestEnum::Value2;
   TestEnum val3 = TestEnum::Value3;
@@ -328,6 +323,17 @@ int main()
                 L" Value2_FromLiteral={} "
                 L" Value3_FromLiteral={} ",
                 TestEnum::Value1, TestEnum::Value2, TestEnum::Value3);
+
+  std::wstring anotherEnumStringsFromLiterals = std::format(
+    L" Value1_FromLiteral={:F} "
+    L" Value2_FromLiteral={} "
+    L" Value3_FromLiteral={} ",
+    AnotherTestEnum::AnotherValue1, AnotherTestEnum::AnotherValue2, AnotherTestEnum::AnotherValue3);
+}
+
+int main()
+{
+  std::cout << "Hello World!\n";
 
   auto srcLoc = std::source_location::current();
   srcLoc;
@@ -377,6 +383,7 @@ int main()
   TestWinRtFileSink();
   TestWinApiFileSink();
   TestMessageBuilder();
+  TestEnumFormatter();
   // TestResolver();
   // TestLogger();
 }
