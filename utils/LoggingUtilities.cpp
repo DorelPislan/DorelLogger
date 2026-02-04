@@ -7,7 +7,7 @@ namespace DorelLogger
 namespace LoggingUtilities
 {
 
-std::vector<const wchar_t *> GetFlagsNames(uint32_t aValue, const ValueTextPairSpan & aFlagsInfos)
+std::vector<const wchar_t *> GetFlagsNames(uint32_t aValue, const ValueStringPairSpan & aFlagsInfos)
 {
   std::vector<const wchar_t *> flagsNames;
 
@@ -29,9 +29,9 @@ std::vector<const wchar_t *> GetFlagsNames(uint32_t aValue, const ValueTextPairS
   return flagsNames;
 }
 
-const wchar_t * GetFlagNameOr(uint32_t                  aFlag,
-                              const ValueTextPairSpan & aFlagsInfos,
-                              const wchar_t *           aNotFoundText)
+const wchar_t * GetFlagNameOr(uint32_t                    aFlag,
+                              const ValueStringPairSpan & aFlagsInfos,
+                              const wchar_t *             aNotFoundText)
 
 {
   auto end = aFlagsInfos.end();

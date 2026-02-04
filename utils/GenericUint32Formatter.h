@@ -14,7 +14,8 @@ template <typename Type>
 struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
 {
   // class c-tor
-  constexpr GenericUint32Formatter(DorelLogger::LoggingUtilities::ValueTextPairSpan aValsAndStrings)
+  constexpr GenericUint32Formatter(
+    DorelLogger::LoggingUtilities::ValueStringPairSpan aValsAndStrings)
     : mValuesStrings(aValsAndStrings)
   {
   }
@@ -79,7 +80,7 @@ private:
 
   FormattingOption mFormattingOption = FormattingOption::OnlyValueName;
 
-  DorelLogger::LoggingUtilities::ValueTextPairSpan mValuesStrings;
+  DorelLogger::LoggingUtilities::ValueStringPairSpan mValuesStrings;
 };
 
 #define DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TypeName, aValueTextPairArrayName)  \

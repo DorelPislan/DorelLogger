@@ -11,7 +11,7 @@
 #endif
 
 #define VALUES_STRINGS_ARRAY_HEADER(aArrayName, aValuesCount) \
-  std::array<DorelLogger::LoggingUtilities::ValueTextPair, aValuesCount> aArrayName = { {
+  std::array<DorelLogger::LoggingUtilities::ValueStringPair, aValuesCount> aArrayName = { {
 #define VALUES_STRINGS_ARRAY_FOOTER \
   }                                 \
   }                                 \
