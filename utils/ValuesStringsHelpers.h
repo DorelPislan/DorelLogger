@@ -16,13 +16,13 @@
   }                                 \
   }                                 \
   ;
-#define VALUES_STRINGS_ARRAY_1_ELEMENTS(aValue) VALUE_STRING_PAIR(aValue)
+#define VALUES_STRINGS_ARRAY_1_ELEMENTS(aValue) VALUE_STRING_PAIR(aValue),
 
 #define VALUES_STRINGS_ARRAY_2_ELEMENTS(aValue1, aValue2) \
-  VALUE_STRING_PAIR(aValue1), VALUE_STRING_PAIR(aValue2)
+  VALUE_STRING_PAIR(aValue1), VALUE_STRING_PAIR(aValue2),
 
 #define VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue1, aValue2, aValue3) \
-  VALUE_STRING_PAIR(aValue1), VALUE_STRING_PAIR(aValue2), VALUE_STRING_PAIR(aValue3)
+  VALUE_STRING_PAIR(aValue1), VALUE_STRING_PAIR(aValue2), VALUE_STRING_PAIR(aValue3),
 
 #define DEFINE_VALUES_STRINGS_ARRAY_1(aArrayName, aValue1) \
   VALUES_STRINGS_ARRAY_HEADER(aArrayName, 1)               \
