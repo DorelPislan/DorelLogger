@@ -58,7 +58,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatTraits.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\GlobalVariables.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\GlobalVariables.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
