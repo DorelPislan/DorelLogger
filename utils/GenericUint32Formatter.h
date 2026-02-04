@@ -82,9 +82,9 @@ private:
   DorelLogger::LoggingUtilities::ValueTextPairSpan mValuesStrings;
 };
 
-#define DEFINE_FORMATTER_SPECIALIZATION_FOR_ENUM(EnumType, aValueTextPairArrayName)      \
+#define DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TypeName, aValueTextPairArrayName)  \
   template <>                                                                        \
-  struct std::formatter<EnumType, wchar_t> : public GenericUint32Formatter<EnumType> \
+  struct std::formatter<TypeName, wchar_t> : public GenericUint32Formatter<TypeName> \
   {                                                                                  \
     constexpr formatter()                                                            \
       : GenericUint32Formatter(aValueTextPairArrayName)                              \
