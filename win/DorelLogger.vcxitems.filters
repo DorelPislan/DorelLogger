@@ -113,6 +113,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\GenericUint32Formatter.h">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ValuesStringsHelpers.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
