@@ -1,10 +1,10 @@
 #ifndef _DOREL_LOGGER_LOGGER_H_
 #define _DOREL_LOGGER_LOGGER_H_
 
+#include "../format/GlobalVariables.h"
 #include "../sinks/ISink.h"
 #include "../utils/Types.h"
 #include "ThreadsNames.h"
-#include "../format/GlobalVariables.h"
 
 namespace DorelLogger
 {
@@ -35,8 +35,8 @@ public:
   void SetMinLogLevel(ISink::MessageType aMinLogLevel);
   bool ShouldLog(ISink::MessageType aMsgType) const;
 
-  void SetStartingMessage(std::wstring aFormat);
-  void SetEndingMessage(std::wstring aFormat);
+  void SetSessionProlog(std::wstring aFormattedMessage);
+  void SetSessionEpilog(std::wstring aFormattedMessage);
 
   template <typename... Args>
   void LogMessageFmt(ISink::MessageType aMessageType,
@@ -129,8 +129,8 @@ private:
 
   GlobalVariables mGlobalVars;
 
-  std::optional<std::wstring> mStartingMessage;
-  std::optional<std::wstring> mEndingMessage;
+  std::optional<std::wstring> mSessionProlog;
+  std::optional<std::wstring> mSessionEpilog;
 
   // total number of messages logged so far
   std::atomic<uint32_t> mMsgsCount = 0;

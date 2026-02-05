@@ -13,7 +13,7 @@ Logger::Logger()
 
 Logger::~Logger()
 {
-  LogMsgWithCustomFormat(mEndingMessage);
+  LogMsgWithCustomFormat(mSessionEpilog);
 
   DumpStatistics();
 }
@@ -88,18 +88,18 @@ bool Logger::ShouldLog(ISink::MessageType aMsgType) const
   return aMsgType >= mMinLogLevel;
 }
 
-void Logger::SetStartingMessage(std::wstring aFormat)
+void Logger::SetSessionProlog(std::wstring aFormattedMessage)
 {
   const std::lock_guard<MutexType> lock(mSyncer);
 
-  mStartingMessage = std::move(aFormat);
+  mSessionProlog = std::move(aFormattedMessage);
 }
 
-void Logger::SetEndingMessage(std::wstring aFormat)
+void Logger::SetSessionEpilog(std::wstring aFormattedMessage)
 {
   const std::lock_guard<MutexType> lock(mSyncer);
 
-  mEndingMessage = std::move(aFormat);
+  mSessionEpilog = std::move(aFormattedMessage);
 }
 
 void Logger::LogMessage(ISink::MessageType aMessageType,
@@ -122,7 +122,7 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
 
   if (crtMsgNo == 1)
   {
-    LogMsgWithCustomFormat(mStartingMessage);
+    LogMsgWithCustomFormat(mSessionProlog);
   }
 
   lock.unlock();
