@@ -118,12 +118,14 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
 
   // this is required because logging starting message changes format of sinks
   // but something must be found in order to not require it
-  const std::lock_guard<MutexType> lock(mSyncer);
+  std::unique_lock<MutexType> lock(mSyncer);
 
   if (crtMsgNo == 1)
   {
     LogMsgWithCustomFormat(mStartingMessage);
   }
+
+  lock.unlock();
 
   FormatResolver resolver(mGlobalVars, aMessageType, aSourceFile, aSourceFunction, aSourceLine,
                           aMessage);
