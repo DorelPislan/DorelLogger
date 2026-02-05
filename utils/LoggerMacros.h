@@ -74,24 +74,24 @@
     }                                                                                    \
   }
 
-#define LOG_ERROR_FMT(aFormat, ...)                                       \
-  {                                                                       \
-    auto & logger = GET_LOGGER();                                         \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))         \
-    {                                                                     \
-      DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError(); \
-      lastError;                                                          \
-      logger.LogErrorFmt(DL_SRC_POS, aFormat, __VA_ARGS__);               \
-    }                                                                     \
+#define LOG_ERROR_FMT(aFormat, ...)                                     \
+  {                                                                     \
+    DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError(); \
+    lastError;                                                          \
+    auto & logger = GET_LOGGER();                                       \
+    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))       \
+    {                                                                   \
+      logger.LogErrorFmt(DL_SRC_POS, aFormat, __VA_ARGS__);             \
+    }                                                                   \
   }
 
 #define LOG_ERROR(msg)                                                                             \
   {                                                                                                \
+    DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError();                            \
+    lastError;                                                                                     \
     auto & logger = GET_LOGGER();                                                                  \
     if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))                                  \
     {                                                                                              \
-      DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError();                          \
-      lastError;                                                                                   \
       logger.LogError(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
     }                                                                                              \
   }
