@@ -19,16 +19,14 @@ public:
   // class c-tor
   GlobalVariables();
 
-  const std::wstring & GetFlatCurrentProcessId() const;
+  const std::wstring & GetCurrentProcessId() const;
   const std::wstring & GetCurrentProcessName() const;
-
   const std::wstring & GetCurrentThreadName() const;
-
   const std::wstring & GetCustomVarValue() const;
 
-  void SetProcessName(const std::wstring & aName);
+  void SetProcessName(std::wstring aName);
 
-  void SetCurrentThreadName(const std::wstring & aName);
+  void SetCurrentThreadName(std::wstring aName);
   void ResetCurrentThreadName();
 
   void SetCustomVarValue(std::wstring aValue);

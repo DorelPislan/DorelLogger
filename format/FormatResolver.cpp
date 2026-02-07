@@ -185,11 +185,11 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
     const auto & procName = mGlobalVars.GetCurrentProcessName();
 
-    return !procName.empty() ? procName : mGlobalVars.GetFlatCurrentProcessId();
+    return !procName.empty() ? procName : mGlobalVars.GetCurrentProcessId();
   }
   case FormatTraits::VariableId::ProcessId:
   {
-    return mGlobalVars.GetFlatCurrentProcessId();  // Use cached version
+    return mGlobalVars.GetCurrentProcessId();
   }
   case FormatTraits::VariableId::ThreadName:
   {

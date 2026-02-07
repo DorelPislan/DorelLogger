@@ -15,7 +15,7 @@ GlobalVariables::GlobalVariables()
   mProcessName                   = procPath.filename().wstring();
 }
 
-const std::wstring & GlobalVariables::GetFlatCurrentProcessId() const
+const std::wstring & GlobalVariables::GetCurrentProcessId() const
 {
   return mFlatProcessId;
 }
@@ -35,14 +35,14 @@ const std::wstring & GlobalVariables::GetCustomVarValue() const
   return mCustomVarValue;
 }
 
-void GlobalVariables::SetProcessName(const std::wstring & aName)
+void GlobalVariables::SetProcessName(std::wstring aName)
 {
-  mProcessName = aName;
+  mProcessName = std::move(aName);
 }
 
-void GlobalVariables::SetCurrentThreadName(const std::wstring & aName)
+void GlobalVariables::SetCurrentThreadName(std::wstring aName)
 {
-  ThreadsNames::SetCurrentThreadName(aName);
+  ThreadsNames::SetCurrentThreadName(std::move(aName));
 }
 
 void GlobalVariables::ResetCurrentThreadName()

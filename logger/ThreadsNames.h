@@ -20,6 +20,8 @@ public:
   static const std::wstring & GetCurrentThreadName();
 
 private:
+  ThreadsNames() = delete;  // no use to instantiate this class, all methods are static
+
   static thread_local std::wstring sThreadName;
 };
 
