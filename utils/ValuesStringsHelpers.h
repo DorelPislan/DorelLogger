@@ -75,7 +75,7 @@
   VALUES_STRINGS_ARRAY_FOOTER
 
 #define DEFINE_VALUES_STRINGS_ARRAY_9(aArrayName, aValue1, aValue2, aValue3, aValue4, aValue5, \
-                                      aValue6, aValue7, aValue8, aValu9)                       \
+                                      aValue6, aValue7, aValue8, aValue9)                      \
   VALUES_STRINGS_ARRAY_HEADER(aArrayName, 9)                                                   \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue1, aValue2, aValue3)                                   \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue4, aValue5, aValue6)                                   \
@@ -83,7 +83,7 @@
   VALUES_STRINGS_ARRAY_FOOTER
 
 #define DEFINE_VALUES_STRINGS_ARRAY_10(aArrayName, aValue1, aValue2, aValue3, aValue4, aValue5, \
-                                       aValue6, aValue7, aValue8, aValu9, aValue10)             \
+                                       aValue6, aValue7, aValue8, aValue9, aValue10)            \
   VALUES_STRINGS_ARRAY_HEADER(aArrayName, 10)                                                   \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue1, aValue2, aValue3)                                    \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue4, aValue5, aValue6)                                    \
@@ -92,7 +92,7 @@
   VALUES_STRINGS_ARRAY_FOOTER
 
 #define DEFINE_VALUES_STRINGS_ARRAY_11(aArrayName, aValue1, aValue2, aValue3, aValue4, aValue5, \
-                                       aValue6, aValue7, aValue8, aValu9, aValue10, aValue11)   \
+                                       aValue6, aValue7, aValue8, aValue9, aValue10, aValue11)  \
   VALUES_STRINGS_ARRAY_HEADER(aArrayName, 11)                                                   \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue1, aValue2, aValue3)                                    \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue4, aValue5, aValue6)                                    \
@@ -101,7 +101,7 @@
   VALUES_STRINGS_ARRAY_FOOTER
 
 #define DEFINE_VALUES_STRINGS_ARRAY_12(aArrayName, aValue1, aValue2, aValue3, aValue4, aValue5, \
-                                       aValue6, aValue7, aValue8, aValu9, aValue10, aValue11,   \
+                                       aValue6, aValue7, aValue8, aValue9, aValue10, aValue11,  \
                                        aValue12)                                                \
   VALUES_STRINGS_ARRAY_HEADER(aArrayName, 12)                                                   \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue1, aValue2, aValue3)                                    \
@@ -111,7 +111,7 @@
   VALUES_STRINGS_ARRAY_FOOTER
 
 #define DEFINE_VALUES_STRINGS_ARRAY_13(aArrayName, aValue1, aValue2, aValue3, aValue4, aValue5, \
-                                       aValue6, aValue7, aValue8, aValu9, aValue10, aValue11,   \
+                                       aValue6, aValue7, aValue8, aValue9, aValue10, aValue11,  \
                                        aValue12, aValue13)                                      \
   VALUES_STRINGS_ARRAY_HEADER(aArrayName, 13)                                                   \
   VALUES_STRINGS_ARRAY_3_ELEMENTS(aValue1, aValue2, aValue3)                                    \
