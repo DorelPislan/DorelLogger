@@ -66,7 +66,7 @@ struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
 
     auto out = aFormatContext.out();
 
-    return std::ranges::copy(valStr, aFormatContext.out()).out;
+    return std::ranges::copy(valStr, out).out;
   }
 
 private:

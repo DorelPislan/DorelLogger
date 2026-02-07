@@ -2,7 +2,7 @@
 #include "FormatResolver.h"
 #include "../logger/ThreadsNames.h"
 #include "../utils/Os.h"
-#include "Globalvariables.h"
+#include "GlobalVariables.h"
 
 namespace DorelLogger
 {
