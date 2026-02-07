@@ -6,9 +6,9 @@ Why yet another logging library ?
 Because spdlog is too complex and it does not use << for composing messages.
 
 How to use it:
-- include this header
-#include "Logger.h"
-- before using a Logger object you need to set it the sinks- destinations where it will put log messages
+- include this header (preferably in a precompiled header):
+#include "defaultUsage.h"
+- before using a Logger object you need to set its sinks - destinations where it will put log messages
 There are some pre-built sinks. Choose one or many or create your own.
 
 Sample code for init:
