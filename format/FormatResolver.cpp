@@ -195,7 +195,6 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
     auto const & threadName = mGlobalVars.GetCurrentThreadName();
 
-    // TODO : we can cache flat thread ID in ThreadNames
     return !threadName.empty() ? threadName : std::to_wstring(Os::GetCurrentThreadId());
   }
   case FormatTraits::VariableId::ThreadId:

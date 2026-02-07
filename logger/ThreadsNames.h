@@ -17,13 +17,13 @@ public:
   // class c-tor
   ThreadsNames() = default;
 
-  bool SetCurrentThreadName(const std::wstring & aName);
-  bool ResetCurrentThreadName();
+  static void SetCurrentThreadName(std::wstring aName);
+  static void  ResetCurrentThreadName();
 
-  const std::wstring & GetCurrentThreadName() const;
+  static const std::wstring & GetCurrentThreadName();
 
 private:
-  std::array<std::pair<uint32_t, std::wstring>, MAX_NO_OF_THREADS> mIdsAndNames;
+  static thread_local std::wstring sThreadName;
 };
 
 };  // namespace DorelLogger

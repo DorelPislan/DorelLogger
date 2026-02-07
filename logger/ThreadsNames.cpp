@@ -6,57 +6,21 @@
 namespace DorelLogger
 {
 
-bool ThreadsNames::SetCurrentThreadName(const std::wstring & aName)
+/*static*/ thread_local std::wstring ThreadsNames::sThreadName;
+
+/*static*/ void ThreadsNames::SetCurrentThreadName(std::wstring aName)
 {
-  // we expect that caller of this function to ensure thread safety of
-  for (auto & ti : mIdsAndNames)
-  {
-    if (ti.first == 0)
-    {
-      ti.first  = Os::GetCurrentThreadId();
-      ti.second = aName;
-      return true;
-    }
-  }
-  // no free spot found
-  return false;
+  sThreadName = std::move(aName);
 }
 
-bool ThreadsNames::ResetCurrentThreadName()
+/*static*/ void ThreadsNames::ResetCurrentThreadName()
 {
-  // this function does not need synchronization because it touches only a slot reserved for current
-  // thread
-
-  auto crtThreadId = Os::GetCurrentThreadId();
-
-  for (auto & ti : mIdsAndNames)
-  {
-    if (ti.first == crtThreadId)
-    {
-      // reset in reverse order
-      ti.second = L"";
-      ti.first  = 0;
-
-      return true;
-    }
-  }
-  return false;
+  sThreadName.clear();
 }
 
-const std::wstring & ThreadsNames::GetCurrentThreadName() const
+/*static*/ const std::wstring & ThreadsNames::GetCurrentThreadName()
 {
-  static std::wstring kEmptyString;
-
-  // we do not need thread synchronization here because the array is pre-allocated
-
-  auto crtThreadId = Os::GetCurrentThreadId();
-
-  for (auto & ti : mIdsAndNames)
-  {
-    if (ti.first == crtThreadId)
-      return ti.second;
-  }
-
-  return kEmptyString;
+  return sThreadName;
 }
+
 };  // namespace DorelLogger

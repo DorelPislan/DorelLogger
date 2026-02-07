@@ -62,14 +62,13 @@ void Logger::SetProcessName(std::wstring aName)
 
 void Logger::SetCurrentThreadName(std::wstring aName)
 {
-  const std::lock_guard<MutexType> lock(mSyncer);
-
+  // no need of synchronization because this is thread specific variable
   mGlobalVars.SetCurrentThreadName(std::move(aName));
 }
 
 void Logger::ResetCurrentThreadName()
 {
-  // no need of synchronization
+  // no need of synchronization because this is thread specific variable
   mGlobalVars.ResetCurrentThreadName();
 }
 
