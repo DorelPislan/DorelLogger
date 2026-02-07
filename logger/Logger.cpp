@@ -115,8 +115,7 @@ void Logger::LogMessage(ISink::MessageType aMessageType,
 
   auto crtMsgNo = ++mMsgsCount;  // atomic increment!
 
-  // this is required because logging starting message changes format of sinks
-  // but something must be found in order to not require it
+  // this is required ONLY if we want to support dynamic changes of sink's list
   const std::lock_guard<MutexType> lock(mSyncer);
 
   if (crtMsgNo == 1)

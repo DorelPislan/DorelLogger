@@ -6,7 +6,7 @@
 #ifndef VALUE_STRING_PAIR
 // creates a structure with 2 members : first is the parameter and the second
 //  is a string constant containing the parameter name as received by MACRO
-// E.g. VAL_TEXT_PAIR(ERRROR_SUCCES) -> {ERRROR_SUCCES, L"ERRROR_SUCCES"}
+// E.g. VALUE_STRING_PAIR(ERRROR_SUCCES) -> {ERRROR_SUCCES, L"ERRROR_SUCCES"}
 #define VALUE_STRING_PAIR(aValue) { static_cast<uint32_t>(aValue), L#aValue }
 #endif
 
