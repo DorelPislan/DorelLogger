@@ -22,9 +22,7 @@ public:
 
   const std::wstring & GetName() override;
 
-  void           SetMessageFormat(std::wstring_view aFormat) override;
-  const Format & GetMessageFormat() const override;
-  std::wstring   GetMessageFormatAsString() const override;
+  void SetMessageFormat(std::wstring_view aFormat) override;
 
   void        SetMinLogLevel(ISink::MessageType aNewMin) override;
   MessageType GetMinLogLevel() const override;
@@ -35,6 +33,8 @@ public:
   void DumpStatistics(FormatResolver & aResolver) override;
 
 protected:
+  const Format & GetMessageFormat() const;
+
   std::wstring ComputeFullMessage(FormatResolver & aResolver);
 
   void CollectStatistics(const FormatResolver & aResolver, const std::wstring & aFullMsg);

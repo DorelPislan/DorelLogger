@@ -173,14 +173,14 @@ void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
 
   FormatResolver resolver(mGlobalVars, ISink::MessageType::All, nullptr, nullptr, 0, {});
 
+  Format customFormat;
+  customFormat.Set(*aMsgFormat);
+
+  resolver.SetFormat(&customFormat);
+
   for (auto & sink : mSinks)
   {
-    // switch existing format for our custom message
-    auto oldFormat = sink->GetMessageFormatAsString();
-
-    sink->SetMessageFormat(*aMsgFormat);
     sink->LogMessage(resolver);
-    sink->SetMessageFormat(oldFormat);
   }
   aMsgFormat.reset();
 }

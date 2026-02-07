@@ -65,6 +65,16 @@ void FormatResolver::SetMessage(std::wstring_view aMessage)
   mMessage = aMessage;
 }
 
+void FormatResolver::SetFormat(const Format * aFormat)
+{
+  mFormat = aFormat;
+}
+
+const Format * FormatResolver::GetFormat() const
+{
+  return mFormat;
+}
+
 std::wstring FormatResolver::Resolve(const Format & aFormat)
 {
   std::wstring result;

@@ -21,16 +21,6 @@ void SinkBase::SetMessageFormat(std::wstring_view aFormat)
   mFormat.Set(aFormat);
 }
 
-const Format & SinkBase::GetMessageFormat() const
-{
-  return mFormat;
-}
-
-std::wstring SinkBase::GetMessageFormatAsString() const
-{
-  return mFormat.GetString();
-}
-
 void SinkBase::SetMinLogLevel(ISink::MessageType aNewMin)
 {
   mMinLogLevel = aNewMin;
@@ -63,12 +53,19 @@ void SinkBase::DumpStatistics(FormatResolver & aResolver)
   this->LogMessage(aResolver);
 }
 
+const Format & SinkBase::GetMessageFormat() const
+{
+  return mFormat;
+}
+
 std::wstring SinkBase::ComputeFullMessage(FormatResolver & aResolver)
 {
   if (!SinkBase::ShouldLog(aResolver.GetMessageType()))
     return {};
 
-  std::wstring fullMsg = aResolver.Resolve(SinkBase::GetMessageFormat());
+  auto formatFromResolver = aResolver.GetFormat();
+  auto formatToUse        = formatFromResolver ? *formatFromResolver : SinkBase::GetMessageFormat();
+  std::wstring fullMsg    = aResolver.Resolve(formatToUse);
 
   SinkBase::CollectStatistics(aResolver, fullMsg);
 
