@@ -14,11 +14,8 @@ namespace DorelLogger
 class ThreadsNames
 {
 public:
-  // class c-tor
-  ThreadsNames() = default;
-
   static void SetCurrentThreadName(std::wstring aName);
-  static void  ResetCurrentThreadName();
+  static void ResetCurrentThreadName();
 
   static const std::wstring & GetCurrentThreadName();
 

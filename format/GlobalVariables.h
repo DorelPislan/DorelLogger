@@ -38,8 +38,6 @@ private:
 
   std::wstring mProcessName;
 
-  ThreadsNames mThreadsNames;
-
   std::wstring mCustomVarValue;
 };
 

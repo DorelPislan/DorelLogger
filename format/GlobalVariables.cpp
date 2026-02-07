@@ -27,7 +27,7 @@ const std::wstring & GlobalVariables::GetCurrentProcessName() const
 
 const std::wstring & GlobalVariables::GetCurrentThreadName() const
 {
-  return mThreadsNames.GetCurrentThreadName();
+  return ThreadsNames::GetCurrentThreadName();
 }
 
 const std::wstring & GlobalVariables::GetCustomVarValue() const
@@ -42,13 +42,13 @@ void GlobalVariables::SetProcessName(const std::wstring & aName)
 
 void GlobalVariables::SetCurrentThreadName(const std::wstring & aName)
 {
-  mThreadsNames.SetCurrentThreadName(aName);
+  ThreadsNames::SetCurrentThreadName(aName);
 }
 
 void GlobalVariables::ResetCurrentThreadName()
 {
   // no need of synchronization
-  mThreadsNames.ResetCurrentThreadName();
+  ThreadsNames::ResetCurrentThreadName();
 }
 
 void GlobalVariables::SetCustomVarValue(std::wstring aValue)
