@@ -76,6 +76,8 @@ private:
 
     return *mCachedTime;
   }
+
+  static std::wstring ToWideString(std::string_view aNarrowString);
 };
 
 }  // namespace DorelLogger

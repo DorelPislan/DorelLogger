@@ -1,4 +1,3 @@
-
 #include "pch.h"
 #include "FormatResolver.h"
 #include "../logger/ThreadsNames.h"
@@ -170,35 +169,34 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   }
   case FormatTraits::VariableId::MiliSecond:
   {
-    // TODO but until then
-    assert(!"VariableId::MiliSecond is not IMPLEMENTED yet!");
-    break;
+    auto ms       = std::chrono::time_point_cast<std::chrono::milliseconds>(GetCurrentTime());
+    auto fraction = ms.time_since_epoch() % 1000;
+
+    return std::format(L"{:03d}", fraction.count());
   }
   case FormatTraits::VariableId::NanoSecond:
   {
-    // TODO but until then
-    assert(!"VariableId::NanoSecond is not IMPLEMENTED yet!");
-    break;
+    auto ns       = std::chrono::time_point_cast<std::chrono::nanoseconds>(GetCurrentTime());
+    auto fraction = ns.time_since_epoch() % 1'000'000'000;
+
+    return std::format(L"{:09d}", fraction.count());
   }
   case FormatTraits::VariableId::ProcessName:
   {
-    const auto procName = mGlobalVars.GetCurrentProcessName();
-    if (!procName.empty())
-      return procName;
+    const auto & procName = mGlobalVars.GetCurrentProcessName();
 
-    return mGlobalVars.GetFlatCurrentProcessId();
+    return !procName.empty() ? procName : mGlobalVars.GetFlatCurrentProcessId();
   }
   case FormatTraits::VariableId::ProcessId:
   {
-    return mGlobalVars.GetFlatCurrentProcessId();
+    return mGlobalVars.GetFlatCurrentProcessId();  // Use cached version
   }
   case FormatTraits::VariableId::ThreadName:
   {
-    auto threadName = mGlobalVars.GetCurrentThreadName();
-    if (!threadName.empty())
-      return threadName;
+    auto const & threadName = mGlobalVars.GetCurrentThreadName();
 
-    return std::to_wstring(Os::GetCurrentThreadId());
+    // TODO : we can cache flat thread ID in ThreadNames
+    return !threadName.empty() ? threadName : std::to_wstring(Os::GetCurrentThreadId());
   }
   case FormatTraits::VariableId::ThreadId:
   {
@@ -213,9 +211,7 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
     if (!mSourceFile)
       return std::wstring();
 
-    std::string_view sourceFilePath(mSourceFile);
-
-    return std::wstring(sourceFilePath.begin(), sourceFilePath.end());
+    return ToWideString(mSourceFile);
   }
   case FormatTraits::VariableId::FilePathShort:
   {
@@ -224,25 +220,20 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
 
     std::string_view sourceFilePath(mSourceFile);
 
-    auto sepPos = sourceFilePath.find_last_of('\\');
-    if (sepPos == std::wstring::npos)
-      sepPos = sourceFilePath.find_last_of('/');
-
+    auto sepPos = sourceFilePath.find_last_of("\\/");
     if (sepPos == std::wstring::npos)
       sepPos = 0;
 
     sourceFilePath.remove_prefix(sepPos + 1);
 
-    return std::wstring(sourceFilePath.begin(), sourceFilePath.end());
+    return ToWideString(sourceFilePath);
   }
   case FormatTraits::VariableId::FunctionName:
   {
     if (!mSourceFunction)
       return std::wstring();
 
-    std::string_view sourceFunction(mSourceFunction);
-
-    return std::wstring(sourceFunction.begin(), sourceFunction.end());
+    return ToWideString(mSourceFunction);
   }
   case FormatTraits::VariableId::LineNumber:
   {
@@ -312,5 +303,10 @@ const wchar_t * FormatResolver::GetMessageTypeString()
   default:
     return L"???";
   }
+}
+
+/*static*/ std::wstring FormatResolver::ToWideString(std::string_view aNarrowString)
+{
+  return std::wstring(aNarrowString.begin(), aNarrowString.end());
 }
 };  // namespace DorelLogger
