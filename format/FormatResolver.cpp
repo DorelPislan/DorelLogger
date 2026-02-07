@@ -125,48 +125,47 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
   case FormatTraits::VariableId::Year:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%Y}", crtTime);
   }
   case FormatTraits::VariableId::MonthNumber:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%m}", crtTime);
   }
   case FormatTraits::VariableId::MonthName:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%b}", crtTime);
   }
   case FormatTraits::VariableId::DayNumber:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%d}", crtTime);
   }
   case FormatTraits::VariableId::DayName:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%a}", crtTime);
   }
   case FormatTraits::VariableId::Hour24:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%H}", crtTime);
   }
   case FormatTraits::VariableId::Hour12:
   {
-    auto const crtTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%I%p}", crtTime);
   }
   case FormatTraits::VariableId::Minute:
   {
-    auto const crtTime = std::chrono::system_clock::now();
+    auto const crtTime = GetCurrentTime();
     return std::format(L"{:%M}", crtTime);
   }
   case FormatTraits::VariableId::Second:
   {
-    auto const crtTime =
-      std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now());
+    auto const crtTime = std::chrono::time_point_cast<std::chrono::seconds>(GetCurrentTime());
     return std::format(L"{:%S}", crtTime);
   }
   case FormatTraits::VariableId::MiliSecond:
@@ -186,19 +185,21 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
     const auto procName = mGlobalVars.GetCurrentProcessName();
     if (!procName.empty())
       return procName;
+
+    return mGlobalVars.GetFlatCurrentProcessId();
   }
-    // fall-through
   case FormatTraits::VariableId::ProcessId:
   {
-    return std::to_wstring(mGlobalVars.GetCurrentProcessId());
+    return mGlobalVars.GetFlatCurrentProcessId();
   }
   case FormatTraits::VariableId::ThreadName:
   {
     auto threadName = mGlobalVars.GetCurrentThreadName();
     if (!threadName.empty())
       return threadName;
+
+    return std::to_wstring(Os::GetCurrentThreadId());
   }
-    // fall-through
   case FormatTraits::VariableId::ThreadId:
   {
     return std::to_wstring(Os::GetCurrentThreadId());

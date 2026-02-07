@@ -8,15 +8,16 @@ namespace DorelLogger
 
 GlobalVariables::GlobalVariables()
 {
-  mProcessId = Os::GetCurrentProcessId();
+  auto processId = Os::GetCurrentProcessId();
+  mFlatProcessId = std::to_wstring(processId);
 
   std::filesystem::path procPath = Os::GetCurrentProcessPath();
   mProcessName                   = procPath.filename().wstring();
 }
 
-uint32_t GlobalVariables::GetCurrentProcessId() const
+const std::wstring & GlobalVariables::GetFlatCurrentProcessId() const
 {
-  return mProcessId;
+  return mFlatProcessId;
 }
 
 const std::wstring & GlobalVariables::GetCurrentProcessName() const
