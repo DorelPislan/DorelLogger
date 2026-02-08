@@ -307,6 +307,21 @@ DEFINE_VALUES_STRINGS_ARRAY_3(kAnotherTestEnumValsByMacro,
                               AnotherTestEnum::AnotherValue3);
 DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(AnotherTestEnum, kAnotherTestEnumValsByMacro);
 
+enum MyEnum
+{
+  Value1,
+  Value2,
+  Value3
+};
+DL_DEFINE_VALUES_STRINGS_ARRAY(kTestEnum_ValsStrings6,
+                               DL_VAL_STR(MyEnum::Value1),
+                               DL_VAL_STR(MyEnum::Value2),
+                               DL_VAL_STR(MyEnum::Value3));
+
+DL_DEFINE_VALUES_STRINGS_ARRAY(kValsFromDefines,
+                               DL_VAL_STR(ERROR_SUCCESS),
+                               DL_VAL_STR(ERROR_ACCESS_DENIED));
+
 void TestEnumFormatter()
 {
   TestEnum val1 = TestEnum::Value1;
