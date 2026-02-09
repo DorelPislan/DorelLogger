@@ -331,6 +331,27 @@ void TestEnumFormatter()
     AnotherTestEnum::AnotherValue1, AnotherTestEnum::AnotherValue2, AnotherTestEnum::AnotherValue3);
 }
 
+DL_DEFINE_VALUES_STRINGS_ARRAY(kWinErroCodesStrings,
+                               DL_VAL_STR(ERROR_SUCCESS),
+                               DL_VAL_STR(ERROR_ACCESS_DENIED),
+                               DL_VAL_STR(ERROR_FILE_NOT_FOUND),
+                               DL_VAL_STR(ERROR_SUCCESS_RESTART_REQUIRED),
+                               DL_VAL_STR(ERROR_ACCOUNT_EXPIRED));
+DL_DEFINE_VALUE_WRAPPER_CLASS(WinErrorCode);
+DL_DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(WinErrorCode, kWinErroCodesStrings);
+
+void TestValueWrapperClass()
+{
+  WinErrorCode err1(ERROR_SUCCESS);
+  WinErrorCode err2(ERROR_ACCESS_DENIED);
+
+  auto str1 = std::format(L"Error1={}", err1);
+  assert(str1 == L"Error1=ERROR_SUCCESS");
+
+  auto str2 = std::format(L"Error2={}", err2);
+  assert(str2 == L"Error2=ERROR_ACCESS_DENIED");
+}
+
 int main()
 {
   std::cout << "Hello World!\n";
@@ -384,6 +405,7 @@ int main()
   TestWinApiFileSink();
   TestMessageBuilder();
   TestEnumFormatter();
+  TestValueWrapperClass();
   // TestResolver();
   // TestLogger();
 }
