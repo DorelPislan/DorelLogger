@@ -289,10 +289,10 @@ enum class TestEnum
   Value2 = 1,
   Value3 = 2
 };
-DEFINE_VALUES_STRINGS_ARRAY_3(kTestEnum_ValsStrings,
-                              TestEnum::Value1,
-                              TestEnum::Value2,
-                              TestEnum::Value3);
+DL_DEFINE_VALUES_STRINGS_ARRAY(kTestEnum_ValsStrings,
+                               DL_VAL_STR(TestEnum::Value1),
+                               DL_VAL_STR(TestEnum::Value2),
+                               DL_VAL_STR(TestEnum::Value3));
 DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TestEnum, kTestEnum_ValsStrings);
 
 enum AnotherTestEnum
@@ -301,22 +301,11 @@ enum AnotherTestEnum
   AnotherValue2,
   AnotherValue3
 };
-DEFINE_VALUES_STRINGS_ARRAY_3(kAnotherTestEnumValsByMacro,
-                              AnotherValue1,
-                              AnotherTestEnum::AnotherValue2,
-                              AnotherTestEnum::AnotherValue3);
+DL_DEFINE_VALUES_STRINGS_ARRAY(kAnotherTestEnumValsByMacro,
+                               DL_VAL_STR(AnotherValue1),
+                               DL_VAL_STR(AnotherTestEnum::AnotherValue2),
+                               DL_VAL_STR(AnotherTestEnum::AnotherValue3));
 DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(AnotherTestEnum, kAnotherTestEnumValsByMacro);
-
-enum MyEnum
-{
-  Value1,
-  Value2,
-  Value3
-};
-DL_DEFINE_VALUES_STRINGS_ARRAY(kTestEnum_ValsStrings6,
-                               DL_VAL_STR(MyEnum::Value1),
-                               DL_VAL_STR(MyEnum::Value2),
-                               DL_VAL_STR(MyEnum::Value3));
 
 DL_DEFINE_VALUES_STRINGS_ARRAY(kValsFromDefines,
                                DL_VAL_STR(ERROR_SUCCESS),
