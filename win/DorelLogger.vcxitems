@@ -47,7 +47,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\TypeExistenceDetector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Types.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggingUtilities.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ValuesStringsHelpers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\Format.cpp">
