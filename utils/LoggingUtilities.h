@@ -33,4 +33,17 @@ const wchar_t * GetFlagNameOr(uint32_t                    aFlag,
   static inline constexpr auto aArrayName =             \
     std::to_array<DorelLogger::LoggingUtilities::ValueStringPair>({ __VA_ARGS__ })
 
+#define DL_DEFINE_VALUE_WRAPPER_CLASS(aClassName) \
+  class aClassName                                \
+  {                                               \
+  public:                                         \
+    explicit aClassName(uint32_t aValue)          \
+      : mValue(aValue) {};                        \
+                                                  \
+    operator uint32_t() const { return mValue; }  \
+                                                  \
+  private:                                        \
+    uint32_t mValue;                              \
+  };
+
 #endif  //_DOREL_LOGGER_LOG_UTILITIES_H_
