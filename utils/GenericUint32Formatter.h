@@ -83,14 +83,14 @@ private:
   DorelLogger::LoggingUtilities::ValueStringPairSpan mValuesStrings;
 };
 
-#define DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TypeName, aValueTextPairArrayName)  \
-  template <>                                                                        \
-  struct std::formatter<TypeName, wchar_t> : public GenericUint32Formatter<TypeName> \
-  {                                                                                  \
-    constexpr formatter()                                                            \
-      : GenericUint32Formatter(aValueTextPairArrayName)                              \
-    {                                                                                \
-    }                                                                                \
+#define DL_DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TypeName, aValueTextPairArrayName) \
+  template <>                                                                          \
+  struct std::formatter<TypeName, wchar_t> : public GenericUint32Formatter<TypeName>   \
+  {                                                                                    \
+    constexpr formatter()                                                              \
+      : GenericUint32Formatter(aValueTextPairArrayName)                                \
+    {                                                                                  \
+    }                                                                                  \
   };
 
 };  // namespace DorelLogger
