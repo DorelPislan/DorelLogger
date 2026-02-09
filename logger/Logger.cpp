@@ -66,12 +66,6 @@ void Logger::SetCurrentThreadName(std::wstring aName)
   mGlobalVars.SetCurrentThreadName(std::move(aName));
 }
 
-void Logger::ResetCurrentThreadName()
-{
-  // no need of synchronization because this is thread specific variable
-  mGlobalVars.ResetCurrentThreadName();
-}
-
 void Logger::SetCustomVarValue(std::wstring aValue)
 {
   mGlobalVars.SetCustomVarValue(std::move(aValue));

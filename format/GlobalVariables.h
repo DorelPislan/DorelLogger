@@ -1,11 +1,8 @@
 #ifndef _DOREL_LOGGER_GLOBAL_VARIABLES_H_
 #define _DOREL_LOGGER_GLOBAL_VARIABLES_H_
 
-#include "../logger/ThreadsNames.h"
-
 namespace DorelLogger
 {
-class ThreadNames;
 
 /**
  * Class holding values for variables that can be used in format and are independent of any
@@ -26,10 +23,7 @@ public:
   const std::wstring & GetCustomVarValue() const;
 
   void SetProcessName(std::wstring aName);
-
   void SetCurrentThreadName(std::wstring aName);
-  void ResetCurrentThreadName();
-
   void SetCustomVarValue(std::wstring aValue);
 
 private:
@@ -39,7 +33,8 @@ private:
 
   std::wstring mCustomVarValue;
 
-  static thread_local std::wstring sFlatThreadId;
+  static thread_local std::wstring sCrtThreadName;
+  static thread_local std::wstring sFlatCrtThreadId;
 };
 
 };  // namespace DorelLogger

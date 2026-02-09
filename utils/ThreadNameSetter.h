@@ -23,7 +23,7 @@ public:
     mLogger.SetCurrentThreadName(aName);
   }
 
-  ~ThreadNameSetter() { mLogger.ResetCurrentThreadName(); }
+  ~ThreadNameSetter() { mLogger.SetCurrentThreadName(std::wstring()); }
 
 private:
   Logger & mLogger;

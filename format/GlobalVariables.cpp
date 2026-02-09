@@ -6,7 +6,8 @@
 namespace DorelLogger
 {
 
-/*static*/ thread_local std::wstring GlobalVariables::sFlatThreadId;
+/*static*/ thread_local std::wstring GlobalVariables::sCrtThreadName;
+/*static*/ thread_local std::wstring GlobalVariables::sFlatCrtThreadId;
 
 GlobalVariables::GlobalVariables()
 {
@@ -29,15 +30,15 @@ const std::wstring & GlobalVariables::GetCurrentProcessName() const
 
 const std::wstring & GlobalVariables::GetCurrentThreadName() const
 {
-  return ThreadsNames::GetCurrentThreadName();
+  return sCrtThreadName;
 }
 
 const std::wstring & GlobalVariables::GetCurrentThreadId() const
 {
-  if (sFlatThreadId.empty())
-    sFlatThreadId = std::to_wstring(Os::GetCurrentThreadId());
+  if (sFlatCrtThreadId.empty())
+    sFlatCrtThreadId = std::to_wstring(Os::GetCurrentThreadId());
 
-  return sFlatThreadId;
+  return sFlatCrtThreadId;
 }
 
 const std::wstring & GlobalVariables::GetCustomVarValue() const
@@ -52,13 +53,7 @@ void GlobalVariables::SetProcessName(std::wstring aName)
 
 void GlobalVariables::SetCurrentThreadName(std::wstring aName)
 {
-  ThreadsNames::SetCurrentThreadName(std::move(aName));
-}
-
-void GlobalVariables::ResetCurrentThreadName()
-{
-  // no need of synchronization
-  ThreadsNames::ResetCurrentThreadName();
+  sCrtThreadName = std::move(aName);
 }
 
 void GlobalVariables::SetCustomVarValue(std::wstring aValue)

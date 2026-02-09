@@ -29,7 +29,6 @@ public:
 
   void SetProcessName(std::wstring aName);
   void SetCurrentThreadName(std::wstring aName);
-  void ResetCurrentThreadName();
   void SetCustomVarValue(std::wstring aValue);
 
   void SetMinLogLevel(ISink::MessageType aMinLogLevel);
