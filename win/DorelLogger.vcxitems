@@ -27,7 +27,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\Logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\MessageBuilder.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\pch.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\ISink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.h" />
@@ -43,7 +42,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Os.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ThreadNameSetter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\TypeExistenceDetector.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Types.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggingUtilities.h" />
@@ -62,9 +60,6 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">

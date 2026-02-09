@@ -1,7 +1,6 @@
 #ifndef _DOREL_LOGGER_FORMAT_RESOLVER_H_
 #define _DOREL_LOGGER_FORMAT_RESOLVER_H_
 
-#include "../logger/ThreadsNames.h"
 #include "../sinks/ISink.h"
 #include "FormatTraits.h"
 

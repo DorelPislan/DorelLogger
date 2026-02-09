@@ -4,7 +4,6 @@
 #include "../format/GlobalVariables.h"
 #include "../sinks/ISink.h"
 #include "../utils/Types.h"
-#include "ThreadsNames.h"
 
 namespace DorelLogger
 {

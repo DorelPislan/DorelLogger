@@ -33,9 +33,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\MessageBuilder.h">
       <Filter>logger</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.h">
-      <Filter>logger</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\ISink.h">
       <Filter>sinks</Filter>
     </ClInclude>
@@ -67,9 +64,6 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ThreadNameSetter.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdIncludes.h" />
@@ -125,9 +119,6 @@
       <Filter>format</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp">
-      <Filter>logger</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\ThreadsNames.cpp">
       <Filter>logger</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">

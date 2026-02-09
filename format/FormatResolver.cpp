@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "FormatResolver.h"
-#include "../logger/ThreadsNames.h"
 #include "../utils/Os.h"
 #include "GlobalVariables.h"
 
