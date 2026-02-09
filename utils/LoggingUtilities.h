@@ -6,7 +6,7 @@ namespace DorelLogger
 namespace LoggingUtilities
 {
 using ValueStringPair     = std::pair<uint32_t, const wchar_t *>;
-using ValueStringPairSpan = std::span<ValueStringPair>;
+using ValueStringPairSpan = std::span<const ValueStringPair>;
 
 std::vector<const wchar_t *> GetFlagsNames(uint32_t                    aValue,
                                            const ValueStringPairSpan & aFlagsInfos);
