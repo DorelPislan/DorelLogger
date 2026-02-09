@@ -16,7 +16,7 @@ struct GenericUint32Formatter : public std::formatter<uint32_t, wchar_t>
   // class c-tor
   constexpr GenericUint32Formatter(
     DorelLogger::LoggingUtilities::ValueStringPairSpan aValsAndStrings)
-    : mValuesStrings(aValsAndStrings)
+    : mValuesStrings(std::move(aValsAndStrings))
   {
   }
 
