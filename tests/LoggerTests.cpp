@@ -16,7 +16,6 @@
 #include "../utils/GenericUint32Formatter.h"
 #include "../utils/LoggerMacros.h"
 #include "../utils/LoggerProvider.h"
-#include "../utils/ThreadNameSetter.h"
 #include "win/pch.h"
 #include <source_location>
 
@@ -66,8 +65,6 @@ int TestWindowsDebugSink()
   log.AddSink(std::move(wdsSink));
 
   log.SetProcessName(L"Test Process Name");
-
-  ThreadNameSetter setter(log, L"Main Thread");
 
   log.LogMessageFmt(ISink::MessageType::Info, DL_SRC_POS,
                     L" Mesage passed with format = {} -> {} and HRESULT={:A}", 234, L"text",
