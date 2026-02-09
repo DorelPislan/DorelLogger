@@ -292,7 +292,7 @@ DL_DEFINE_VALUES_STRINGS_ARRAY(kTestEnum_ValsStrings,
                                DL_VAL_STR(TestEnum::Value1),
                                DL_VAL_STR(TestEnum::Value2),
                                DL_VAL_STR(TestEnum::Value3));
-DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TestEnum, kTestEnum_ValsStrings);
+DL_DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TestEnum, kTestEnum_ValsStrings);
 
 enum AnotherTestEnum
 {
@@ -304,7 +304,7 @@ DL_DEFINE_VALUES_STRINGS_ARRAY(kAnotherTestEnumValsByMacro,
                                DL_VAL_STR(AnotherValue1),
                                DL_VAL_STR(AnotherTestEnum::AnotherValue2),
                                DL_VAL_STR(AnotherTestEnum::AnotherValue3));
-DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(AnotherTestEnum, kAnotherTestEnumValsByMacro);
+DL_DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(AnotherTestEnum, kAnotherTestEnumValsByMacro);
 
 DL_DEFINE_VALUES_STRINGS_ARRAY(kValsFromDefines,
                                DL_VAL_STR(ERROR_SUCCESS),
