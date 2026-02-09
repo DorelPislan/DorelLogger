@@ -11,16 +11,6 @@
 #define ESTIMATED_MESSAGE_LENGTH 200
 #endif
 
-// Helper macros for proper token expansion
-#define CONCAT_IMPL(x, y) x##y
-#define CONCAT(x, y)      CONCAT_IMPL(x, y)
-
-// Generate unique name using __COUNTER__
-#define UNIQUE_VAR(base) CONCAT(base, __COUNTER__)
-
-#define DL_SET_CURRENT_THREAD_NAME(aThreadName) \
-  DorelLogger::ThreadNameSetter UNIQUE_VAR(ctns_)(GET_LOGGER(), aThreadName)
-
 #ifdef DONTLOG_SRC_POS
 #define DL_SRC_POS nullptr, nullptr, nullptr
 #else
