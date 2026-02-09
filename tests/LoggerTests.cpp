@@ -313,22 +313,30 @@ void TestEnumFormatter()
   TestEnum val2 = TestEnum::Value2;
   TestEnum val3 = TestEnum::Value3;
 
-  std::wstring enumStringsFromVars = std::format(L" Value1_FromVar    ={} "
-                                                 L" Value2_FromVar    ={} "
-                                                 L" Value3_FromVar    ={} ",
+  std::wstring enumStringsFromVars = std::format(L" Value1={},"
+                                                 L" Value2={:F},"
+                                                 L" Value3={}",
                                                  val1, val2, val3);
+  assert(enumStringsFromVars == L" Value1=Value1, Value2=TestEnum::Value2, Value3=Value3");
 
   std::wstring enumStringsFromLiterals =
-    std::format(L" Value1_FromLiteral={} "
-                L" Value2_FromLiteral={} "
-                L" Value3_FromLiteral={} ",
+    std::format(L" Value1={},"
+                L" Value2={:F},"
+                L" Value3={}",
                 TestEnum::Value1, TestEnum::Value2, TestEnum::Value3);
+  assert(enumStringsFromLiterals == L" Value1=Value1, Value2=TestEnum::Value2, Value3=Value3");
+
+  AnotherTestEnum anotherTestEnumVal1 = AnotherTestEnum::AnotherValue1;
 
   std::wstring anotherEnumStringsFromLiterals = std::format(
-    L" Value1_FromLiteral={:F} "
-    L" Value2_FromLiteral={} "
-    L" Value3_FromLiteral={} ",
-    AnotherTestEnum::AnotherValue1, AnotherTestEnum::AnotherValue2, AnotherTestEnum::AnotherValue3);
+    L" Value1_FromVar={:F},"
+    L" Value2_FromLiteral={:V},"
+    L" Value3_FromLiteral={:F}",
+    anotherTestEnumVal1, AnotherTestEnum::AnotherValue2, AnotherTestEnum::AnotherValue3);
+
+  assert(anotherEnumStringsFromLiterals ==
+         L" Value1_FromVar=AnotherValue1, Value2_FromLiteral=AnotherValue2, "
+         L"Value3_FromLiteral=AnotherTestEnum::AnotherValue3");
 }
 
 DL_DEFINE_VALUES_STRINGS_ARRAY(kWinErroCodesStrings,
