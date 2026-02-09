@@ -30,7 +30,7 @@ const wchar_t * GetFlagNameOr(uint32_t                    aFlag,
 #define DL_VAL_STR(aVal)                 DL_VAL_STR_ENTRY(aVal, #aVal)
 
 #define DL_DEFINE_VALUES_STRINGS_ARRAY(aArrayName, ...) \
-  inline constexpr auto aArrayName =                    \
+  static inline constexpr auto aArrayName =             \
     std::to_array<DorelLogger::LoggingUtilities::ValueStringPair>({ __VA_ARGS__ })
 
 #endif  //_DOREL_LOGGER_LOG_UTILITIES_H_
