@@ -6,6 +6,8 @@
 namespace DorelLogger
 {
 
+/*static*/ thread_local std::wstring GlobalVariables::sFlatThreadId;
+
 GlobalVariables::GlobalVariables()
 {
   auto processId = Os::GetCurrentProcessId();
@@ -28,6 +30,14 @@ const std::wstring & GlobalVariables::GetCurrentProcessName() const
 const std::wstring & GlobalVariables::GetCurrentThreadName() const
 {
   return ThreadsNames::GetCurrentThreadName();
+}
+
+const std::wstring & GlobalVariables::GetCurrentThreadId() const
+{
+  if (sFlatThreadId.empty())
+    sFlatThreadId = std::to_wstring(Os::GetCurrentThreadId());
+
+  return sFlatThreadId;
 }
 
 const std::wstring & GlobalVariables::GetCustomVarValue() const

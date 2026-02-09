@@ -22,6 +22,7 @@ public:
   const std::wstring & GetCurrentProcessId() const;
   const std::wstring & GetCurrentProcessName() const;
   const std::wstring & GetCurrentThreadName() const;
+  const std::wstring & GetCurrentThreadId() const;
   const std::wstring & GetCustomVarValue() const;
 
   void SetProcessName(std::wstring aName);
@@ -37,6 +38,8 @@ private:
   std::wstring mProcessName;
 
   std::wstring mCustomVarValue;
+
+  static thread_local std::wstring sFlatThreadId;
 };
 
 };  // namespace DorelLogger

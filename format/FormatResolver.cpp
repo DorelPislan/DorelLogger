@@ -195,11 +195,11 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
     auto const & threadName = mGlobalVars.GetCurrentThreadName();
 
-    return !threadName.empty() ? threadName : std::to_wstring(Os::GetCurrentThreadId());
+    return !threadName.empty() ? threadName : mGlobalVars.GetCurrentThreadId();
   }
   case FormatTraits::VariableId::ThreadId:
   {
-    return std::to_wstring(Os::GetCurrentThreadId());
+    return mGlobalVars.GetCurrentThreadId();
   }
   case FormatTraits::VariableId::MessageType:
   {
