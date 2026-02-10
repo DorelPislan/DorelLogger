@@ -43,8 +43,10 @@ VariableId GetVarIdFromVarName(char aVarName)
                          {
                            return aVarName == aMarkerIdPair.first;
                          });
+  if (it == FormatTraits::kSupportedVars.end())
+    return FormatTraits::VariableId::NoId;
 
-  return FormatTraits::VariableId::NoId;
+  return it->second;
 }
 
 wchar_t GetAlignmentMarker(AlignmentType aAlgn)
