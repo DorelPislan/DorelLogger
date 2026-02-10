@@ -90,8 +90,7 @@ const char kTrimLeftMarker       = '-';
 const char kKeepRightMarker      = '+';
 const char kVerbatimSuffixMarker = ':';
 
-extern const std::array<std::pair<char, VariableId>, 22> kSupportedVars;
-
+VariableId       GetVarIdFromVarName(char aVarName);
 wchar_t          GetAlignmentMarker(AlignmentType aAlgn);
 std::wstring     GetWidthString(int aWidth);
 std::string_view GetVarIdString(VariableId aId);

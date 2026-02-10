@@ -35,6 +35,17 @@ const std::array<std::pair<char, VariableId>, 22> kSupportedVars = {
 } };
 // clang-format on
 
+VariableId GetVarIdFromVarName(char aVarName)
+{
+  auto it = std::find_if(FormatTraits::kSupportedVars.begin(), FormatTraits::kSupportedVars.end(),
+                         [aVarName](const auto & aMarkerIdPair)
+                         {
+                           return aVarName == aMarkerIdPair.first;
+                         });
+
+  return FormatTraits::VariableId::NoId;
+}
+
 wchar_t GetAlignmentMarker(AlignmentType aAlgn)
 {
   switch (aAlgn)

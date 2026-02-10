@@ -205,16 +205,10 @@ FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt
 {
   char ch = static_cast<char>(*aIt);
 
-  auto it = std::find_if(FormatTraits::kSupportedVars.begin(), FormatTraits::kSupportedVars.end(),
-                         [ch](const auto & aMarkerIdPair)
-                         {
-                           return ch == aMarkerIdPair.first;
-                         });
+  auto varId = FormatTraits::GetVarIdFromVarName(ch);
 
-  if (it == FormatTraits::kSupportedVars.end())
+  if (varId == FormatTraits::VariableId::NoId)
     return FormatTraits::VariableId::NoId;
-
-  auto varId = it->second;
 
   aIt++;
 
