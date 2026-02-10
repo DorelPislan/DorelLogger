@@ -1,6 +1,11 @@
 #ifndef _DOREL_LOGGER_LOGGER_H_
 #define _DOREL_LOGGER_LOGGER_H_
 
+#include <chrono>
+#include <optional>
+#include <string>
+#include <vector>
+//
 #include "../format/GlobalVariables.h"
 #include "../sinks/ISink.h"
 #include "../utils/Types.h"

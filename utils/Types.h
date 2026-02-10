@@ -3,7 +3,8 @@
 #ifndef _DOREL_LOGGER_TYPES_H_
 #define _DOREL_LOGGER_TYPES_H_
 
-#include "../stdIncludes.h"
+#include <mutex>
+//
 #include "TypeExistenceDetector.h"
 
 class CriticalSection;

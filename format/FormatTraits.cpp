@@ -1,6 +1,7 @@
-
-#include "pch.h"
 #include "FormatTraits.h"
+//
+#include <algorithm>
+#include <array>
 
 namespace DorelLogger
 {

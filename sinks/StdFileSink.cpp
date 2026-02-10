@@ -1,7 +1,8 @@
-#include "pch.h"
 #include "StdFileSink.h"
+//
+#include <cassert>
+//
 #include "../format/FormatResolver.h"
-#include "../utils/Os.h"
 
 namespace DorelLogger
 {

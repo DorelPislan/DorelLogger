@@ -1,11 +1,9 @@
 #ifndef _DOREL_LOGGER_LOGGER_MACROS_H_
 #define _DOREL_LOGGER_LOGGER_MACROS_H_
 
-#include "../logger/Logger.h"
 #include "../logger/MessageBuilder.h"
 #include "../utils/ErrorCode.h"
 #include "../utils/Os.h"
-#include "../utils/Types.h"
 
 #ifndef ESTIMATED_MESSAGE_LENGTH
 #define ESTIMATED_MESSAGE_LENGTH 200

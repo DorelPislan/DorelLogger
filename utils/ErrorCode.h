@@ -1,7 +1,9 @@
 #ifndef _DOREL_LOGGER_ERROR_CODE_H_
 #define _DOREL_LOGGER_ERROR_CODE_H_
 
-#include "../stdIncludes.h"
+#include <cstdint>
+#include <format>
+#include <string>
 
 #ifdef _WIN32
 #include <Windows.h>

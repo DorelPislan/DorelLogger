@@ -3,6 +3,8 @@
 #ifndef _DOREL_LOGGER_WINRT_FILE_SINK_H_
 #define _DOREL_LOGGER_WINRT_FILE_SINK_H_
 
+#include <filesystem>
+//
 #include "SinkBase.h"
 
 // Guard compilation of this class by a MACRO-definition because it requires

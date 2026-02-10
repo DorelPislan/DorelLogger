@@ -3,8 +3,10 @@
 #ifndef _DOREL_LOGGER_WIN_API_FILE_SINK_H_
 #define _DOREL_LOGGER_WIN_API_FILE_SINK_H_
 
-#include "SinkBase.h"
 #include <Windows.h>
+#include <filesystem>
+//
+#include "SinkBase.h"
 
 namespace DorelLogger
 {

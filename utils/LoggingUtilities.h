@@ -1,6 +1,10 @@
 #ifndef _DOREL_LOGGER_LOG_UTILITIES_H_
 #define _DOREL_LOGGER_LOG_UTILITIES_H_
 
+#include <vector>
+#include <span>
+#include <utility>
+
 namespace DorelLogger
 {
 namespace LoggingUtilities

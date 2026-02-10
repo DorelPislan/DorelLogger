@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "LoggerProvider.h"
 
 namespace DorelLogger

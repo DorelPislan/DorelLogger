@@ -1,5 +1,5 @@
-#include "pch.h"
 #include "SinkBase.h"
+//
 #include "../format/FormatResolver.h"
 
 namespace DorelLogger

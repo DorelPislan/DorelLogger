@@ -1,6 +1,9 @@
 #ifndef _DOREL_LOGGER_FORMAT_H_
 #define _DOREL_LOGGER_FORMAT_H_
 
+#include <string>
+#include <vector>
+//
 #include "FormatTraits.h"
 
 namespace DorelLogger
@@ -44,7 +47,7 @@ public:
   // class c-tor
   Format() = default;
 
-  void         Set(std::wstring_view aFormat);
+  void Set(std::wstring_view aFormat);
 
   TokensContainer::const_iterator begin() const;
   TokensContainer::const_iterator end() const;

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "MsiLogSink.h"
 #include "../format/FormatResolver.h"
 

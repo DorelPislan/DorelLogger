@@ -3,6 +3,9 @@
 #ifndef _DOREL_LOGGER_STD_FILE_SINK_H_
 #define _DOREL_LOGGER_STD_FILE_SINK_H_
 
+#include <filesystem>
+#include <fstream>
+//
 #include "SinkBase.h"
 
 namespace DorelLogger

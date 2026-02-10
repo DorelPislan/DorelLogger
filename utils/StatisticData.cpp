@@ -1,5 +1,4 @@
 
-#include "pch.h"
 #include "StatisticData.h"
 #include "../format/FormatResolver.h"
 

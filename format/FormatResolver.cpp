@@ -1,6 +1,7 @@
-#include "pch.h"
 #include "FormatResolver.h"
+//
 #include "../utils/Os.h"
+#include "Format.h"
 #include "GlobalVariables.h"
 
 namespace DorelLogger

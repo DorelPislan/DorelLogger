@@ -1,7 +1,7 @@
 #ifndef _DOREL_LOGGER_FORMAT_TRAITS_H_
 #define _DOREL_LOGGER_FORMAT_TRAITS_H_
 
-#include "../stdIncludes.h"
+#include <string>
 
 namespace DorelLogger
 {

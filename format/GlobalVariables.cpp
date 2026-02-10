@@ -1,6 +1,7 @@
-
-#include "pch.h"
 #include "GlobalVariables.h"
+//
+#include <filesystem>
+//
 #include "../utils/Os.h"
 
 namespace DorelLogger

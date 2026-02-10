@@ -1,6 +1,10 @@
 #ifndef _DOREL_LOGGER_FORMAT_RESOLVER_H_
 #define _DOREL_LOGGER_FORMAT_RESOLVER_H_
 
+#include <chrono>
+#include <optional>
+#include <string>
+//
 #include "../sinks/ISink.h"
 #include "FormatTraits.h"
 
@@ -8,6 +12,7 @@ namespace DorelLogger
 {
 
 class GlobalVariables;
+class Format;
 
 /**
  * Class responsible for combining format of a sink withe the message to log

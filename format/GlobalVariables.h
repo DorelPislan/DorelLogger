@@ -1,6 +1,8 @@
 #ifndef _DOREL_LOGGER_GLOBAL_VARIABLES_H_
 #define _DOREL_LOGGER_GLOBAL_VARIABLES_H_
 
+#include <string>
+
 namespace DorelLogger
 {
 

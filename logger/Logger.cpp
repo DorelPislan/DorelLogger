@@ -1,5 +1,9 @@
-#include "pch.h"
 #include "Logger.h"
+//
+#include <cassert>
+#include <mutex>
+//
+#include "../format/Format.h"
 #include "../format/FormatResolver.h"
 #include "../utils/Os.h"
 

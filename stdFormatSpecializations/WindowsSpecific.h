@@ -2,8 +2,8 @@
 #ifndef _DOREL_LOGGER_WINDOWS_SPECIFIC_FORMATTERS_H_
 #define _DOREL_LOGGER_WINDOWS_SPECIFIC_FORMATTERS_H_
 
-#include "../stdIncludes.h"
 #include <Windows.h>
+#include <format>
 
 template <>
 struct std::formatter<IID, wchar_t>

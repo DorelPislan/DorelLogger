@@ -1,6 +1,5 @@
-
-#include "pch.h"
 #include "WinRtFileSink.h"
+//
 #include "../format/FormatResolver.h"
 
 // clang-format on

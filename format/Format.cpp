@@ -1,6 +1,6 @@
-
-#include "pch.h"
 #include "Format.h"
+//
+#include <cassert>
 
 namespace DorelLogger
 {

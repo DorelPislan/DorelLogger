@@ -1,6 +1,10 @@
 #ifndef _DOREL_LOGGER_STATISTIC_DATA_H_
 #define _DOREL_LOGGER_STATISTIC_DATA_H_
 
+#include <array>
+#include <string>
+#include <utility>
+//
 #include "../sinks/ISink.h"
 
 namespace DorelLogger

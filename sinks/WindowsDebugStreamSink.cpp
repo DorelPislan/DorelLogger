@@ -1,8 +1,9 @@
-#include "pch.h"
 #include "WindowsDebugStreamSink.h"
+//
+#include <Windows.h>
+//
 #include "../format/FormatResolver.h"
 #include "../utils/Os.h"
-#include <Windows.h>
 
 namespace DorelLogger
 {

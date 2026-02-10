@@ -1,7 +1,8 @@
-#include "pch.h"
 #include "WinApiFileSink.h"
+//
+#include <cassert>
+//
 #include "../format/FormatResolver.h"
-#include "../stdFormatSpecializations/WindowsSpecific.h"
 #include "../utils/ErrorCode.h"
 #include "../utils/Os.h"
 

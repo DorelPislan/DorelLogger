@@ -66,26 +66,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdIncludes.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\format\pch.h">
-      <Filter>format</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\pch.h">
-      <Filter>sinks</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\pch.h">
-      <Filter>logger</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\pch.h">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggingUtilities.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\defaultUsage.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\pch.h">
-      <Filter>stdFormatSpecializations</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\StdTypes.h">
       <Filter>stdFormatSpecializations</Filter>
     </ClInclude>

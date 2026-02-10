@@ -3,6 +3,8 @@
 #ifndef _DOREL_LOGGER_OS_H_
 #define _DOREL_LOGGER_OS_H_
 
+#include <cstdint>
+#include <string>
 namespace DorelLogger
 {
 

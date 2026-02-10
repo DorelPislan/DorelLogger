@@ -1,6 +1,7 @@
 #ifndef _DOREL_LOGGER_GENERIC_UINT32_FORMATTER_H_
 #define _DOREL_LOGGER_GENERIC_UINT32_FORMATTER_H_
 
+#include <format>
 #include "LoggingUtilities.h"
 
 namespace DorelLogger
