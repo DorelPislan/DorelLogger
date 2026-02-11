@@ -35,18 +35,18 @@ public:
   void SetCurrentThreadName(std::wstring aName);
   void SetCustomVarValue(std::wstring aValue);
 
-  void SetMinLogLevel(ISink::MessageType aMinLogLevel);
-  bool ShouldLog(ISink::MessageType aMsgType) const;
+  void SetMinLogLevel(MessageType aMinLogLevel);
+  bool ShouldLog(MessageType aMsgType) const;
 
   void SetSessionProlog(std::wstring aFormattedMessage);
   void SetSessionEpilog(std::wstring aFormattedMessage);
 
   template <typename... Args>
-  void LogMessageFmt(ISink::MessageType aMessageType,
-                     const char *       aSourceFile,
-                     const char *       aSourceFunction,
-                     size_t             aSourceLine,
-                     std::wstring_view  aMessageFormat,
+  void LogMessageFmt(MessageType       aMessageType,
+                     const char *      aSourceFile,
+                     const char *      aSourceFunction,
+                     size_t            aSourceLine,
+                     std::wstring_view aMessageFormat,
                      Args &&... aArgs)
   {
     LogMessage(aMessageType, aSourceFile, aSourceFunction, aSourceLine,
@@ -60,7 +60,7 @@ public:
                    std::wstring_view aMessageFormat,
                    Args &&... aArgs)
   {
-    LogMessage(ISink::MessageType::Trace, aSourceFile, aSourceFunction, aSourceLine,
+    LogMessage(MessageType::Trace, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
 
@@ -71,7 +71,7 @@ public:
                   std::wstring_view aMessageFormat,
                   Args &&... aArgs)
   {
-    LogMessage(ISink::MessageType::Info, aSourceFile, aSourceFunction, aSourceLine,
+    LogMessage(MessageType::Info, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
 
@@ -82,7 +82,7 @@ public:
                      std::wstring_view aMessageFormat,
                      Args &&... aArgs)
   {
-    LogMessage(ISink::MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine,
+    LogMessage(MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
   template <typename... Args>
@@ -92,15 +92,15 @@ public:
                    std::wstring_view aMessageFormat,
                    Args &&... aArgs)
   {
-    LogMessage(ISink::MessageType::Error, aSourceFile, aSourceFunction, aSourceLine,
+    LogMessage(MessageType::Error, aSourceFile, aSourceFunction, aSourceLine,
                std::vformat(aMessageFormat, std::make_wformat_args(aArgs...)));
   }
 
-  void LogMessage(ISink::MessageType aMessageType,
-                  const char *       aSourceFile,
-                  const char *       aSourceFunction,
-                  size_t             aSourceLine,
-                  std::wstring_view  aMessage);
+  void LogMessage(MessageType       aMessageType,
+                  const char *      aSourceFile,
+                  const char *      aSourceFunction,
+                  size_t            aSourceLine,
+                  std::wstring_view aMessage);
 
   void LogTrace(const char *      aSourceFile,
                 const char *      aSourceFunction,
@@ -128,7 +128,7 @@ private:
 
   std::vector<std::unique_ptr<ISink>> mSinks;
 
-  ISink::MessageType mMinLogLevel;
+  MessageType mMinLogLevel;
 
   GlobalVariables mGlobalVars;
 

@@ -11,7 +11,7 @@ namespace DorelLogger
 {
 
 Logger::Logger()
-  : mMinLogLevel(ISink::MessageType::Info)
+  : mMinLogLevel(MessageType::Info)
 {
 }
 
@@ -75,12 +75,12 @@ void Logger::SetCustomVarValue(std::wstring aValue)
   mGlobalVars.SetCustomVarValue(std::move(aValue));
 }
 
-void Logger::SetMinLogLevel(ISink::MessageType aMinLoggedSeverity)
+void Logger::SetMinLogLevel(MessageType aMinLoggedSeverity)
 {
   mMinLogLevel = aMinLoggedSeverity;
 }
 
-bool Logger::ShouldLog(ISink::MessageType aMsgType) const
+bool Logger::ShouldLog(MessageType aMsgType) const
 {
   return aMsgType >= mMinLogLevel;
 }
@@ -99,11 +99,11 @@ void Logger::SetSessionEpilog(std::wstring aFormattedMessage)
   mSessionEpilog = std::move(aFormattedMessage);
 }
 
-void Logger::LogMessage(ISink::MessageType aMessageType,
-                        const char *       aSourceFile,
-                        const char *       aSourceFunction,
-                        size_t             aSourceLine,
-                        std::wstring_view  aMessage)
+void Logger::LogMessage(MessageType       aMessageType,
+                        const char *      aSourceFile,
+                        const char *      aSourceFunction,
+                        size_t            aSourceLine,
+                        std::wstring_view aMessage)
 {
   assert(!mSinks.empty());
 
@@ -135,7 +135,7 @@ void Logger::LogTrace(const char *      aSourceFile,
                       size_t            aSourceLine,
                       std::wstring_view aMessage)
 {
-  LogMessage(ISink::MessageType::Trace, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+  LogMessage(MessageType::Trace, aSourceFile, aSourceFunction, aSourceLine, aMessage);
 }
 
 void Logger::LogInfo(const char *      aSourceFile,
@@ -143,7 +143,7 @@ void Logger::LogInfo(const char *      aSourceFile,
                      size_t            aSourceLine,
                      std::wstring_view aMessage)
 {
-  LogMessage(ISink::MessageType::Info, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+  LogMessage(MessageType::Info, aSourceFile, aSourceFunction, aSourceLine, aMessage);
 }
 
 void Logger::LogWarning(const char *      aSourceFile,
@@ -151,7 +151,7 @@ void Logger::LogWarning(const char *      aSourceFile,
                         size_t            aSourceLine,
                         std::wstring_view aMessage)
 {
-  LogMessage(ISink::MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+  LogMessage(MessageType::Warning, aSourceFile, aSourceFunction, aSourceLine, aMessage);
 }
 
 void Logger::LogError(const char *      aSourceFile,
@@ -159,7 +159,7 @@ void Logger::LogError(const char *      aSourceFile,
                       size_t            aSourceLine,
                       std::wstring_view aMessage)
 {
-  LogMessage(ISink::MessageType::Error, aSourceFile, aSourceFunction, aSourceLine, aMessage);
+  LogMessage(MessageType::Error, aSourceFile, aSourceFunction, aSourceLine, aMessage);
 }
 
 void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
@@ -167,7 +167,7 @@ void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
   if (!aMsgFormat)
     return;
 
-  FormatResolver resolver(mGlobalVars, ISink::MessageType::All, nullptr, nullptr, 0, {});
+  FormatResolver resolver(mGlobalVars, MessageType::All, nullptr, nullptr, 0, {});
 
   Format customFormat;
   customFormat.Set(*aMsgFormat);
@@ -186,7 +186,7 @@ void Logger::DumpStatistics()
   Format customFormat;
   customFormat.Set(L"{W}");
 
-  FormatResolver resolver(mGlobalVars, ISink::MessageType::Info, nullptr, nullptr, 0, {});
+  FormatResolver resolver(mGlobalVars, MessageType::Info, nullptr, nullptr, 0, {});
   resolver.SetFormat(&customFormat);
 
   for (auto & sink : mSinks)

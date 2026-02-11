@@ -2,6 +2,8 @@
 #define _DOREL_LOGGER_ISINK_H_
 
 #include <string>
+//
+#include "../core/MessageType.h"
 
 namespace DorelLogger
 {
@@ -18,25 +20,15 @@ class FormatResolver;
 class ISink
 {
 public:
-  enum class MessageType
-  {
-    All = 0,
-    Trace,
-    Info,
-    Warning,
-    Error,
-    NoLogging = 100,
-  };
-
   virtual ~ISink() {};
 
   virtual const std::wstring & GetName() = 0;
 
   virtual void SetMessageFormat(std::wstring_view aFormat) = 0;
 
-  virtual void        SetMinLogLevel(ISink::MessageType aNewMin) = 0;
-  virtual MessageType GetMinLogLevel() const                     = 0;
-  virtual bool        ShouldLog(MessageType aType) const         = 0;
+  virtual void        SetMinLogLevel(MessageType aNewMin) = 0;
+  virtual MessageType GetMinLogLevel() const              = 0;
+  virtual bool        ShouldLog(MessageType aType) const  = 0;
 
   virtual void CollectStatistics(bool aCollect)           = 0;
   virtual void DumpStatistics(FormatResolver & aResolver) = 0;

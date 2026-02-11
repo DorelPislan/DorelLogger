@@ -7,7 +7,7 @@ namespace DorelLogger
 
 SinkBase::SinkBase(std::wstring aName)
   : mName(std::move(aName))
-  , mMinLogLevel(ISink::MessageType::All)
+  , mMinLogLevel(MessageType::All)
 {
 }
 
@@ -21,12 +21,12 @@ void SinkBase::SetMessageFormat(std::wstring_view aFormat)
   mFormat.Set(aFormat);
 }
 
-void SinkBase::SetMinLogLevel(ISink::MessageType aNewMin)
+void SinkBase::SetMinLogLevel(MessageType aNewMin)
 {
   mMinLogLevel = aNewMin;
 }
 
-ISink::MessageType SinkBase::GetMinLogLevel() const
+MessageType SinkBase::GetMinLogLevel() const
 {
   return mMinLogLevel;
 }

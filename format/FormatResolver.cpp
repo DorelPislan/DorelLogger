@@ -20,7 +20,7 @@ const size_t kEstimatedMsgLength =
 };  // namespace
 
 FormatResolver::FormatResolver(const GlobalVariables & aGlobalVars,
-                               ISink::MessageType      aMessageType,
+                               MessageType      aMessageType,
                                const char *            aSourceFile,
                                const char *            aSourceFunction,
                                size_t                  aSourceLine,
@@ -34,7 +34,7 @@ FormatResolver::FormatResolver(const GlobalVariables & aGlobalVars,
 {
 }
 
-ISink::MessageType FormatResolver::GetMessageType() const
+MessageType FormatResolver::GetMessageType() const
 {
   return mMessageType;
 }
@@ -287,16 +287,16 @@ const wchar_t * FormatResolver::GetMessageTypeString()
 {
   switch (mMessageType)
   {
-  case ISink::MessageType::Trace:
+  case MessageType::Trace:
     return L"TRACE";
 
-  case ISink::MessageType::Info:
+  case MessageType::Info:
     return L"INFO";
 
-  case ISink::MessageType::Warning:
+  case MessageType::Warning:
     return L"WARNING";
 
-  case ISink::MessageType::Error:
+  case MessageType::Error:
     return L"ERROR";
 
   default:

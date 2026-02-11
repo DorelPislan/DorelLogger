@@ -46,12 +46,12 @@ private:
   // size_t mMinTimeBetween2Msgs = 0;
   // size_t mMaxTimeBetween2Msgs = 0;
 
-  using MsgTypeAndCount = std::pair<ISink::MessageType, int>;
+  using MsgTypeAndCount = std::pair<MessageType, int>;
 
-  std::array<MsgTypeAndCount, 4> mMsgsCountByType = { { { ISink::MessageType::Trace, 0 },
-                                                        { ISink::MessageType::Info, 0 },
-                                                        { ISink::MessageType::Warning, 0 },
-                                                        { ISink::MessageType::Error, 0 } } };
+  std::array<MsgTypeAndCount, 4> mMsgsCountByType = { { { MessageType::Trace, 0 },
+                                                        { MessageType::Info, 0 },
+                                                        { MessageType::Warning, 0 },
+                                                        { MessageType::Error, 0 } } };
 };
 };  // namespace DorelLogger
 

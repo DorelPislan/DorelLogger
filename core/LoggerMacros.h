@@ -18,7 +18,7 @@
 #define LOG_TRACE_FMT(aFormat, ...)                               \
   {                                                               \
     auto & logger = GET_LOGGER();                                 \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Trace)) \
+    if (logger.ShouldLog(DorelLogger::MessageType::Trace)) \
     {                                                             \
       logger.LogTraceFmt(DL_SRC_POS, aFormat, __VA_ARGS__);       \
     }                                                             \
@@ -27,7 +27,7 @@
 #define LOG_TRACE(msg)                                                                             \
   {                                                                                                \
     auto & logger = GET_LOGGER();                                                                  \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Trace))                                  \
+    if (logger.ShouldLog(DorelLogger::MessageType::Trace))                                  \
     {                                                                                              \
       logger.LogTrace(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
     }                                                                                              \
@@ -36,7 +36,7 @@
 #define LOG_INFO_FMT(aFormat, ...)                               \
   {                                                              \
     auto & logger = GET_LOGGER();                                \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Info)) \
+    if (logger.ShouldLog(DorelLogger::MessageType::Info)) \
     {                                                            \
       logger.LogInfoFmt(DL_SRC_POS, aFormat, __VA_ARGS__);       \
     }                                                            \
@@ -45,7 +45,7 @@
 #define LOG_INFO(msg)                                                                             \
   {                                                                                               \
     auto & logger = GET_LOGGER();                                                                 \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Info))                                  \
+    if (logger.ShouldLog(DorelLogger::MessageType::Info))                                  \
     {                                                                                             \
       logger.LogInfo(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
     }                                                                                             \
@@ -54,7 +54,7 @@
 #define LOG_WARNING_FMT(aFormat, ...)                               \
   {                                                                 \
     auto & logger = GET_LOGGER();                                   \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Warning)) \
+    if (logger.ShouldLog(DorelLogger::MessageType::Warning)) \
     {                                                               \
       logger.LogWarningFmt(DL_SRC_POS, aFormat, __VA_ARGS__);       \
     }                                                               \
@@ -63,7 +63,7 @@
 #define LOG_WARNING(msg)                                                                 \
   {                                                                                      \
     auto & logger = GET_LOGGER();                                                        \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Warning))                      \
+    if (logger.ShouldLog(DorelLogger::MessageType::Warning))                      \
     {                                                                                    \
       logger.LogWarning(DL_SRC_POS,                                                      \
                         (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
@@ -75,7 +75,7 @@
     DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError(); \
     lastError;                                                          \
     auto & logger = GET_LOGGER();                                       \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))       \
+    if (logger.ShouldLog(DorelLogger::MessageType::Error))       \
     {                                                                   \
       logger.LogErrorFmt(DL_SRC_POS, aFormat, __VA_ARGS__);             \
     }                                                                   \
@@ -86,7 +86,7 @@
     DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError();                            \
     lastError;                                                                                     \
     auto & logger = GET_LOGGER();                                                                  \
-    if (logger.ShouldLog(DorelLogger::ISink::MessageType::Error))                                  \
+    if (logger.ShouldLog(DorelLogger::MessageType::Error))                                  \
     {                                                                                              \
       logger.LogError(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
     }                                                                                              \

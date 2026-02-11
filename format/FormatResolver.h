@@ -23,13 +23,13 @@ class FormatResolver
 public:
   // class c-tor
   FormatResolver(const GlobalVariables & aGlobalVars,
-                 ISink::MessageType      aMessageType,
+                 MessageType             aMessageType,
                  const char *            aSourceFile,
                  const char *            aSourceFunction,
                  size_t                  aSourceLine,
                  std::wstring_view       aMessage);
 
-  ISink::MessageType GetMessageType() const;
+  MessageType GetMessageType() const;
 
   const char * GetSourceFile() const;
   const char * GetSourceFunction() const;
@@ -55,11 +55,11 @@ private:
 
   const Format * mFormat{ nullptr };  // when this is set the Sink will use this instead of its own
 
-  ISink::MessageType mMessageType;
-  const char *       mSourceFile;
-  const char *       mSourceFunction;
-  size_t             mSourceLine;
-  std::wstring_view  mMessage;
+  MessageType       mMessageType;
+  const char *      mSourceFile;
+  const char *      mSourceFunction;
+  size_t            mSourceLine;
+  std::wstring_view mMessage;
 
   // cached values
 
