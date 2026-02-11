@@ -14,7 +14,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\LogLevel.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\MessageType.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\GlobalVariables.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\formatters\AtlSpecific.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\formatters\StdTypes.h" />

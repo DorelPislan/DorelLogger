@@ -91,7 +91,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\core\LoggerProvider.h">
       <Filter>core</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\LogLevel.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\MessageType.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\platform\ErrorCode.h">
