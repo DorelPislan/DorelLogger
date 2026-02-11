@@ -2,20 +2,20 @@
 // begins and ends there.
 //
 #include "../format/Format.h"
+#include "../formatters/StdTypes.h"
+#include "../formatters/WindowsSpecific.h"
 #include "../sinks/MsiLogSink.h"
 #include "../sinks/StdFileSink.h"
 #include "../sinks/WinApiFileSink.h"
 #include "../sinks/WinRtFileSink.h"
 #include "../sinks/WindowsDebugStreamSink.h"
-#include "../stdFormatSpecializations/StdTypes.h"
-#include "../stdFormatSpecializations/WindowsSpecific.h"
 #define ENABLE_ATL_CSTRING_FORMATTER
-#include "../stdFormatSpecializations/AtlSpecific.h"
+#include "../core/LoggerMacros.h"
+#include "../core/LoggerProvider.h"
+#include "../formatters/AtlSpecific.h"
+#include "../platform/ErrorCode.h"
 #include "../tests/CustomFormatters.h"
-#include "../utils/ErrorCode.h"
 #include "../utils/GenericUint32Formatter.h"
-#include "../utils/LoggerMacros.h"
-#include "../utils/LoggerProvider.h"
 #include "win/pch.h"
 #include <source_location>
 
