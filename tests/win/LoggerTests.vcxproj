@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\LoggerTests.cpp" />
+    <ClCompile Include="..\TestHeadersDependency.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

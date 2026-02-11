@@ -8,6 +8,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\LoggerTests.cpp" />
+    <ClCompile Include="..\TestHeadersDependency.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
