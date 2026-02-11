@@ -1,6 +1,7 @@
 #ifndef _DOREL_LOGGER_MESSAGE_BUILDER_H_
 #define _DOREL_LOGGER_MESSAGE_BUILDER_H_
 
+#include <format>
 #include <string>
 
 namespace DorelLogger

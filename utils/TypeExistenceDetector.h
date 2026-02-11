@@ -1,6 +1,8 @@
 #ifndef _DOREL_LOGGER_TYPE_EXISTENCE_DETECTOR_H_
 #define _DOREL_LOGGER_TYPE_EXISTENCE_DETECTOR_H_
 
+#include <type_traits>
+
 // these are taken from "The Old New Thing" blog
 // https://devblogs.microsoft.com/oldnewthing/20190708-00/?p=102664
 
