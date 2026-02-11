@@ -6,12 +6,12 @@ namespace DorelLogger
 
 enum class MessageType
 {
-  NoLogging = 0,
+  All = 0,
   Trace,
   Info,
   Warning,
   Error,
-  All = 100,
+  NoLogging = 100,
 };
 
 };  // namespace DorelLogger
