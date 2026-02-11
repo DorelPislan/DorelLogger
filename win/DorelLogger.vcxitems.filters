@@ -13,8 +13,14 @@
     <Filter Include="utils">
       <UniqueIdentifier>{1f68ba8a-f8c5-421c-afc9-041edfa19c3a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="stdFormatSpecializations">
+    <Filter Include="core">
+      <UniqueIdentifier>{1ff85c42-edd3-4e11-a325-b4e041263b86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="formatters">
       <UniqueIdentifier>{20b76294-1678-466c-85d1-86b376cfa4fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{32cc063a-63f2-4c5e-9cd6-3b649896fb6f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,15 +60,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Types.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerMacros.h">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.h">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\Os.h">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.h">
       <Filter>utils</Filter>
     </ClInclude>
@@ -70,26 +67,38 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\defaultUsage.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\StdTypes.h">
-      <Filter>stdFormatSpecializations</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\formatters\StdTypes.h">
+      <Filter>formatters</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\WindowsSpecific.h">
-      <Filter>stdFormatSpecializations</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\formatters\WindowsSpecific.h">
+      <Filter>formatters</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\TypeExistenceDetector.h">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\stdFormatSpecializations\AtlSpecific.h">
-      <Filter>stdFormatSpecializations</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\ErrorCode.h">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\format\GlobalVariables.h">
-      <Filter>format</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\formatters\AtlSpecific.h">
+      <Filter>formatters</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\utils\GenericUint32Formatter.h">
       <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\GlobalVariables.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\LoggerMacros.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\LoggerProvider.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\core\LogLevel.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\platform\ErrorCode.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\platform\Os.h">
+      <Filter>platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,23 +129,23 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\WinRtFileSink.cpp">
       <Filter>sinks</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggerProvider.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\OsWindows.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\StatisticData.cpp">
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\LoggingUtilities.cpp">
       <Filter>utils</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\utils\ErrorCodeWindows.cpp">
-      <Filter>utils</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\GlobalVariables.cpp">
+      <Filter>logger</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\format\GlobalVariables.cpp">
-      <Filter>format</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\core\LoggerProvider.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\platform\ErrorCodeWindows.cpp">
+      <Filter>platform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\platform\OsWindows.cpp">
+      <Filter>platform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
