@@ -31,6 +31,8 @@
 // #include "../utils/TypeExistenceDetector.h"
 // #include "../utils/Types.h"
 
+#include "../defaultUsage.h"
+
 void TestSomething()
 {
 }
