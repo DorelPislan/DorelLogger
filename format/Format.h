@@ -42,21 +42,35 @@ public:
     // if positive it means number of chars to keep from the right
   };
 
+  struct ParseError
+  {
+    size_t       mPosition;  // offset in the format string where the error occurred
+    std::wstring mDescription;
+  };
+
   using TokensContainer = std::vector<Token>;
 
   // class c-tor
   Format() = default;
 
-  void Set(std::wstring_view aFormat);
+  // Returns true if format was parsed without errors
+  bool Set(std::wstring_view aFormat);
 
   TokensContainer::const_iterator begin() const;
   TokensContainer::const_iterator end() const;
+
+  bool                            HasErrors() const;
+  const std::vector<ParseError> & GetErrors() const;
 
 private:
   std::wstring    mFormat;  // we need this copy because we store refs to its content
   TokensContainer mTokens;
 
+  std::vector<ParseError> mErrors;
+
   void Parse();
+
+  void ReportError(size_t aPosition, std::wstring aDescription);
 
   Token ExtractToken(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
 

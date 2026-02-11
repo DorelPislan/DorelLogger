@@ -1,6 +1,7 @@
 #include "Format.h"
 //
 #include <cassert>
+#include <format>
 
 namespace DorelLogger
 {
@@ -50,10 +51,12 @@ std::wstring Format::Token::ToString() const
 }
 
 /////////////////////////////////////////////////////////////////
-void Format::Set(std::wstring_view aFormat)
+bool Format::Set(std::wstring_view aFormat)
 {
   mFormat = aFormat;
+  mErrors.clear();
   Parse();
+  return mErrors.empty();
 }
 
 Format::TokensContainer::const_iterator Format::begin() const
@@ -66,6 +69,21 @@ Format::TokensContainer::const_iterator Format::end() const
   return mTokens.end();
 }
 
+bool Format::HasErrors() const
+{
+  return !mErrors.empty();
+}
+
+const std::vector<Format::ParseError> & Format::GetErrors() const
+{
+  return mErrors;
+}
+
+void Format::ReportError(size_t aPosition, std::wstring aDescription)
+{
+  mErrors.push_back({ aPosition, std::move(aDescription) });
+}
+
 void Format::Parse()
 {
   mTokens.clear();
@@ -76,10 +94,14 @@ void Format::Parse()
   {
     if (*it == FormatTraits::kFormatStart)
     {
+      size_t tokenStartPos = static_cast<size_t>(it - mFormat.begin());
       it++;
 
       if (it == end)
-        break;  // ignore incomplete formatted references
+      {
+        ReportError(tokenStartPos, L"Incomplete format token: unexpected end after '{'");
+        break;
+      }
 
       if (*it == FormatTraits::kFormatStart)  // escape sequence
       {
@@ -96,9 +118,22 @@ void Format::Parse()
       Token crtToken = ExtractToken(it, end);
       if (crtToken.mId == FormatTraits::VariableId::NoId)
       {
-        // we can not log something yet so...
-        assert(crtToken.mId != FormatTraits::VariableId::NoId);
-        break;  // stop at first error
+        ReportError(tokenStartPos,
+                    std::format(L"Invalid format token at position {}", tokenStartPos));
+
+        // Recovery: skip to next '}' or end of string
+        while (it != end && *it != FormatTraits::kFormatEnd)
+          it++;
+        if (it != end)
+          it++;  // consume the '}'
+
+        // prepare next verbatim section
+        if (it != end)
+        {
+          crtVerbatimStart  = &(*it);
+          crtVerbatimLength = 0;
+        }
+        continue;
       }
       mTokens.push_back(crtToken);
 
