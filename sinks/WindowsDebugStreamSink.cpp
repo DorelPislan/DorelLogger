@@ -3,7 +3,7 @@
 #include <Windows.h>
 //
 #include "../format/FormatResolver.h"
-#include "../utils/Os.h"
+#include "../platform/Os.h"
 
 namespace DorelLogger
 {

@@ -1,8 +1,8 @@
 #include "FormatResolver.h"
 //
-#include "../utils/Os.h"
+#include "../logger/GlobalVariables.h"
+#include "../platform/Os.h"
 #include "Format.h"
-#include "GlobalVariables.h"
 
 namespace DorelLogger
 {

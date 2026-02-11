@@ -6,9 +6,9 @@
 #include <string>
 #include <vector>
 //
-#include "../format/GlobalVariables.h"
 #include "../sinks/ISink.h"
 #include "../utils/Types.h"
+#include "GlobalVariables.h"
 
 namespace DorelLogger
 {

@@ -3,8 +3,8 @@
 #include <cassert>
 //
 #include "../format/FormatResolver.h"
-#include "../utils/ErrorCode.h"
-#include "../utils/Os.h"
+#include "../platform/ErrorCode.h"
+#include "../platform/Os.h"
 
 namespace DorelLogger
 {

@@ -2,7 +2,7 @@
 //
 #include <filesystem>
 //
-#include "../utils/Os.h"
+#include "../platform/Os.h"
 
 namespace DorelLogger
 {
