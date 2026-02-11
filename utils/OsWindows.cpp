@@ -15,6 +15,10 @@ namespace DorelLogger
     modulePath.resize(bufferLength);
 
     DWORD actualLength = ::GetModuleFileNameW(nullptr, modulePath.data(), bufferLength);
+
+    if (actualLength == 0)
+      break;  // error
+
     if (actualLength < bufferLength)
     {
       modulePath.resize(actualLength);
