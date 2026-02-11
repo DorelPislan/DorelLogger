@@ -54,9 +54,11 @@ std::wstring Format::Token::ToString() const
 bool Format::Set(std::wstring_view aFormat)
 {
   mFormat = aFormat;
-  mErrors.clear();
+  mErrors.reset();
+
   Parse();
-  return mErrors.empty();
+
+  return !HasErrors();
 }
 
 Format::TokensContainer::const_iterator Format::begin() const
@@ -71,17 +73,21 @@ Format::TokensContainer::const_iterator Format::end() const
 
 bool Format::HasErrors() const
 {
-  return !mErrors.empty();
+  return mErrors.has_value() && !mErrors->empty();
 }
 
 const std::vector<Format::ParseError> & Format::GetErrors() const
 {
-  return mErrors;
+  return mErrors.value();
 }
 
 void Format::ReportError(size_t aPosition, std::wstring aDescription)
 {
-  mErrors.push_back({ aPosition, std::move(aDescription) });
+  if (!mErrors.has_value())
+  {
+    mErrors.emplace();
+  }
+  mErrors->push_back({ aPosition, std::move(aDescription) });
 }
 
 void Format::Parse()
@@ -94,12 +100,13 @@ void Format::Parse()
   {
     if (*it == FormatTraits::kFormatStart)
     {
-      size_t tokenStartPos = static_cast<size_t>(it - mFormat.begin());
       it++;
+
+      size_t tokenStartPos = static_cast<size_t>(it - mFormat.begin());
 
       if (it == end)
       {
-        ReportError(tokenStartPos, L"Incomplete format token: unexpected end after '{'");
+        ReportError(tokenStartPos - 1, L"Incomplete format token: unexpected end after '{'");
         break;
       }
 

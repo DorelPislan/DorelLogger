@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <optional>
 //
 #include "FormatTraits.h"
 
@@ -66,7 +67,7 @@ private:
   std::wstring    mFormat;  // we need this copy because we store refs to its content
   TokensContainer mTokens;
 
-  std::vector<ParseError> mErrors;
+  std::optional<std::vector<ParseError>> mErrors;
 
   void Parse();
 
