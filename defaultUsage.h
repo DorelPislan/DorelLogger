@@ -3,15 +3,15 @@
 
 // clang-format off
 
-#include "stdFormatSpecializations/StdTypes.h"
+#include "formatters/StdTypes.h"
 
 #ifdef _WIN32
-#include "stdFormatSpecializations/WindowsSpecific.h"
-#include "stdFormatSpecializations/AtlSpecific.h"
+#include "formatters/WindowsSpecific.h"
+#include "formatters/AtlSpecific.h"
 #endif
 
-#include "utils/LoggerProvider.h"
-#include "utils/LoggerMacros.h"
+#include "core/LoggerProvider.h"
+#include "core/LoggerMacros.h"
 
 #include "utils/LoggingUtilities.h"
 
