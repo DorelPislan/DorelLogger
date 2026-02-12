@@ -3,6 +3,7 @@
 #define _DOREL_LOGGER_WINDOWS_SPECIFIC_FORMATTERS_H_
 
 #include <Windows.h>
+#include <array>
 #include <format>
 
 template <>
