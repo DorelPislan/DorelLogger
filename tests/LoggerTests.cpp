@@ -30,6 +30,24 @@ const wchar_t * const kMessageFormat =
 
 int TestFormat()
 {
+  std::array<const wchar_t *, 5> kTestFormats = {
+    L"{X}", L"{", L"Year={Y} }Escape} Month={+5M} Day={27D} PID={P}",
+    L"Year={Y} Month={M} Day={D} PID={P}", L"Message is: {W}"
+  };
+  for (const auto & fmtStr : kTestFormats)
+  {
+    Format fmt;
+    if (!fmt.Set(fmtStr))
+    {
+      for (const auto & err : fmt.GetErrors())
+      {
+        // Log to stderr or a fallback sink — don't use the logger itself!
+        std::wcerr << L"Format error at position " << err.mPosition << L": " << err.mDescription
+                   << std::endl;
+      }
+    }
+  }
+
   const wchar_t * kFormats[] = { L"Year={Y} }Escape} Month={+5M} Day={27D} PID={P}", nullptr };
 
   for (auto ptr = kFormats; *ptr; ptr++)
@@ -406,7 +424,7 @@ int main()
   auto                  procName    = procPath.filename().wstring();
   assert(procName == L"LoggerTests.exe");
 
-  // TestFormat();
+  TestFormat();
   TestWindowsDebugSink();
   TestStdFileSink();
   TestWinRtFileSink();
