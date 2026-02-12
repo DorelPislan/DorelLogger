@@ -1,9 +1,9 @@
 #ifndef _DOREL_LOGGER_FORMAT_H_
 #define _DOREL_LOGGER_FORMAT_H_
 
+#include <optional>
 #include <string>
 #include <vector>
-#include <optional>
 //
 #include "FormatTraits.h"
 
@@ -72,6 +72,9 @@ private:
   void Parse();
 
   void ReportError(size_t aPosition, std::wstring aDescription);
+
+  void SkipInvalidToken(std::wstring::const_iterator &       aIt,
+                        const std::wstring::const_iterator & aEnd);
 
   Token ExtractToken(std::wstring::const_iterator & aIt, std::wstring::const_iterator & aEnd);
 

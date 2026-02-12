@@ -106,7 +106,7 @@ void Format::Parse()
 
       if (it == end)
       {
-        ReportError(tokenStartPos - 1, L"Incomplete format token: unexpected end after '{'");
+        ReportError(tokenStartPos, L"Incomplete variable reference: unexpected end after '{'");
         break;
       }
 
@@ -125,14 +125,8 @@ void Format::Parse()
       Token crtToken = ExtractToken(it, end);
       if (crtToken.mId == FormatTraits::VariableId::NoId)
       {
-        ReportError(tokenStartPos,
-                    std::format(L"Invalid format token at position {}", tokenStartPos));
-
-        // Recovery: skip to next '}' or end of string
-        while (it != end && *it != FormatTraits::kFormatEnd)
-          it++;
-        if (it != end)
-          it++;  // consume the '}'
+        ReportError(tokenStartPos, L"Invalid variable ID");
+        SkipInvalidToken(it, end);
 
         // prepare next verbatim section
         if (it != end)
@@ -160,6 +154,18 @@ void Format::Parse()
   if (crtVerbatimLength)
   {
     mTokens.push_back(Token({ crtVerbatimStart, crtVerbatimLength }));
+  }
+}
+
+void Format::SkipInvalidToken(std::wstring::const_iterator &       aIt,
+                              const std::wstring::const_iterator & aEnd)
+{
+  while ((aIt != aEnd) && (*aIt != FormatTraits::kFormatEnd))
+    aIt++;
+
+  if (aIt != aEnd)
+  {
+    aIt++;  // consume the '}'
   }
 }
 
