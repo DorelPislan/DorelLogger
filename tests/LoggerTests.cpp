@@ -327,6 +327,11 @@ DL_DEFINE_VALUES_STRINGS_ARRAY(kValsFromDefines,
 
 void TestEnumFormatter()
 {
+  std::wstring str =
+    LoggingUtilities::GetFlagNameOr(ERROR_FILE_NOT_FOUND, kValsFromDefines, L"Flag not found");
+
+  assert(str == L"Flag not found");
+
   TestEnum val1 = TestEnum::Value1;
   TestEnum val2 = TestEnum::Value2;
   TestEnum val3 = TestEnum::Value3;
