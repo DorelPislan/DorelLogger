@@ -4,13 +4,6 @@
 namespace DorelLogger
 {
 
-namespace
-{
-const std::array<const wchar_t *, 5> kMsgTypesStrings{ { L"", L"TRACE", L"INFO", L"WARNING",
-                                                         L"ERROR" } };
-
-};
-
 MSIHANDLE MsiLogSink::sMsiHandle = 0;
 
 /*static*/ MSIHANDLE MsiLogSink::GetMsiHandle()
@@ -18,7 +11,7 @@ MSIHANDLE MsiLogSink::sMsiHandle = 0;
   return sMsiHandle;
 }
 
-  /*static*/ void MsiLogSink::SetMsiHandle(MSIHANDLE aMsiHandle)
+/*static*/ void MsiLogSink::SetMsiHandle(MSIHANDLE aMsiHandle)
 {
   sMsiHandle = aMsiHandle;
 }
@@ -48,14 +41,8 @@ int MsiLogSink::LogMessage(FormatResolver & aResolver)
 
   PMSIHANDLE hRecord = ::MsiCreateRecord(1);
 
-  auto msgType = aResolver.GetMessageType();
-
   // field 0 is the template
-
-  std::wstring templateStr = kMsgTypesStrings[static_cast<int>(msgType)];
-  templateStr += L" :[1]";
-
-  ::MsiRecordSetString(hRecord, 0, templateStr.c_str());
+  ::MsiRecordSetString(hRecord, 0, L"[1]");
 
   // field 1, to be placed in [1] placeholder
   ::MsiRecordSetString(hRecord, 1, fullMsg.c_str());
