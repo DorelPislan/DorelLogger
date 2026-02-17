@@ -37,7 +37,9 @@ void StatisticData::AnalyzeMessage(const FormatResolver & aResolver, const std::
 
   auto it =
     std::ranges::find(mMsgsCountByType, aResolver.GetMessageType(), &MsgTypeAndCount::first);
-  it->second++;
+
+  if (it != mMsgsCountByType.end())
+    it->second++;
 }
 
 std::wstring StatisticData::GetFlatResults(const std::wstring & aSinkName)
