@@ -85,6 +85,8 @@ int TestWindowsDebugSink()
 
   log.AddSink(std::move(wdsSink));
 
+  log.SetMinLogLevel(MessageType::All);
+
   log.SetProcessName(L"Test Process Name");
 
   log.LogMessageFmt(MessageType::Info, DL_SRC_POS,
@@ -105,6 +107,8 @@ int TestStdFileSink()
   stdFileSink->OpenFile(L"StdFileSink.log", false);
 
   log.AddSink(std::move(stdFileSink));
+
+  log.SetMinLogLevel(MessageType::All);
 
   log.LogMessage(MessageType::Info, DL_SRC_POS, L"Some info");
   log.LogMessage(MessageType::Error, DL_SRC_POS, L"Some error");
@@ -129,6 +133,8 @@ int TestWinRtFileSink()
 
   log.AddSink(std::move(winRtFileSink));
 
+  log.SetMinLogLevel(MessageType::All);
+
   log.LogMessage(MessageType::Info, DL_SRC_POS, L"Some info");
   log.LogMessage(MessageType::Error, DL_SRC_POS, L"Some error");
 
@@ -151,6 +157,8 @@ int TestWinApiFileSink()
   winApiFileSink->OpenFile(filePath, false, false);
 
   log.AddSink(std::move(winApiFileSink));
+
+  log.SetMinLogLevel(MessageType::All);
 
   log.LogMessage(MessageType::Info, DL_SRC_POS, L"Some info");
   log.LogMessage(MessageType::Error, DL_SRC_POS, L"Some error");
@@ -403,6 +411,8 @@ int main()
       L"ShortFilePath=\"{20FilePathShort}\" -> Fcn={FuncName+10:()}():{4LineNo} -> Msg is={Msg}");
 
     logger.AddSink(std::move(wdsSink));
+
+    logger.SetMinLogLevel(MessageType::All);
   }
   LOG_TRACE(L"This is the first TRACE " << L" from Test project");
   LOG_TRACE_FMT(L"This is the second TRACE with param={}", L" param ");
