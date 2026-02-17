@@ -58,8 +58,8 @@ constexpr std::wstring_view kMonthNameDescriptor   = L"MonthName";
 constexpr std::wstring_view kDayNumberDescriptor = L"DayNo";
 constexpr std::wstring_view kDayNameDescriptor   = L"DayName";
 
-constexpr std::wstring_view kHour24Descriptor = L"Hour24";  // 0..24
-constexpr std::wstring_view kHour12Descriptor = L"Hour12";
+constexpr std::wstring_view kHour24Descriptor = L"HOUR";  // 0..24
+constexpr std::wstring_view kHour12Descriptor = L"Hour";
 
 constexpr std::wstring_view kMinuteDescriptor = L"Minute";  // 2 digits
 constexpr std::wstring_view kSecondDescriptor = L"Second";  // 2 digits
