@@ -184,7 +184,7 @@ void Logger::LogMsgWithCustomFormat(std::optional<std::wstring> & aMsgFormat)
 void Logger::DumpStatistics()
 {
   Format customFormat;
-  customFormat.Set(L"{W}");
+  customFormat.Set(L"{Msg}");
 
   FormatResolver resolver(mGlobalVars, MessageType::Info, nullptr, nullptr, 0, {});
   resolver.SetFormat(&customFormat);
