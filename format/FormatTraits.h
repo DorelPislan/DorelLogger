@@ -50,50 +50,49 @@ const char kLeftAlignmentMarker   = '-';
 const char kCenterAlignmentMarker = '=';
 const char kRightAlignmentMarker  = '+';
 
-const char kYearDescriptor = 'Y';  // 4 digits
+constexpr std::wstring_view kYearDescriptor = L"Y";  // 4 digits
 
-const char kMonthNumberDescriptor = 'M';  // 2 digits
-const char kMonthNameDescriptor   = 'm';
+constexpr std::wstring_view kMonthNumberDescriptor = L"M";  // 2 digits
+constexpr std::wstring_view kMonthNameDescriptor   = L"m";
 
-const char kDayNumberDescriptor = 'D';
-const char kDayNameDescriptor   = 'd';
+constexpr std::wstring_view kDayNumberDescriptor = L"D";
+constexpr std::wstring_view kDayNameDescriptor   = L"d";
 
-const char kHour24Descriptor = 'H';  // 0..24
-const char kHour12Descriptor = 'h';
+constexpr std::wstring_view kHour24Descriptor = L"H";  // 0..24
+constexpr std::wstring_view kHour12Descriptor = L"h";
 
-const char kMinuteDescriptor = 'I';  // 2 digits
-const char kSecondDescriptor = 'i';  // 2 digits
+constexpr std::wstring_view kMinuteDescriptor = L"I";  // 2 digits
+constexpr std::wstring_view kSecondDescriptor = L"i";  // 2 digits
 
-const char kMiliSecondsDescriptor = 'E';  // 3 digits
-const char kNanoSecondsDescriptor = 'e';
+constexpr std::wstring_view kMiliSecondsDescriptor = L"E";  // 3 digits
+constexpr std::wstring_view kNanoSecondsDescriptor = L"e";
 
-const char kProcessIdDescriptor   = 'P';
-const char kProcessNameDescriptor = 'p';
+constexpr std::wstring_view kProcessIdDescriptor   = L"P";
+constexpr std::wstring_view kProcessNameDescriptor = L"p";
 
-const char kThreadIdDescriptor   = 'T';
-const char kThreadNameDescriptor = 't';
+constexpr std::wstring_view kThreadIdDescriptor   = L"T";
+constexpr std::wstring_view kThreadNameDescriptor = L"t";
 
-const char kMessageTypeDescriptor = 'G';  // STR(ISink::MessageType)
+constexpr std::wstring_view kMessageTypeDescriptor = L"G";  // STR(ISink::MessageType)
 
-const char kFilePathFullDescriptor  = 'F';
-const char kFilePathShortDescriptor = 'f';
+constexpr std::wstring_view kFilePathFullDescriptor  = L"F";
+constexpr std::wstring_view kFilePathShortDescriptor = L"f";
 
-const char kFunctionNameDescriptor = 'O';
+constexpr std::wstring_view kFunctionNameDescriptor = L"O";
 
-const char kLineNumberDescriptor = 'L';
+constexpr std::wstring_view kLineNumberDescriptor = L"L";
+constexpr std::wstring_view kCustomVarDescriptor  = L"C";
 
-const char kCustomVarDescriptor = 'C';
-
-const char kMessageDescriptor = 'W';
+constexpr std::wstring_view kMessageDescriptor = L"W";
 
 const char kTrimLeftMarker       = '-';
 const char kKeepRightMarker      = '+';
 const char kVerbatimSuffixMarker = ':';
 
-VariableId       GetVarIdFromVarName(char aVarName);
+VariableId       GetVarIdFromVarName(std::wstring_view aVarName);
 wchar_t          GetAlignmentMarker(AlignmentType aAlgn);
 std::wstring     GetWidthString(int aWidth);
-std::string_view GetVarIdString(VariableId aId);
+std::wstring_view GetVarIdString(VariableId aId);
 
 }  // namespace FormatTraits
 

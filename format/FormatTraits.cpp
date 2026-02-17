@@ -8,7 +8,7 @@ namespace DorelLogger
 namespace FormatTraits
 {
 // clang-format off
-const std::array<std::pair<char, VariableId>, 22> kSupportedVars = {
+const std::array<std::pair<std::wstring_view, VariableId>, 22> kSupportedVars = {
 {
   { kYearDescriptor,           VariableId::Year          },
   { kMonthNumberDescriptor,    VariableId::MonthNumber   },
@@ -36,7 +36,7 @@ const std::array<std::pair<char, VariableId>, 22> kSupportedVars = {
 } };
 // clang-format on
 
-VariableId GetVarIdFromVarName(char aVarName)
+VariableId GetVarIdFromVarName(std::wstring_view aVarName)
 {
   auto it = std::find_if(FormatTraits::kSupportedVars.begin(), FormatTraits::kSupportedVars.end(),
                          [aVarName](const auto & aMarkerIdPair)
@@ -75,7 +75,7 @@ std::wstring GetWidthString(int aWidth)
   return std::to_wstring(aWidth);
 }
 
-std::string_view GetVarIdString(VariableId aId)
+std::wstring_view GetVarIdString(VariableId aId)
 {
   auto it = std::find_if(kSupportedVars.begin(), kSupportedVars.end(),
                          [aId](const auto & aPair)
@@ -83,7 +83,7 @@ std::string_view GetVarIdString(VariableId aId)
                            return aId == aPair.second;
                          });
 
-  return (it == kSupportedVars.end()) ? "???" : std::string_view(&it->first, 1);
+  return (it == kSupportedVars.end()) ? L"???" : it->first;
 }
 
 }  // namespace FormatTraits

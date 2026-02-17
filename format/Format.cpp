@@ -42,7 +42,7 @@ std::wstring Format::Token::ToString() const
 
   str += FormatTraits::GetWidthString(mWidth);
 
-  std::string_view varId = FormatTraits::GetVarIdString(mId);
+  std::wstring_view varId = FormatTraits::GetVarIdString(mId);
   str.append(varId.begin(), varId.end());
 
   str += FormatTraits::kFormatEnd;
@@ -249,16 +249,33 @@ int Format::ExtractNumber(std::wstring::const_iterator & aIt, std::wstring::cons
 }
 
 FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt,
-                                              std::wstring::const_iterator & /*aEnd*/)
+                                              std::wstring::const_iterator & aEnd)
 {
-  char ch = static_cast<char>(*aIt);
+  const wchar_t * varNameStart  = &(*aIt);
+  size_t          varNameLength = 1;
 
-  auto varId = FormatTraits::GetVarIdFromVarName(ch);
+  std::wstring_view varName;
+
+  for (; aIt != aEnd;)
+  {
+    auto crtChar = *aIt;
+    if (crtChar == FormatTraits::kFormatEnd)
+      break;
+
+    bool isAsciiLetter =
+      (crtChar >= L'A' && crtChar <= L'Z') || (crtChar >= L'a' && crtChar <= L'z');
+    if (!isAsciiLetter)
+      break;
+
+    varName = std::wstring_view(varNameStart, varNameLength);
+    aIt++;
+    varNameLength++;
+  }
+
+  auto varId = FormatTraits::GetVarIdFromVarName(varName);
 
   if (varId == FormatTraits::VariableId::NoId)
     return FormatTraits::VariableId::NoId;
-
-  aIt++;
 
   return varId;
 }
