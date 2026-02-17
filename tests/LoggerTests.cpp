@@ -24,15 +24,15 @@ using namespace DorelLogger;
 namespace
 {
 const wchar_t * const kMessageFormat =
-  L"Year is:{Y}, [PID={+12P}] [TID={+20T}] FullFilePath=\"{20F}\"  "
-  L"ShortFilePath=\"{20f}\" -> Fcn={O}():{4L} -> Msg is={W}";
+  L"Year is:{Year}, [PID={+12ProcessId}] [TID={+20ThreadId}] FullFilePath=\"{20FilePathFull}\"  "
+  L"ShortFilePath=\"{20FilePathShort}\" -> Fcn={FuncName}():{4LineNo} -> Msg is={Msg}";
 };
 
 int TestFormat()
 {
   std::array<const wchar_t *, 5> kTestFormats = {
-    L"{X}", L"{", L"Year={Y} }Escape} Month={+5M} Day={27D} PID={P}",
-    L"Year={Y} Month={M} Day={D} PID={P}", L"Message is: {W}"
+    L"{X}", L"{", L"Year={Year} }Escape} Month={+5MonthNo} Day={27DayNo} PID={ProcessId}",
+    L"Year={Year} Month={MonthNo} Day={DayNo} PID={ProcessId}", L"Message is: {Msg}"
   };
   for (const auto & fmtStr : kTestFormats)
   {
@@ -48,7 +48,9 @@ int TestFormat()
     }
   }
 
-  const wchar_t * kFormats[] = { L"Year={Y} }Escape} Month={+5M} Day={27D} PID={P}", nullptr };
+  const wchar_t * kFormats[] = {
+    L"Year={Year} }Escape} Month={+5MonthNo} Day={27DayNo} PID={ProcessId}", nullptr
+  };
 
   for (auto ptr = kFormats; *ptr; ptr++)
   {
@@ -77,8 +79,9 @@ int TestWindowsDebugSink()
   Logger log;
 
   auto wdsSink = std::make_unique<WindowsDebugStreamSink>();
-  wdsSink->SetMessageFormat(L"Year is:{Y}, [PID={+12P}] [TID={+20T}] FullFilePath=\"{20F}\"  "
-                            L"ShortFilePath=\"{20f}\" -> Fcn={O}():{4L} -> Msg is={W}");
+  wdsSink->SetMessageFormat(
+    L"Year is:{Year}, [PID={+12ProcessId}] [TID={+20ThreadId}] FullFilePath=\"{20FilePathFull}\"  "
+    L"ShortFilePath=\"{20FilePathShort}\" -> Fcn={FuncName}():{4LineNo} -> Msg is={Msg}");
 
   log.AddSink(std::move(wdsSink));
 
@@ -395,8 +398,9 @@ int main()
     logger;
 
     auto wdsSink = std::make_unique<WindowsDebugStreamSink>();
-    wdsSink->SetMessageFormat(L"Year is:{Y}, [PID={P}] [TID={T}] FullFilePath=\"{20F-10}\"  "
-                              L"ShortFilePath=\"{20f}\" -> Fcn={O+10:()}():{4L} -> Msg is={W}");
+    wdsSink->SetMessageFormat(
+      L"Year is:{Year}, [PID={ProcessId}] [TID={ThreadId}] FullFilePath=\"{20FilePathFull-10}\"  "
+      L"ShortFilePath=\"{20FilePathShort}\" -> Fcn={FuncName+10:()}():{4LineNo} -> Msg is={Msg}");
 
     logger.AddSink(std::move(wdsSink));
   }
