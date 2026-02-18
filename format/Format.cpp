@@ -262,9 +262,8 @@ FormatTraits::VariableId Format::ExtractVarId(std::wstring::const_iterator & aIt
     if (crtChar == FormatTraits::kFormatEnd)
       break;
 
-    bool isAsciiLetter =
-      (crtChar >= L'A' && crtChar <= L'Z') || (crtChar >= L'a' && crtChar <= L'z');
-    if (!isAsciiLetter)
+    if ((crtChar == FormatTraits::kTrimLeftMarker) || (crtChar == FormatTraits::kKeepRightMarker) ||
+        (crtChar == FormatTraits::kVerbatimSuffixMarker))
       break;
 
     varName = std::wstring_view(varNameStart, varNameLength);
