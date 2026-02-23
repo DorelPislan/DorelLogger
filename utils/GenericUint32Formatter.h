@@ -1,8 +1,8 @@
 #ifndef _DOREL_LOGGER_GENERIC_UINT32_FORMATTER_H_
 #define _DOREL_LOGGER_GENERIC_UINT32_FORMATTER_H_
 
-#include <format>
 #include "LoggingUtilities.h"
+#include <format>
 
 namespace DorelLogger
 {
@@ -84,14 +84,14 @@ private:
   DorelLogger::LoggingUtilities::ValueStringPairSpan mValuesStrings;
 };
 
-#define DL_DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TypeName, aValueTextPairArrayName) \
-  template <>                                                                          \
-  struct std::formatter<TypeName, wchar_t> : public GenericUint32Formatter<TypeName>   \
-  {                                                                                    \
-    constexpr formatter()                                                              \
-      : GenericUint32Formatter(aValueTextPairArrayName)                                \
-    {                                                                                  \
-    }                                                                                  \
+#define DL_DEFINE_FORMATTER_SPECIALIZATION_FOR_TYPE(TypeName, aValueTextPairArrayName)            \
+  template <>                                                                                     \
+  struct std::formatter<TypeName, wchar_t> : public DorelLogger::GenericUint32Formatter<TypeName> \
+  {                                                                                               \
+    constexpr formatter()                                                                         \
+      : GenericUint32Formatter(aValueTextPairArrayName)                                           \
+    {                                                                                             \
+    }                                                                                             \
   };
 
 };  // namespace DorelLogger
