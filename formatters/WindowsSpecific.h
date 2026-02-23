@@ -47,7 +47,13 @@ struct std::formatter<IID, wchar_t>
     if (mLowerCase)
     {
       for (auto & ch : flatGuid)
-        ch = static_cast<wchar_t>(std::tolower(ch));
+      {
+        // a GUID contains only ASCII Chars
+        if ((ch >= L'A') && (ch <= L'Z'))
+        {
+          ch = static_cast<wchar_t>(L'a' + (ch - L'A'));
+        }
+      }
     }
 
     // ignore trailing 0
