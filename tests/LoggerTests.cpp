@@ -154,7 +154,7 @@ int TestWinApiFileSink()
   std::filesystem::path filePath(crtDir);
   filePath.append(L"WinApiFileSink.log");
 
-  winApiFileSink->OpenFile(filePath, false, false);
+  winApiFileSink->OpenFileAtFirstUse(filePath, false, false);
 
   log.AddSink(std::move(winApiFileSink));
 
