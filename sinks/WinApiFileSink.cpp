@@ -85,7 +85,6 @@ void WinApiFileSink::OpenFileDelayed()
   OpenFile(filePath, allowWriteSharing, truncate);
 
   mDelayOpenParams.reset();
-  mInitMutex.reset();
 }
 
 int WinApiFileSink::LogMessage(FormatResolver & aResolver)
