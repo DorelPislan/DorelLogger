@@ -5,8 +5,11 @@
 
 #include <filesystem>
 #include <fstream>
+#include <optional>
+#include <tuple>
 //
 #include "SinkBase.h"
+#include "..\utils\Types.h"
 
 namespace DorelLogger
 {
@@ -25,9 +28,19 @@ public:
   static const wchar_t * const kName;
 
   bool OpenFile(std::filesystem::path aFilePath, bool aTruncate);
+  bool OpenFileAtFirstUse(std::filesystem::path aFilePath, bool aTruncate);
 
 private:
   std::wofstream mLogStream;
+
+  // State for delayed opening
+  using DelayOpenParams = std::tuple<std::filesystem::path, bool>;
+  std::optional<DelayOpenParams> mDelayOpenParams;
+
+  // Mutex for thread-safe lazy initialization
+  MutexType mInitMutex;
+
+  void OpenFileDelayed();
 
   int LogMessage(FormatResolver & aResolver) override;
 };
