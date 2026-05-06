@@ -104,7 +104,7 @@ int TestStdFileSink()
   auto stdFileSink = std::make_unique<StdFileSink>();
   stdFileSink->SetMessageFormat(kMessageFormat);
 
-  stdFileSink->OpenFile(L"StdFileSink.log", false);
+  stdFileSink->OpenFileAtFirstUse(L"StdFileSink.log", false);
 
   log.AddSink(std::move(stdFileSink));
 
@@ -129,7 +129,7 @@ int TestWinRtFileSink()
   std::filesystem::path filePath = crtDir;
   filePath.append(L"WinRtFileSink.log");
 
-  winRtFileSink->OpenFile(filePath, false);
+  winRtFileSink->OpenFileAtFirstUse(filePath, false);
 
   log.AddSink(std::move(winRtFileSink));
 
