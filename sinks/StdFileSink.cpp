@@ -33,29 +33,15 @@ bool StdFileSink::OpenFile(std::filesystem::path aFilePath, bool aTruncate)
 
 bool StdFileSink::OpenFileAtFirstUse(std::filesystem::path aFilePath, bool aTruncate)
 {
-  mDelayOpenParams = std::make_optional<DelayOpenParams>(std::move(aFilePath), aTruncate);
-
-  return true;
-}
-
-void StdFileSink::OpenFileDelayed()
-{
-  const std::lock_guard<MutexType> lock(mInitMutex);
-
-  // Check again after acquiring the lock (Double-checked locking)
-  if (mLogStream.is_open())
-    return;
-
-  // Check if we still have params (maybe a previous thread tried and failed)
-  if (!mDelayOpenParams)
-    return;
-
-  auto & [filePath, truncate] = *mDelayOpenParams;
-
-  OpenFile(filePath, truncate);
-
-  // Always reset params so we don't keep trying if OpenFile fails
-  mDelayOpenParams.reset();
+  return mDelayedFileOpenSupport.PrepareDelayedFileOpen(
+    [this]()
+    {
+      return mLogStream.is_open();
+    },
+    [this, aFilePath, aTruncate]()
+    {
+      return this->OpenFile(aFilePath, aTruncate);
+    });
 }
 
 int StdFileSink::LogMessage(FormatResolver & aResolver)
@@ -63,10 +49,7 @@ int StdFileSink::LogMessage(FormatResolver & aResolver)
   // Lazy initialization check
   if (!mLogStream.is_open())
   {
-    if (!mDelayOpenParams)
-      return -1;  // Not opened and no pending open
-
-    OpenFileDelayed();
+    mDelayedFileOpenSupport.OpenFileDelayed();
 
     if (!mLogStream.is_open())
       return -1;  // Failed to open

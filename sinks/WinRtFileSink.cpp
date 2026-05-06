@@ -55,8 +55,30 @@ bool WinRtFileSink::OpenFile(const std::filesystem::path & aFilePath, bool aTrun
   return true;
 }
 
+bool WinRtFileSink::OpenFileAtFirstUse(const std::filesystem::path & aFilePath, bool aTruncate)
+{
+  return mDelayedFileOpenSupport.PrepareDelayedFileOpen(
+    [this]()
+    {
+      bool isNotNull = mLogFile != nullptr;
+      return isNotNull;
+    },
+    [this, aFilePath, aTruncate]()
+    {
+      return this->OpenFile(aFilePath, aTruncate);
+    });
+}
+
 int WinRtFileSink::LogMessage(FormatResolver & aResolver)
 {
+  if (!mLogFile)
+  {
+    mDelayedFileOpenSupport.OpenFileDelayed();
+
+    if (!mLogFile)
+      return -1;
+  }
+
   auto fullMsg = SinkBase::ComputeFullMessage(aResolver);
   if (fullMsg.empty())
     return 0;

@@ -8,8 +8,9 @@
 #include <optional>
 #include <tuple>
 //
-#include "SinkBase.h"
 #include "..\utils\Types.h"
+#include "DelayedFileOpenSupport.h"
+#include "SinkBase.h"
 
 namespace DorelLogger
 {
@@ -33,14 +34,7 @@ public:
 private:
   std::wofstream mLogStream;
 
-  // State for delayed opening
-  using DelayOpenParams = std::tuple<std::filesystem::path, bool>;
-  std::optional<DelayOpenParams> mDelayOpenParams;
-
-  // Mutex for thread-safe lazy initialization
-  MutexType mInitMutex;
-
-  void OpenFileDelayed();
+  DelayedFileOpenSupport mDelayedFileOpenSupport;
 
   int LogMessage(FormatResolver & aResolver) override;
 };

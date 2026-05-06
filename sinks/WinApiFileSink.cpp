@@ -65,36 +65,22 @@ bool WinApiFileSink::OpenFileAtFirstUse(const std::filesystem::path & aFilePath,
                                         bool                          aAllowWriteSharing,
                                         bool                          aTruncate)
 {
-  mDelayOpenParams = std::make_unique<DelayOpenParams>(aFilePath, aAllowWriteSharing, aTruncate);
-  mInitMutex.emplace();
-  return true;
-}
-
-void WinApiFileSink::OpenFileDelayed()
-{
-  const std::lock_guard<MutexType> lock(*mInitMutex);
-
-  if (mLogFile != INVALID_HANDLE_VALUE)
-    return;
-
-  if (!mDelayOpenParams)
-    return;
-
-  auto & [filePath, allowWriteSharing, truncate] = *mDelayOpenParams;
-
-  OpenFile(filePath, allowWriteSharing, truncate);
-
-  mDelayOpenParams.reset();
+  return mDelayedFileOpenSupport.PrepareDelayedFileOpen(
+    [this]()
+    {
+      return mLogFile != INVALID_HANDLE_VALUE;
+    },
+    [this, aFilePath, aAllowWriteSharing, aTruncate]()
+    {
+      return this->OpenFile(aFilePath, aAllowWriteSharing, aTruncate);
+    });
 }
 
 int WinApiFileSink::LogMessage(FormatResolver & aResolver)
 {
   if (mLogFile == INVALID_HANDLE_VALUE)
   {
-    if (!mDelayOpenParams)
-      return -1;
-
-    OpenFileDelayed();
+    mDelayedFileOpenSupport.OpenFileDelayed();
 
     if (mLogFile == INVALID_HANDLE_VALUE)
       return -1;

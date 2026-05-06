@@ -29,6 +29,8 @@
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Storage.Streams.h>
 #include <winrt/Windows.Storage.h>
+//
+#include "DelayedFileOpenSupport.h"
 
 namespace DorelLogger
 {
@@ -45,13 +47,16 @@ public:
   ~WinRtFileSink();
 
   bool OpenFile(const std::filesystem::path & aFilePath, bool aTruncate);
+  bool OpenFileAtFirstUse(const std::filesystem::path & aFilePath, bool aTruncate);
 
   static const wchar_t * const kName;
 
 private:
- winrt::Windows::Storage::StorageFile mLogFile;
+  winrt::Windows::Storage::StorageFile mLogFile;
 
- HANDLE mLastOpCompletedEvent = NULL; 
+  HANDLE mLastOpCompletedEvent = NULL; 
+
+  DelayedFileOpenSupport mDelayedFileOpenSupport;
 
   int LogMessage(FormatResolver & aResolver) override;
 

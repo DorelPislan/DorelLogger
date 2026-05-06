@@ -7,6 +7,7 @@
 #include <filesystem>
 //
 #include "..\utils\Types.h"
+#include "DelayedFileOpenSupport.h"
 #include "SinkBase.h"
 
 namespace DorelLogger
@@ -39,14 +40,7 @@ public:
 private:
   HANDLE mLogFile = INVALID_HANDLE_VALUE;
 
-  // Variables to support delayed opening
-  using DelayOpenParams =
-    std::tuple<std::filesystem::path, bool, bool>;  // file path, allow write sharing, truncate
-
-  std::unique_ptr<DelayOpenParams> mDelayOpenParams;
-  std::optional<MutexType>         mInitMutex;  // Protects the lazy initialization
-
-  void OpenFileDelayed();
+  DelayedFileOpenSupport mDelayedFileOpenSupport;
 
   int LogMessage(FormatResolver & aResolver) override;
 
