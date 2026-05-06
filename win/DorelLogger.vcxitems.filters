@@ -100,6 +100,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\platform\Os.h">
       <Filter>platform</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.h">
+      <Filter>sinks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
@@ -146,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\platform\OsWindows.cpp">
       <Filter>platform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.cpp">
+      <Filter>sinks</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -25,6 +25,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\format\FormatTraits.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\Logger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\logger\MessageBuilder.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\ISink.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\StdFileSink.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
