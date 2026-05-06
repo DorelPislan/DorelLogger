@@ -58,7 +58,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\logger\Logger.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\sinks\SinkBase.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
