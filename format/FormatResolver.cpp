@@ -248,7 +248,7 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
     break;  // just for shutting up CLANG
   }
 
-  return std::wstring(mMessage);
+  return std::wstring(L"???");
 }
 
 std::pair<int, int> FormatResolver::ComputePadding(int                         aValueLength,
