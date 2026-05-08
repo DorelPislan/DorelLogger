@@ -17,6 +17,7 @@
 
 // #include "../platform/ErrorCode.h"
 // #include "../platform/Os.h"
+// #include "../platform/DateAndTime.h"
 //
 // #include "../sinks/ISink.h"
 // #include "../sinks/SinkBase.h"
@@ -31,7 +32,7 @@
 // #include "../utils/TypeExistenceDetector.h"
 // #include "../utils/Types.h"
 
-#include "../defaultUsage.h"
+// #include "../defaultUsage.h"
 
 void TestSomething()
 {
