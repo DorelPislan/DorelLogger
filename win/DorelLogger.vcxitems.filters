@@ -103,6 +103,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\sinks\DelayedFileOpenSupport.h">
       <Filter>sinks</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\platform\DateAndTime.h">
+      <Filter>platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\format\FormatResolver.cpp">
