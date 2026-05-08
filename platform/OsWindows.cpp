@@ -51,4 +51,14 @@ namespace DorelLogger
   return L"\r\n";
 };
 
+/*static*/ DateAndTime Os::GetCurrentDateAndTime()
+{
+  SYSTEMTIME st;
+  ::GetLocalTime(&st);
+
+  DateAndTime dt(st.wYear, st.wMonth, st.wDayOfWeek, st.wDay, st.wHour, st.wMinute, st.wSecond,
+                 st.wMilliseconds);
+
+  return dt;
+}
 };  // namespace DorelLogger

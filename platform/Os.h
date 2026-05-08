@@ -5,6 +5,9 @@
 
 #include <cstdint>
 #include <string>
+//
+#include "DateAndTime.h"
+
 namespace DorelLogger
 {
 
@@ -23,6 +26,8 @@ public:
   static uint32_t GetLastError();
 
   static std::wstring_view GetEol();
+
+  static DateAndTime GetCurrentDateAndTime();
 };
 
 };  // namespace DorelLogger
