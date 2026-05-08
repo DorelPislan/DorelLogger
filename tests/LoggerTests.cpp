@@ -407,7 +407,10 @@ int main()
 
     auto wdsSink = std::make_unique<WindowsDebugStreamSink>();
     wdsSink->SetMessageFormat(
-      L"Year is:{Year}, [PID={ProcessId}] [TID={ThreadId}] FullFilePath=\"{20FilePathFull-10}\"  "
+      L"Year is:{Year} Month is:{MonthNo}({MonthName}) Day is:{DayNo}({DayName}), Hour "
+      L"is:{Hour24}({Hour12}), Minute is {Minute}, Second is {Second}, Milisec={MiliSec} and "
+      L"NanoSec={NanoSec}"
+      L"[PID={ProcessId}] [TID={ThreadId}] FullFilePath=\"{20FilePathFull-10}\"  "
       L"ShortFilePath=\"{20FilePathShort}\" -> Fcn={FuncName+10:()}():{4LineNo} -> Msg is={Msg}");
 
     logger.AddSink(std::move(wdsSink));
