@@ -24,7 +24,7 @@
   </ItemGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalDependencies>msi.lib;WindowsApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>msi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
 </Project>
