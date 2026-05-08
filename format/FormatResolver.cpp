@@ -20,7 +20,7 @@ const size_t kEstimatedMsgLength =
 };  // namespace
 
 FormatResolver::FormatResolver(const GlobalVariables & aGlobalVars,
-                               MessageType      aMessageType,
+                               MessageType             aMessageType,
                                const char *            aSourceFile,
                                const char *            aSourceFunction,
                                size_t                  aSourceLine,
@@ -124,62 +124,58 @@ std::wstring FormatResolver::ResolveVar(FormatTraits::VariableId aVarId)
   {
   case FormatTraits::VariableId::Year:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%Y}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:4}", crtTime.GetYear());
   }
   case FormatTraits::VariableId::MonthNumber:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%m}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:02}", crtTime.GetMonth());
   }
   case FormatTraits::VariableId::MonthName:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%b}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{}", crtTime.GetMonthName());
   }
   case FormatTraits::VariableId::DayNumber:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%d}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:02}", crtTime.GetDay());
   }
   case FormatTraits::VariableId::DayName:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%a}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{}", crtTime.GetDayName());
   }
   case FormatTraits::VariableId::Hour24:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%H}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:02}", crtTime.GetHour24());
   }
   case FormatTraits::VariableId::Hour12:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%I%p}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:02}{}", crtTime.GetHour12(), crtTime.GetAmPm());
   }
   case FormatTraits::VariableId::Minute:
   {
-    auto const crtTime = GetCurrentTime();
-    return std::format(L"{:%M}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:02}", crtTime.GetMinute());
   }
   case FormatTraits::VariableId::Second:
   {
-    auto const crtTime = std::chrono::time_point_cast<std::chrono::seconds>(GetCurrentTime());
-    return std::format(L"{:%S}", crtTime);
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:02}", crtTime.GetSecond());
   }
   case FormatTraits::VariableId::MiliSecond:
   {
-    auto ms       = std::chrono::time_point_cast<std::chrono::milliseconds>(GetCurrentTime());
-    auto fraction = ms.time_since_epoch() % 1000;
-
-    return std::format(L"{:03d}", fraction.count());
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:03}", crtTime.GetMillisecond());
   }
   case FormatTraits::VariableId::NanoSecond:
   {
-    auto ns       = std::chrono::time_point_cast<std::chrono::nanoseconds>(GetCurrentTime());
-    auto fraction = ns.time_since_epoch() % 1'000'000'000;
-
-    return std::format(L"{:09d}", fraction.count());
+    const auto & crtTime = GetCurrentTime();
+    return std::format(L"{:09}", crtTime.GetNanosecond());
   }
   case FormatTraits::VariableId::ProcessName:
   {

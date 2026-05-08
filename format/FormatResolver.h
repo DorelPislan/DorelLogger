@@ -5,6 +5,7 @@
 #include <optional>
 #include <string>
 //
+#include "../platform/Os.h"
 #include "../sinks/ISink.h"
 #include "FormatTraits.h"
 
@@ -48,10 +49,7 @@ public:
 private:
   const GlobalVariables & mGlobalVars;
 
-  mutable std::optional<std::chrono::time_point<
-    std::chrono::local_t,
-    std::chrono::duration<std::chrono::system_clock::rep, std::chrono::system_clock::period>>>
-    mCachedTime;
+  mutable std::optional<DateAndTime> mCachedTime;
 
   const Format * mFormat{ nullptr };  // when this is set the Sink will use this instead of its own
 
@@ -71,11 +69,11 @@ private:
 
   const wchar_t * GetMessageTypeString();
 
-  auto GetCurrentTime() const
+  const DateAndTime & GetCurrentTime() const
   {
     if (!mCachedTime)
     {
-      mCachedTime = std::chrono::current_zone()->to_local(std::chrono::system_clock::now());
+      mCachedTime = Os::GetCurrentDateAndTime();
     }
 
     return *mCachedTime;
