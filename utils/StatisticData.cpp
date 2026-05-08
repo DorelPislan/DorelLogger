@@ -1,5 +1,8 @@
 
 #include "StatisticData.h"
+//
+#include <format>
+//
 #include "../format/FormatResolver.h"
 
 namespace DorelLogger

@@ -1,7 +1,6 @@
 #ifndef _DOREL_LOGGER_FORMAT_RESOLVER_H_
 #define _DOREL_LOGGER_FORMAT_RESOLVER_H_
 
-#include <chrono>
 #include <optional>
 #include <string>
 //
