@@ -16,7 +16,6 @@
 #include "../platform/ErrorCode.h"
 #include "../tests/CustomFormatters.h"
 #include "../utils/GenericUint32Formatter.h"
-#include "win/pch.h"
 #include <source_location>
 
 using namespace DorelLogger;
@@ -277,7 +276,8 @@ int TestMessageBuilder()
 
   auto qs = std::format("To {0} or not to {0}, that is {1}.\n", a, b);
 
-  GUID guid     = FOLDERID_AccountPictures;
+  GUID guid = { 0x008ca0b1, 0x55b4, 0x4c56, { 0xbf, 0xd2, 0x94, 0x9e, 0x8c, 0x85, 0x6d, 0x75 } };
+
   auto flatGuid = std::format(L"{:x}", guid);
 
   msg << guid;
@@ -427,7 +427,6 @@ int main()
 
   LOG_INFO_FMT(L"Mesage with args={} --- {}", 345, L" my argument");
 
-  ::SetLastError(ERROR_ACCESS_DENIED);
   ErrorCode er = 7u;
   er;
   ErrorCode err2(7u);
