@@ -5,8 +5,8 @@
 #include "../platform/ErrorCode.h"
 #include "../platform/Os.h"
 
-#ifndef ESTIMATED_MESSAGE_LENGTH
-#define ESTIMATED_MESSAGE_LENGTH 200
+#ifndef DL_ESTIMATED_MESSAGE_LENGTH
+#define DL_ESTIMATED_MESSAGE_LENGTH 200
 #endif
 
 #ifdef DL_DONTLOG_SRC_POS
@@ -24,13 +24,14 @@
     }                                                       \
   }
 
-#define LOG_TRACE(msg)                                                                             \
-  {                                                                                                \
-    auto & logger = GET_LOGGER();                                                                  \
-    if (logger.ShouldLog(DorelLogger::MessageType::Trace))                                         \
-    {                                                                                              \
-      logger.LogTrace(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
-    }                                                                                              \
+#define LOG_TRACE(msg)                                                                    \
+  {                                                                                       \
+    auto & logger = GET_LOGGER();                                                         \
+    if (logger.ShouldLog(DorelLogger::MessageType::Trace))                                \
+    {                                                                                     \
+      logger.LogTrace(DL_SRC_POS,                                                         \
+                      (DorelLogger::MessageBuilder(DL_ESTIMATED_MESSAGE_LENGTH) << msg)); \
+    }                                                                                     \
   }
 
 #define LOG_INFO_FMT(aFormat, ...)                         \
@@ -42,13 +43,14 @@
     }                                                      \
   }
 
-#define LOG_INFO(msg)                                                                             \
-  {                                                                                               \
-    auto & logger = GET_LOGGER();                                                                 \
-    if (logger.ShouldLog(DorelLogger::MessageType::Info))                                         \
-    {                                                                                             \
-      logger.LogInfo(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
-    }                                                                                             \
+#define LOG_INFO(msg)                                                                    \
+  {                                                                                      \
+    auto & logger = GET_LOGGER();                                                        \
+    if (logger.ShouldLog(DorelLogger::MessageType::Info))                                \
+    {                                                                                    \
+      logger.LogInfo(DL_SRC_POS,                                                         \
+                     (DorelLogger::MessageBuilder(DL_ESTIMATED_MESSAGE_LENGTH) << msg)); \
+    }                                                                                    \
   }
 
 #define LOG_WARNING_FMT(aFormat, ...)                         \
@@ -60,14 +62,14 @@
     }                                                         \
   }
 
-#define LOG_WARNING(msg)                                                                 \
-  {                                                                                      \
-    auto & logger = GET_LOGGER();                                                        \
-    if (logger.ShouldLog(DorelLogger::MessageType::Warning))                             \
-    {                                                                                    \
-      logger.LogWarning(DL_SRC_POS,                                                      \
-                        (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
-    }                                                                                    \
+#define LOG_WARNING(msg)                                                                    \
+  {                                                                                         \
+    auto & logger = GET_LOGGER();                                                           \
+    if (logger.ShouldLog(DorelLogger::MessageType::Warning))                                \
+    {                                                                                       \
+      logger.LogWarning(DL_SRC_POS,                                                         \
+                        (DorelLogger::MessageBuilder(DL_ESTIMATED_MESSAGE_LENGTH) << msg)); \
+    }                                                                                       \
   }
 
 #define LOG_ERROR_FMT(aFormat, ...)                                     \
@@ -81,15 +83,16 @@
     }                                                                   \
   }
 
-#define LOG_ERROR(msg)                                                                             \
-  {                                                                                                \
-    DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError();                            \
-    lastError;                                                                                     \
-    auto & logger = GET_LOGGER();                                                                  \
-    if (logger.ShouldLog(DorelLogger::MessageType::Error))                                         \
-    {                                                                                              \
-      logger.LogError(DL_SRC_POS, (DorelLogger::MessageBuilder(ESTIMATED_MESSAGE_LENGTH) << msg)); \
-    }                                                                                              \
+#define LOG_ERROR(msg)                                                                    \
+  {                                                                                       \
+    DorelLogger::ErrorCode lastError = DorelLogger::Os::GetLastError();                   \
+    lastError;                                                                            \
+    auto & logger = GET_LOGGER();                                                         \
+    if (logger.ShouldLog(DorelLogger::MessageType::Error))                                \
+    {                                                                                     \
+      logger.LogError(DL_SRC_POS,                                                         \
+                      (DorelLogger::MessageBuilder(DL_ESTIMATED_MESSAGE_LENGTH) << msg)); \
+    }                                                                                     \
   }
 
 #endif  //_DOREL_LOGGER_LOGGER_MACROS_H_

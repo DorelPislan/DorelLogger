@@ -11,8 +11,8 @@ namespace DorelLogger
 namespace
 {
 const size_t kEstimatedMsgLength =
-#ifdef ESTIMATED_MESSAGE_LENGTH
-  ESTIMATED_MESSAGE_LENGTH
+#ifdef DL_ESTIMATED_MESSAGE_LENGTH
+  DL_ESTIMATED_MESSAGE_LENGTH
 #else
   400
 #endif
